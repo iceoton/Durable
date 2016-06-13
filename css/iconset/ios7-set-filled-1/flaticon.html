@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flaticon WebFont</title>
+    <link rel="stylesheet" type="text/css" href="flaticon.css">
+    <meta charset="UTF-8">
+    <style>
+    body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        font-size: 16px;
+        padding: 20px;
+        color:#333;
+    }
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+        font-family: Flaticon;
+        font-size: 30px;
+        font-style: normal;
+        margin-left: 20px;
+        color: #333;
+    }
+    .image p {
+		font-size: 12px;
+		margin: 0px;
+		clear: none;
+		width: 300px;
+		line-height: 40px;
+	}
+    .text {
+        float: left;
+        font-size:14px;
+        margin-top: 15px;
+    }
+    .text ul {
+        margin-left:0px;
+        color:#111;
+        margin-bottom:20px;
+    }
+    .text .ex {
+        font-size:12px;
+        color:#666;
+        margin-left:35px;
+        display:block;
+    }
+    .text ul li {
+        margin-top:10px;
+        list-style:none;
+    }
+    .num {
+        background:#66A523;
+        color:#fff;
+        border-radius:20px;
+        padding:1px;
+        display:inline-block;
+        width:22px;
+        height:22px;
+        text-align:center;
+        margin-right: 5px;
+    }
+    .text ul strong {
+        font-weight:normal;
+        color:#000;
+    }
+    .image {
+        width: 280px;
+        float: left;
+        margin-bottom: 15px;
+        margin-right: 30px;
+    }
+    #glyphs {
+        clear: both;
+    }
+    .image p:nth-child(even) i {
+        clear: none;
+    }
+    .glyph {
+        display: inline-block;
+        width: 120px;
+        margin: 10px;
+        text-align: center;
+        vertical-align: top;
+        background: #FFF;
+    }
+    .glyph .glyph-icon {
+        padding: 10px;
+        display: block;
+        font-family:"Flaticon";
+        font-size: 64px;
+        line-height: 1;
+    }
+    .glyph .glyph-icon:before {
+        font-size: 64px;
+        color: #666;
+        margin-left: 0;
+    }
+    .class-name {
+        font-size: 12px;
+    }
+    .author-name {
+		font-size: 10px;
+	}
+	a{
+		color: #66A523;
+	}
+    .instructions {
+        font-style:italic;
+        font-size:22px;
+        margin-bottom:10px;
+    }
+    .iconsuse {
+        font-size:22px;
+        font-style:italic;
+        padding-top:20px;
+        margin-top:20px;
+        border-top:1px solid #bbb;
+    }
+    .usetitle {
+        margin-bottom: 10px;
+        font-size: 20px;
+        font-style: italic;
+    }
+    .class-name:last-child {
+        font-size: 10px;
+        color:#888;
+    }
+    .class-name:last-child a {
+        font-size: 10px;
+        color:#555;
+    }
+    .class-name:last-child a:hover {
+        color:#66A523;
+    }
+    .glyph > input {
+        display: block;
+        width: 100px;
+        margin: 5px auto;
+        text-align: center;
+        font-size: 12px;
+        cursor: text;
+    }
+    .glyph > input.icon-input {
+        font-family:"Flaticon";
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    h1.logo {
+        font-size: 40px;
+        letter-spacing: -1px;
+        margin-top: -16px;
+        text-transform: lowercase;
+        border-bottom:1px solid #bbb;
+    }
+    h1.logo strong {
+        font-size: 16px;
+        font-family:sans-serif;
+        font-weight:normal;
+        color:#333;
+    }
+    h1.logo a {
+        color:#34302d;
+        text-decoration: none;
+    }
+    h1.logo a span {
+        color:#66A523;
+    }
+    #footer {
+        padding-top:40px;
+        clear:both;
+        text-align:center;
+    }
+    #footer a {
+        color:#66A523;
+    }
+    textarea {
+		margin: 0px;
+		width: 800px;
+		height: 150px;
+		border: 1px solid #CCC;
+		resize: none;
+		background: #EEE;
+    }
+    .author-link, .attrDiv a{
+    	font-size: 12px;
+    	color: #333;
+    	text-decoration: none;
+    }
+    .external {
+    	display: block;
+    }
+    .attrDiv {
+		font-size: 12px;
+	}
+    .attribution {
+        border-top: 1px solid #AAA;
+        margin: 10px 0;
+        padding-top: 15px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="logo">
+            <a href="http://www.flaticon.com">
+                <span>FLAT</span>ICON</a>
+            <strong>Font Demo</strong>
+        </h1>
+    </header>
+
+    <section class="demo">
+        <div class="text">
+
+            <div class="instructions">Instructions:</div>
+
+            <ul>
+                <li>
+                    <p>
+                        <span class="num">1</span>Copy the "Fonts" files and CSS files to your website CSS folder.
+                </li>
+                <li>
+                    <p>
+                        <span class="num">2</span>Add the CSS link to your website source code on header.
+                        <br />
+                        <span class="ex">&lt;head&gt;
+                            <br/>...
+                            <br/>&lt;link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css"&gt;
+                            <br/>...
+                            <br/>&lt;/head&gt;</span>
+                </li>
+
+                <li>
+                    <p>
+                        <span class="num">3</span>Use the icon class on "display:inline" elements:
+                        <br />
+                        <span class="ex">Use example: &lt;i class=&quot;flaticon-airplane49&quot;&gt;&lt;/i&gt; or &lt;span class=&quot;flaticon-airplane49&quot;&gt;&lt;/span&gt;</span>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section id="glyphs"><div class="glyph">
+		<div class="glyph-icon flaticon-20"></div>
+		<div class="class-name">.flaticon-20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/20-percent-battery-status_20658">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-2410"></div>
+		<div class="class-name">.flaticon-2410</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/24-hours-call-ios-7-interface-symbol_17256">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-add50"></div>
+		<div class="class-name">.flaticon-add50</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/add-ios-7-interface-symbol_16866">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-add54"></div>
+		<div class="class-name">.flaticon-add54</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/add-phone-call_18060">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-add55"></div>
+		<div class="class-name">.flaticon-add55</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/add-frame-option_18085">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-address14"></div>
+		<div class="class-name">.flaticon-address14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/address-book-ios-7-interface-symbol_17834">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-aim1"></div>
+		<div class="class-name">.flaticon-aim1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/aim-target-ios-7-interface-symbol_16821">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-alarm10"></div>
+		<div class="class-name">.flaticon-alarm10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/alarm-ios-7-interface-symbol_16768">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-align6"></div>
+		<div class="class-name">.flaticon-align6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/align-right-ios-7-interface-symbol_17205">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-align9"></div>
+		<div class="class-name">.flaticon-align9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/align-left-ios-7-interface-symbol_17890">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-amex"></div>
+		<div class="class-name">.flaticon-amex</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/amex-logo_18087">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-anchor10"></div>
+		<div class="class-name">.flaticon-anchor10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/anchor-point-ios-7-symbol_17912">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-anchor8"></div>
+		<div class="class-name">.flaticon-anchor8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/anchor-ios-7-interface-symbol_16733">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow165"></div>
+		<div class="class-name">.flaticon-arrow165</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-inside-a-black-square-ios-7-interface-symbol_16716">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow166"></div>
+		<div class="class-name">.flaticon-arrow166</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-ios-7-interface-symbol_16725">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow167"></div>
+		<div class="class-name">.flaticon-arrow167</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-bold-down-ios-7-interface-symbol_16748">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow168"></div>
+		<div class="class-name">.flaticon-arrow168</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-to-bottom-ios-7-interface-symbol_16770">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow169"></div>
+		<div class="class-name">.flaticon-arrow169</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-inside-a-black-square-ios-7-interface-symbol_16773">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow170"></div>
+		<div class="class-name">.flaticon-arrow170</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-ios-7-interface-symbol_16776">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow171"></div>
+		<div class="class-name">.flaticon-arrow171</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-right-ios-7-interface-symbol_16780">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow172"></div>
+		<div class="class-name">.flaticon-arrow172</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-left-ios-7-interface-symbol_16798">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow174"></div>
+		<div class="class-name">.flaticon-arrow174</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-left-ios-7-interface-symbol_16827">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow175"></div>
+		<div class="class-name">.flaticon-arrow175</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-outline-gross-and-white-up-ios-7-interface-symbol_16858">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow176"></div>
+		<div class="class-name">.flaticon-arrow176</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-ios-7-interface-symbol_16863">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow177"></div>
+		<div class="class-name">.flaticon-arrow177</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-double-ios-7-interface-symbol_16876">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow186"></div>
+		<div class="class-name">.flaticon-arrow186</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-ios-7-interface-symbol_17194">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow187"></div>
+		<div class="class-name">.flaticon-arrow187</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-top-ios-7-interface-symbol_17197">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow188"></div>
+		<div class="class-name">.flaticon-arrow188</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-ios-7-interface-symbol_17201">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow189"></div>
+		<div class="class-name">.flaticon-arrow189</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-black-up-ios-7-interface-symbol_17219">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow190"></div>
+		<div class="class-name">.flaticon-arrow190</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-ascending-ios-7-interface-symbol_17232">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow191"></div>
+		<div class="class-name">.flaticon-arrow191</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-bold-left-ios-7-interface-symbol_17264">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow207"></div>
+		<div class="class-name">.flaticon-arrow207</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-double-ios-7-interface-symbol_17808">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow208"></div>
+		<div class="class-name">.flaticon-arrow208</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-previous-ios-7-interface-symbol_17863">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow209"></div>
+		<div class="class-name">.flaticon-arrow209</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-right-ios-7-interface-symbol_17866">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow210"></div>
+		<div class="class-name">.flaticon-arrow210</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-four-ios-7-interface-symbol_17875">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow211"></div>
+		<div class="class-name">.flaticon-arrow211</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-left-inside-a-black-square-ios-7-interface-symbol_17882">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow212"></div>
+		<div class="class-name">.flaticon-arrow212</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-right-in-a-black-square-ios-7-interface-symbol_17888">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow213"></div>
+		<div class="class-name">.flaticon-arrow213</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-black-shape-pointing-left-ios-7-interface-symbol_17901">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow214"></div>
+		<div class="class-name">.flaticon-arrow214</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-right-ios-7-symbol_17913">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow215"></div>
+		<div class="class-name">.flaticon-arrow215</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-inside-a-circle-outline-ios-7-symbol_17930">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow216"></div>
+		<div class="class-name">.flaticon-arrow216</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-bold-right-ios-7-symbol_17944">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow217"></div>
+		<div class="class-name">.flaticon-arrow217</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-black-pointing-right-ios-7-symbol_17950">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow218"></div>
+		<div class="class-name">.flaticon-arrow218</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-bold-up-ios-7-interface-symbol_17970">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow219"></div>
+		<div class="class-name">.flaticon-arrow219</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-black-pointing-down_17985">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow220"></div>
+		<div class="class-name">.flaticon-arrow220</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-to-left-ios-7-interface-symbol_17987">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow221"></div>
+		<div class="class-name">.flaticon-arrow221</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-in-diagonal-inside-a-square-shape-ios-7-interface-symbol_17996">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow222"></div>
+		<div class="class-name">.flaticon-arrow222</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-thin-outline-inside-a-circle-outline_18028">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow223"></div>
+		<div class="class-name">.flaticon-arrow223</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-the-right-inside-a-circle-outline_18047">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow224"></div>
+		<div class="class-name">.flaticon-arrow224</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-up-inside-a-cloud-outline_18050">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow225"></div>
+		<div class="class-name">.flaticon-arrow225</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-thin-line-to-the-left_18070">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow226"></div>
+		<div class="class-name">.flaticon-arrow226</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-pointing-to-the-left-inside-a-circle-outline_18071">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow227"></div>
+		<div class="class-name">.flaticon-arrow227</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-embedded-within-a-square-outline_18106">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow228"></div>
+		<div class="class-name">.flaticon-arrow228</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-down-inside-a-cloud-outline_18114">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrow229"></div>
+		<div class="class-name">.flaticon-arrow229</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrow-to-the-left-and-right_18156">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows12"></div>
+		<div class="class-name">.flaticon-arrows12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-couple-ios-7-interface-symbol_16720">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows13"></div>
+		<div class="class-name">.flaticon-arrows13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-square-ios-7-interface-symbol_16769">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows14"></div>
+		<div class="class-name">.flaticon-arrows14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-group-pointing-four-directions-ios-7-interface-symbol_16802">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows15"></div>
+		<div class="class-name">.flaticon-arrows15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-opposite-ios-7-interface-symbol_17265">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows16"></div>
+		<div class="class-name">.flaticon-arrows16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-ios-7-interface-symbol_17813">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-arrows17"></div>
+		<div class="class-name">.flaticon-arrows17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/arrows-four-pointing-the-center-of-a-square-ios-7-interface-symbol_17880">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-attachment6"></div>
+		<div class="class-name">.flaticon-attachment6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/attachment-tool-ios-7-interface-symbol_17979">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-automated1"></div>
+		<div class="class-name">.flaticon-automated1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/automated-teller-card-and-machine-slot_18136">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-backward"></div>
+		<div class="class-name">.flaticon-backward</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/backward-arrows-ios-7-interface-symbol_17213">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bars5"></div>
+		<div class="class-name">.flaticon-bars5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bars-graphic-tower-ios-7-interface-symbol_18037">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-basket8"></div>
+		<div class="class-name">.flaticon-basket8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/basket-for-shopping-or-picnic-ios-7-interface-symbol_17900">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-battery53"></div>
+		<div class="class-name">.flaticon-battery53</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/battery-full-ios-7-interface-symbol_16718">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-battery55"></div>
+		<div class="class-name">.flaticon-battery55</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/battery-charging-ios-7-interface-symbol_17280">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-battery60"></div>
+		<div class="class-name">.flaticon-battery60</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/battery-black-shape-ios-7-symbol_17928">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-battery65"></div>
+		<div class="class-name">.flaticon-battery65</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/battery-ios-7-interface-symbol_20204">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bell5"></div>
+		<div class="class-name">.flaticon-bell5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bell-ios-7-interface-symbol_16790">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-black113"></div>
+		<div class="class-name">.flaticon-black113</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-circle_18102">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-black170"></div>
+		<div class="class-name">.flaticon-black170</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-glasses_18137">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-black171"></div>
+		<div class="class-name">.flaticon-black171</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/black-square-shape_18141">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bluetooth5"></div>
+		<div class="class-name">.flaticon-bluetooth5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bluetooth-symbol-silhouette_18032">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-book48"></div>
+		<div class="class-name">.flaticon-book48</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/book-opened-ios-7-interface-symbol_17248">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bottom3"></div>
+		<div class="class-name">.flaticon-bottom3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bottom-ios-7-interface-symbol_16772">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-box22"></div>
+		<div class="class-name">.flaticon-box22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/box-ios-7-interface-symbol_17907">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-box23"></div>
+		<div class="class-name">.flaticon-box23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/box-black-shape-side-view-ios-7-symbol_17938">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-brain"></div>
+		<div class="class-name">.flaticon-brain</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/brain-black-shape-ios-7-symbol_17947">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-briefcase7"></div>
+		<div class="class-name">.flaticon-briefcase7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/briefcase-ios-7-interface-symbol_16719">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bulb10"></div>
+		<div class="class-name">.flaticon-bulb10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bulb-of-light-ios-7-interface-symbol_16846">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bullet1"></div>
+		<div class="class-name">.flaticon-bullet1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bullet-points-ios-7-interface-symbol_16762">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-bullet2"></div>
+		<div class="class-name">.flaticon-bullet2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/bullet-list-ios-7-interface-symbol_17806">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-buy3"></div>
+		<div class="class-name">.flaticon-buy3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/buy-cash-ios-7-interface-symbol_18041">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-calendar33"></div>
+		<div class="class-name">.flaticon-calendar33</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/calendar-tick-ios-7-interface-symbol_16854">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-calendar37"></div>
+		<div class="class-name">.flaticon-calendar37</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/calendar-page-with-an-arrow-pointing-left-ios-7-symbol_17951">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-calendar38"></div>
+		<div class="class-name">.flaticon-calendar38</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/calendar-page-with-an-arrow-pointing-to-right-ios-7-interface-symbol_18039">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-call3"></div>
+		<div class="class-name">.flaticon-call3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/call-ended-ios-7-interface-symbol_16738">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-call4"></div>
+		<div class="class-name">.flaticon-call4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/call-end-auricular-shape-ios-7-interface-symbol_16760">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-call5"></div>
+		<div class="class-name">.flaticon-call5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/call-answer-ios-7-interface-symbol_17216">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-call7"></div>
+		<div class="class-name">.flaticon-call7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/call-volume-ios-7-interface-symbol_17819">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camcorder1"></div>
+		<div class="class-name">.flaticon-camcorder1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camcorder-ios-7-symbol_18004">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camcorder"></div>
+		<div class="class-name">.flaticon-camcorder</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camcorder-ios-7-interface-symbol_16811">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camera28"></div>
+		<div class="class-name">.flaticon-camera28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camera-refresh-ios-7-interface-symbol_16831">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camera29"></div>
+		<div class="class-name">.flaticon-camera29</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camera-ios-7-interface-symbol_17204">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camera31"></div>
+		<div class="class-name">.flaticon-camera31</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camera-vintage-ios-7-interface-symbol_17889">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-camera32"></div>
+		<div class="class-name">.flaticon-camera32</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/camera-synchronization-to-other-device_18055">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cancel8"></div>
+		<div class="class-name">.flaticon-cancel8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cancel-call-ios-7-interface-symbol_17203">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-caution1"></div>
+		<div class="class-name">.flaticon-caution1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/caution-ios-7-interface-symbol_16793">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cello"></div>
+		<div class="class-name">.flaticon-cello</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cello-instrument_18132">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cent1"></div>
+		<div class="class-name">.flaticon-cent1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cent-ios-7-interface-symbol_17241">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-center2"></div>
+		<div class="class-name">.flaticon-center2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/center-ios-7-interface-symbol_17285">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cents"></div>
+		<div class="class-name">.flaticon-cents</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cents-ios-7-interface-symbol_17853">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-certificate4"></div>
+		<div class="class-name">.flaticon-certificate4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/certificate-ios-7-interface-symbol_16755">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-charging3"></div>
+		<div class="class-name">.flaticon-charging3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/charging-battery-status-of-a-gadget_21521">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-chat18"></div>
+		<div class="class-name">.flaticon-chat18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/chat-bubble-ios-7-interface-symbol_16808">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-chat19"></div>
+		<div class="class-name">.flaticon-chat19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/chat-ios-7-interface-symbol_16861">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-check20"></div>
+		<div class="class-name">.flaticon-check20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/check-mark-inside-a-square-outline-box_18144">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-chronometer5"></div>
+		<div class="class-name">.flaticon-chronometer5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/chronometer_17971">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cigarette1"></div>
+		<div class="class-name">.flaticon-cigarette1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cigarette-smoking_18062">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-clapper"></div>
+		<div class="class-name">.flaticon-clapper</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/clapper-ios-7-interface-symbol_17202">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cloud62"></div>
+		<div class="class-name">.flaticon-cloud62</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cloud-black-shape-ios-7-interface-symbol_17820">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cloud63"></div>
+		<div class="class-name">.flaticon-cloud63</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cloud-with-add-symbol-ios-7-interface-symbol_17838">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cloud71"></div>
+		<div class="class-name">.flaticon-cloud71</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cloud-with-arrow-pointing-down-ios-7-interface-symbol_16880">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cloud72"></div>
+		<div class="class-name">.flaticon-cloud72</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cloud-upload-ios-7-interface-symbol_17992">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-code5"></div>
+		<div class="class-name">.flaticon-code5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/code-ios-7-interface-symbol_17252">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-code6"></div>
+		<div class="class-name">.flaticon-code6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/code-window-ios-7-symbol_17997">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-codings"></div>
+		<div class="class-name">.flaticon-codings</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/codings-ios-7-interface-symbol_16787">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-columns"></div>
+		<div class="class-name">.flaticon-columns</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/columns-ios-7-interface-symbol_17281">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-compact3"></div>
+		<div class="class-name">.flaticon-compact3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/compact-disc-silhouette_18075">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-computer34"></div>
+		<div class="class-name">.flaticon-computer34</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/computer-screen-with-play-button_18153">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-connecting2"></div>
+		<div class="class-name">.flaticon-connecting2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/connecting-points-on-a-presentation-chart_18081">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-converging"></div>
+		<div class="class-name">.flaticon-converging</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/converging-arrows_18113">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-correct5"></div>
+		<div class="class-name">.flaticon-correct5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/correct-ios-7-interface-symbol_17277">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-credit13"></div>
+		<div class="class-name">.flaticon-credit13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/credit-card-buy-hand-ios-7-interface-symbol_17282">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-credit15"></div>
+		<div class="class-name">.flaticon-credit15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/credit-card-ios-7-symbol_17959">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-crop"></div>
+		<div class="class-name">.flaticon-crop</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/crop-ios-7-interface-symbol_16775">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-cross29"></div>
+		<div class="class-name">.flaticon-cross29</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/cross-out-mark_18135">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-curved4"></div>
+		<div class="class-name">.flaticon-curved4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/curved-arrow-pointing-down_18020">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-delivery2"></div>
+		<div class="class-name">.flaticon-delivery2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/delivery-time-ios-7-interface-symbol_17210">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-diagonal"></div>
+		<div class="class-name">.flaticon-diagonal</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/diagonal-table-ios-7-interface-symbol_20200">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-digital4"></div>
+		<div class="class-name">.flaticon-digital4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/digital-camera-ios-7-interface-symbol_16786">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-document28"></div>
+		<div class="class-name">.flaticon-document28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/document-ios-7-interface-symbol_16759">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-document31"></div>
+		<div class="class-name">.flaticon-document31</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/document-double-ios-7-interface-symbol_17261">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dollar15"></div>
+		<div class="class-name">.flaticon-dollar15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dollar-ios-7-interface-symbol_16791">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dollar21"></div>
+		<div class="class-name">.flaticon-dollar21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dollar-bag-ios-7-interface-symbol_17794">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dollar22"></div>
+		<div class="class-name">.flaticon-dollar22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dollar-coin-stacks_18068">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-dollars3"></div>
+		<div class="class-name">.flaticon-dollars3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/dollars-currency-ios-7-symbol_17963">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-download44"></div>
+		<div class="class-name">.flaticon-download44</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/download-ios-7-symbol_17921">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-drums"></div>
+		<div class="class-name">.flaticon-drums</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/drums-ios-7-interface-symbol_17825">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-empty15"></div>
+		<div class="class-name">.flaticon-empty15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/empty-battery-outline_18099">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-equalizer1"></div>
+		<div class="class-name">.flaticon-equalizer1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/equalizer-controls_18063">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-eye31"></div>
+		<div class="class-name">.flaticon-eye31</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/eye-with-white-pupil-outline_18021">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-eye32"></div>
+		<div class="class-name">.flaticon-eye32</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/eye-shadow-with-white-center_18100">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-female8"></div>
+		<div class="class-name">.flaticon-female8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/female-symbol-rotated-seems-like-male-sign-ios-7-interface_17788">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-film16"></div>
+		<div class="class-name">.flaticon-film16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/film-role-ios-7-interface-symbol_17275">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-film17"></div>
+		<div class="class-name">.flaticon-film17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/film-roll-ios-7-interface-symbol_17804">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-flag21"></div>
+		<div class="class-name">.flaticon-flag21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flag-black-shape-ios-7-interface-symbol_17877">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-flashlight2"></div>
+		<div class="class-name">.flaticon-flashlight2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flashlight-torch-turned-off_18116">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-floppy6"></div>
+		<div class="class-name">.flaticon-floppy6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/floppy-disc-ios-7-interface-symbol_17207">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-flower14"></div>
+		<div class="class-name">.flaticon-flower14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/flower-black-shape-ios-7-interface-symbol_17894">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-folder50"></div>
+		<div class="class-name">.flaticon-folder50</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/folder-ios-7-interface-symbol_16741">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-folder51"></div>
+		<div class="class-name">.flaticon-folder51</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/folder-opened-ios-7-interface-symbol_17218">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-forward3"></div>
+		<div class="class-name">.flaticon-forward3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/forward-arrows-ios-7-interface-symbol_16743">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-frame7"></div>
+		<div class="class-name">.flaticon-frame7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/frame-edit-ios-7-interface-symbol_16722">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-frame8"></div>
+		<div class="class-name">.flaticon-frame8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/frame-with-cross-ios-7-interface-symbol_16814">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-frame9"></div>
+		<div class="class-name">.flaticon-frame9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/frame-double-ios-7-interface-symbol_17891">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-full17"></div>
+		<div class="class-name">.flaticon-full17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/full-mailbox-with-check-mark_18097">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-funnel1"></div>
+		<div class="class-name">.flaticon-funnel1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/funnel-ios-7-interface-symbol_16868">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-globe10"></div>
+		<div class="class-name">.flaticon-globe10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/globe-grid-silhouette-with-white-details_18095">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-graduates"></div>
+		<div class="class-name">.flaticon-graduates</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/graduates-cap_18065">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-grocery5"></div>
+		<div class="class-name">.flaticon-grocery5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/grocery-shop-cart_17867">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-harp"></div>
+		<div class="class-name">.flaticon-harp</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/harp-musical-instrument-ios-7-symbol_18002">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-headphone"></div>
+		<div class="class-name">.flaticon-headphone</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/headphone-ios-7-symbol_17917">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-headset2"></div>
+		<div class="class-name">.flaticon-headset2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/headset-silhouette_18151">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-heart53"></div>
+		<div class="class-name">.flaticon-heart53</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/heart-black-shape-ios-7-interface-symbol_17802">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-help6"></div>
+		<div class="class-name">.flaticon-help6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/help-ios-7-interface-symbol_16829">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-hierarchy1"></div>
+		<div class="class-name">.flaticon-hierarchy1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/hierarchy-ios-7-interface-symbol_16796">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-high10"></div>
+		<div class="class-name">.flaticon-high10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/high-volume-ios-7-symbol_17924">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-home48"></div>
+		<div class="class-name">.flaticon-home48</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/home-ios-7-interface-symbol_17263">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-id"></div>
+		<div class="class-name">.flaticon-id</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/id-card-ios-7-interface-symbol_16736">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-incoming1"></div>
+		<div class="class-name">.flaticon-incoming1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/incoming-arrow-ios-7-interface-symbol_16828">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-incoming2"></div>
+		<div class="class-name">.flaticon-incoming2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/incoming-call-ios-7-interface-symbol_17217">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-information26"></div>
+		<div class="class-name">.flaticon-information26</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/information-button_17843">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-ios6"></div>
+		<div class="class-name">.flaticon-ios6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/ios-7-interface-arrow-rotated-45-degrees-to-upper-left_17190">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-jcb"></div>
+		<div class="class-name">.flaticon-jcb</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/jcb-ios-7-interface-symbol_17904">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-joystick3"></div>
+		<div class="class-name">.flaticon-joystick3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/joystick-ios-7-symbol_17964">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-justify5"></div>
+		<div class="class-name">.flaticon-justify5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/justify-text-alignment-ios-7-symbol_17961">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-keyboard6"></div>
+		<div class="class-name">.flaticon-keyboard6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/keyboard-top-view-ios-7-interface-symbol_16756">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-laptop13"></div>
+		<div class="class-name">.flaticon-laptop13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/laptop-ios-7-symbol_17943">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-layers3"></div>
+		<div class="class-name">.flaticon-layers3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/layers-in-black-ios-7-interface-symbol_17791">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-left16"></div>
+		<div class="class-name">.flaticon-left16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/left-and-right-connected-arrow_18073">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-left18"></div>
+		<div class="class-name">.flaticon-left18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/left-click-with-a-mouse_18090">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-lens1"></div>
+		<div class="class-name">.flaticon-lens1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lens-ios-7-interface-symbol_16835">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-lens2"></div>
+		<div class="class-name">.flaticon-lens2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lens-ios-7-interface-symbol_17805">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-lens"></div>
+		<div class="class-name">.flaticon-lens</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lens-ios-7-interface-symbol_16807">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-list23"></div>
+		<div class="class-name">.flaticon-list23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/list-menu-three-lines-ios-7-symbol_17949">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-lock16"></div>
+		<div class="class-name">.flaticon-lock16</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lock-opened-ios-7-interface-symbol_16757">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-lock18"></div>
+		<div class="class-name">.flaticon-lock18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/lock-key-outline_18078">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-loudness"></div>
+		<div class="class-name">.flaticon-loudness</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/loudness-ios-7-interface-symbol_16781">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-loud"></div>
+		<div class="class-name">.flaticon-loud</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/loud-ios-7-interface-symbol_16726">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-low13"></div>
+		<div class="class-name">.flaticon-low13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/low-volume-ios-7-interface-symbol_17845">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-magnifying20"></div>
+		<div class="class-name">.flaticon-magnifying20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/magnifying-lens-outline-with-plus-sign_18093">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mail20"></div>
+		<div class="class-name">.flaticon-mail20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mail-ios-7-interface-symbol_16872">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mailbox7"></div>
+		<div class="class-name">.flaticon-mailbox7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mailbox-ios-7-interface-symbol_16785">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mailbox8"></div>
+		<div class="class-name">.flaticon-mailbox8</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mailbox-empty-ios-7-interface-symbol_17284">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-male21"></div>
+		<div class="class-name">.flaticon-male21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/male-sign-ios-7-interface-symbol_20205">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-master1"></div>
+		<div class="class-name">.flaticon-master1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/master-card-ios-7-interface-symbol_17236">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-measuring1"></div>
+		<div class="class-name">.flaticon-measuring1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/measuring-cup-tool-ios-7-interface-symbol_17976">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-medium2"></div>
+		<div class="class-name">.flaticon-medium2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/medium-volume-ios-7-interface-symbol_17967">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-menu13"></div>
+		<div class="class-name">.flaticon-menu13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/menu-box-ios-7-interface-symbol_16875">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-menu14"></div>
+		<div class="class-name">.flaticon-menu14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/menu-dots-ios-7-interface-symbol_17223">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mic4"></div>
+		<div class="class-name">.flaticon-mic4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mic-vintage-style-ios-7-interface-symbol_16836">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mic5"></div>
+		<div class="class-name">.flaticon-mic5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mic-off-ios-7-interface-symbol_17884">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mic6"></div>
+		<div class="class-name">.flaticon-mic6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mic-on-voice-ios-7-symbol_18001">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-microphone19"></div>
+		<div class="class-name">.flaticon-microphone19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/microphone-ios-7-interface-symbol_18040">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-minus15"></div>
+		<div class="class-name">.flaticon-minus15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/minus-symbol-inside-a-square-outline_18024">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-monitor20"></div>
+		<div class="class-name">.flaticon-monitor20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/monitor-ios-7-interface-symbol_17982">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mouse13"></div>
+		<div class="class-name">.flaticon-mouse13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mouse-ios-7-symbol_17916">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mouse14"></div>
+		<div class="class-name">.flaticon-mouse14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mouse-with-scroll-wheel-ios-7-interface-symbol_18042">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-move12"></div>
+		<div class="class-name">.flaticon-move12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/move-to-the-next-page-symbol_18069">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-music47"></div>
+		<div class="class-name">.flaticon-music47</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/music-note-ios-7-interface-symbol_16728">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-music48"></div>
+		<div class="class-name">.flaticon-music48</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/music-player-ios-7-interface-symbol_16857">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-music51"></div>
+		<div class="class-name">.flaticon-music51</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/music-screen-ios-7-interface-symbol_17790">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-mute5"></div>
+		<div class="class-name">.flaticon-mute5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/mute-ios-7-interface-symbol_17271">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-newspaper2"></div>
+		<div class="class-name">.flaticon-newspaper2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/newspaper-ios-7-symbol_17927">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-next7"></div>
+		<div class="class-name">.flaticon-next7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/next-ios-7-interface-symbol_17990">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-no12"></div>
+		<div class="class-name">.flaticon-no12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/no-smoking-ios-7-interface-symbol_17876">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-not4"></div>
+		<div class="class-name">.flaticon-not4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/not-charging-ios-7-interface-symbol_17975">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-oboe"></div>
+		<div class="class-name">.flaticon-oboe</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/oboe-ios-7-interface-symbol_16856">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-offer"></div>
+		<div class="class-name">.flaticon-offer</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/offer-label-ios-7-interface-symbol_17800">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-open51"></div>
+		<div class="class-name">.flaticon-open51</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/open-storage-box_18008">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-open52"></div>
+		<div class="class-name">.flaticon-open52</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/open-box-filled-with-papers_18103">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-outcoming"></div>
+		<div class="class-name">.flaticon-outcoming</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/outcoming-ios-7-interface-symbol_17818">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-outgoing2"></div>
+		<div class="class-name">.flaticon-outgoing2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/outgoing-call-ios-7-interface-symbol_17826">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-padlock14"></div>
+		<div class="class-name">.flaticon-padlock14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/padlock-locked-ios-7-interface-symbol_17905">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-paper27"></div>
+		<div class="class-name">.flaticon-paper27</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/paper-plane-ios-7-interface-symbol_16774">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-pause10"></div>
+		<div class="class-name">.flaticon-pause10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pause-ios-7-interface-symbol_17270">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-photo20"></div>
+		<div class="class-name">.flaticon-photo20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/photo-camera-ios-7-interface-symbol_16869">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-photo23"></div>
+		<div class="class-name">.flaticon-photo23</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/photo-camera-ios-7-interface-symbol_17868">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-picture7"></div>
+		<div class="class-name">.flaticon-picture7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/picture-ios-7-interface-symbol_16824">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-pictures"></div>
+		<div class="class-name">.flaticon-pictures</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/pictures-ios-7-interface-symbol_16848">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-piggy"></div>
+		<div class="class-name">.flaticon-piggy</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/piggy-bank-ios-7-interface-symbol_17199">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-play20"></div>
+		<div class="class-name">.flaticon-play20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/play-button-ios-7-interface-symbol_16832">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-play22"></div>
+		<div class="class-name">.flaticon-play22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/play-ios-7-interface-symbol_17247">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-plugin"></div>
+		<div class="class-name">.flaticon-plugin</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/plugin-puzzle-piece-black-shape-ios-7-interface-symbol_17984">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-plus18"></div>
+		<div class="class-name">.flaticon-plus18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/plus-sign-ios-7-interface-symbol_17849">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-portfolio3"></div>
+		<div class="class-name">.flaticon-portfolio3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/portfolio_17185">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-previous4"></div>
+		<div class="class-name">.flaticon-previous4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/previous-arrows-control-ios-7-interface-symbol_17230">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-printer36"></div>
+		<div class="class-name">.flaticon-printer36</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/printer-tool-ios-7-interface-symbol_17842">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-purse"></div>
+		<div class="class-name">.flaticon-purse</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/purse-male-ios-7-interface-symbol_16844">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-radio9"></div>
+		<div class="class-name">.flaticon-radio9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/radio-ios-7-interface-symbol_16816">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-rectangular12"></div>
+		<div class="class-name">.flaticon-rectangular12</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/rectangular-bubble-of-chat-with-three-dots-ios-7-interface-symbol_17273">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-right21"></div>
+		<div class="class-name">.flaticon-right21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/right-side-bar-ios-7-interface-symbol_16870">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-right22"></div>
+		<div class="class-name">.flaticon-right22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/right-clicking-computer-mouse_18053">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-ring7"></div>
+		<div class="class-name">.flaticon-ring7</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/ring-buoy-ios-7-interface-symbol_17269">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-round15"></div>
+		<div class="class-name">.flaticon-round15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/round-clock-at-nine-oclock-outline_18108">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-rows"></div>
+		<div class="class-name">.flaticon-rows</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/rows-ios-7-interface-symbol_17254">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-ruler4"></div>
+		<div class="class-name">.flaticon-ruler4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/ruler-and-pencil-cross-ios-7-interface-symbol_17931">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-saxophone1"></div>
+		<div class="class-name">.flaticon-saxophone1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/saxophone-musical-instrument-ios-7-interface-symbol_20203">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-scale3"></div>
+		<div class="class-name">.flaticon-scale3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/scale-protector-ios-7-interface-symbol_16842">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-scale4"></div>
+		<div class="class-name">.flaticon-scale4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/scale-ios-7-interface-symbol_17817">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-scale5"></div>
+		<div class="class-name">.flaticon-scale5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/scale-of-justice_18105">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-scaling"></div>
+		<div class="class-name">.flaticon-scaling</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/scaling-ios-7-interface-symbol_17957">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-scissors9"></div>
+		<div class="class-name">.flaticon-scissors9</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/scissors-ios-7-interface-symbol_17836">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-settings18"></div>
+		<div class="class-name">.flaticon-settings18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/settings-gear-ios-7-interface-symbol_17214">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shopping32"></div>
+		<div class="class-name">.flaticon-shopping32</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-cart-ios-7-interface-symbol_16753">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shopping33"></div>
+		<div class="class-name">.flaticon-shopping33</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-cart-ios-7-interface-symbol_16837">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shopping35"></div>
+		<div class="class-name">.flaticon-shopping35</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-cart-ios-7-interface-symbol_17220">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shopping37"></div>
+		<div class="class-name">.flaticon-shopping37</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-cart-ios-7-interface-symbol_17870">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shopping38"></div>
+		<div class="class-name">.flaticon-shopping38</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shopping-paper-bag_18074">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-shutdown"></div>
+		<div class="class-name">.flaticon-shutdown</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/shutdown-power-button-ios-7-interface-symbol_17878">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-silent"></div>
+		<div class="class-name">.flaticon-silent</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/silent-ios-7-interface-symbol_16834">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-skype6"></div>
+		<div class="class-name">.flaticon-skype6</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/skype-ios-7-interface-symbol_17795">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-slanting"></div>
+		<div class="class-name">.flaticon-slanting</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/slanting-arrow_18125">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-small98"></div>
+		<div class="class-name">.flaticon-small98</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/small-circles-forming-a-circle_18124">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-smart"></div>
+		<div class="class-name">.flaticon-smart</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/smart-phone-with-white-screen_18079">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-spanner2"></div>
+		<div class="class-name">.flaticon-spanner2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/spanner-ios-7-interface-symbol_17831">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speaker14"></div>
+		<div class="class-name">.flaticon-speaker14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speaker-loud-ios-7-interface-symbol_17268">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speaker19"></div>
+		<div class="class-name">.flaticon-speaker19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speaker-cone-ios-7-interface-symbol_17816">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-special"></div>
+		<div class="class-name">.flaticon-special</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/special-gift-with-white-ribbon_18067">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech20"></div>
+		<div class="class-name">.flaticon-speech20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-with-round-corners-ios-7-interface-symbol_16794">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech21"></div>
+		<div class="class-name">.flaticon-speech21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-with-text-lines-ios-7-interface-symbol_16826">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech22"></div>
+		<div class="class-name">.flaticon-speech22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-black-rectangular-shape-ios-7-interface-symbol_16865">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech27"></div>
+		<div class="class-name">.flaticon-speech27</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-in-black-ios-7-interface-symbol_17257">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech28"></div>
+		<div class="class-name">.flaticon-speech28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-with-rounded-corners-ios-7-interface-symbol_17852">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech29"></div>
+		<div class="class-name">.flaticon-speech29</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-black-rectangular-shape-with-two-white-text-lines-ios-7-interface-symbol_17932">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-speech30"></div>
+		<div class="class-name">.flaticon-speech30</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/speech-bubble-shadow-with-two-white-dialogue-lines_18011">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-square36"></div>
+		<div class="class-name">.flaticon-square36</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/square-of-four-lines-ios-7-interface-symbol_17814">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-stack4"></div>
+		<div class="class-name">.flaticon-stack4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/stack-ios-7-symbol_17994">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-star46"></div>
+		<div class="class-name">.flaticon-star46</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/star-ios-7-symbol_17966">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-storage4"></div>
+		<div class="class-name">.flaticon-storage4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/storage-ios-7-interface-symbol_16765">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-store1"></div>
+		<div class="class-name">.flaticon-store1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/store-infrastructure_18122">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-subtract"></div>
+		<div class="class-name">.flaticon-subtract</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/subtract-ios-7-symbol_17940">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-synchronise"></div>
+		<div class="class-name">.flaticon-synchronise</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/synchronise-ios-7-interface-symbol_17260">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tab1"></div>
+		<div class="class-name">.flaticon-tab1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tab-locked-ios-7-interface-symbol_17192">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-table14"></div>
+		<div class="class-name">.flaticon-table14</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/table-grid-ios-7-interface-symbol_17840">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tablet29"></div>
+		<div class="class-name">.flaticon-tablet29</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tablet-ios-7_16879">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tablet30"></div>
+		<div class="class-name">.flaticon-tablet30</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tablet-rotate-symbol-ios-7-interface-symbol_17936">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tablet31"></div>
+		<div class="class-name">.flaticon-tablet31</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tablet-ios-7-symbol_17954">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tablet32"></div>
+		<div class="class-name">.flaticon-tablet32</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tablet-locked-security-ios-7-interface-symbol_17991">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tag17"></div>
+		<div class="class-name">.flaticon-tag17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tag-with-pound-symbol-ios-7-interface-symbol_16730">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tag20"></div>
+		<div class="class-name">.flaticon-tag20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tag-black-shape-ios-7-interface-symbol_17855">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tag21"></div>
+		<div class="class-name">.flaticon-tag21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tag-with-symbol-of-euro-ios-7-interface-symbol_17887">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-tag22"></div>
+		<div class="class-name">.flaticon-tag22</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/tag-with-dollar-symbol-ios-7-interface-symbol_17892">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-thermometer17"></div>
+		<div class="class-name">.flaticon-thermometer17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thermometer-with-huge-bulb-and-white-grading_18031">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-thin13"></div>
+		<div class="class-name">.flaticon-thin13</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thin-arrow-pointing-upward_18007">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-thought3"></div>
+		<div class="class-name">.flaticon-thought3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/thought-balloon-with-three-white-dots_18054">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-three36"></div>
+		<div class="class-name">.flaticon-three36</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/three-curved-arrows-resembling-recycling-symbol_18012">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-timer15"></div>
+		<div class="class-name">.flaticon-timer15</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/timer-ios-7-interface-symbol_17274">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-treble"></div>
+		<div class="class-name">.flaticon-treble</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/treble-clef-ios-7-interface-symbol_17972">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-trombone"></div>
+		<div class="class-name">.flaticon-trombone</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/trombone-ios-7-interface-symbol_16867">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-trumpet2"></div>
+		<div class="class-name">.flaticon-trumpet2</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/trumpet-musical-instrument-ios-7-symbol_17993">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-trumpet"></div>
+		<div class="class-name">.flaticon-trumpet</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/trumpet-ios-7-interface-symbol_17848">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-two80"></div>
+		<div class="class-name">.flaticon-two80</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/two-column-four-squares-ios-7-interface-symbol_17989">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-umbrella4"></div>
+		<div class="class-name">.flaticon-umbrella4</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/umbrella-black-shape-ios-7-interface-symbol_16752">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-upload28"></div>
+		<div class="class-name">.flaticon-upload28</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/upload-ios-7-interface-symbol_16841">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-vertical3"></div>
+		<div class="class-name">.flaticon-vertical3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/vertical-ribbon-of-bookmark_16714">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-video54"></div>
+		<div class="class-name">.flaticon-video54</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/video-camera-ios-7-interface-symbol_16864">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-violin1"></div>
+		<div class="class-name">.flaticon-violin1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/violin-ios-7-interface-symbol_17895">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-visa"></div>
+		<div class="class-name">.flaticon-visa</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/visa-logo_18134">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-voice5"></div>
+		<div class="class-name">.flaticon-voice5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/voice-mail-symbol-shadow_18025">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-volume21"></div>
+		<div class="class-name">.flaticon-volume21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/volume-speaker-ios-7-interface-symbol_17922">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-waste1"></div>
+		<div class="class-name">.flaticon-waste1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/waste-disposal_18126">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-web10"></div>
+		<div class="class-name">.flaticon-web10</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/web-cam-ios-7-interface-symbol_17861">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-weighing1"></div>
+		<div class="class-name">.flaticon-weighing1</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/weighing-scale-ios-7-interface-symbol_17193">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-weight3"></div>
+		<div class="class-name">.flaticon-weight3</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/weight-in-kilogram_18117">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-wifi24"></div>
+		<div class="class-name">.flaticon-wifi24</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wifi-ios-7-symbol_17952">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-window17"></div>
+		<div class="class-name">.flaticon-window17</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/window-ios-7-interface-symbol_16727">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-window18"></div>
+		<div class="class-name">.flaticon-window18</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/window-plus-ios-7-interface-symbol_16851">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-window19"></div>
+		<div class="class-name">.flaticon-window19</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/window-computer-ios-7-interface-symbol_17243">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-wrong5"></div>
+		<div class="class-name">.flaticon-wrong5</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/wrong-sign-ios-7-interface-symbol_16723">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-zoom20"></div>
+		<div class="class-name">.flaticon-zoom20</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/zoom-ios-7-interface-symbol_16847">Freepik</a></div></div><div class="glyph">
+		<div class="glyph-icon flaticon-zoom21"></div>
+		<div class="class-name">.flaticon-zoom21</div><div class="author-name">Author: <a href="http://www.flaticon.com/free-icon/zoom-out-ios-7-interface-symbol_17255">Freepik</a></div></div></section>
+
+<section class="attribution">
+
+	<div class="usetitle">License and attribution:</div><div class="attrDiv">Font generated by <a href="http://www.flaticon.com">flaticon.com</a>
+ under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY</a>. The authors are: <a href="http://www.freepik.com">Freepik</a>.</div><div class="usetitle">Copy the Attribution License:</div>
+
+<textarea onclick="this.focus();this.select();">Font generated by &lt;a href=&quot;http://www.flaticon.com&quot;&gt;flaticon.com&lt;/a&gt;
+ under &lt;a href=&quot;http://creativecommons.org/licenses/by/3.0/&quot;&gt;CC BY&lt;/a&gt;. The authors are: &lt;a href=&quot;http://www.freepik.com&quot;&gt;Freepik&lt;/a&gt;.</textarea>
+
+</section>
+
+<section class="iconsuse">
+    	<div class="usetitle">Examples:</div>
+		<div class="image"><p>&lt;i class=&quot;flaticon-20&quot;&gt;&lt;/i&gt; <i class="flaticon-20"></i></p><p>&lt;i class=&quot;flaticon-2410&quot;&gt;&lt;/i&gt; <i class="flaticon-2410"></i></p><p>&lt;i class=&quot;flaticon-add50&quot;&gt;&lt;/i&gt; <i class="flaticon-add50"></i></p><p>&lt;i class=&quot;flaticon-add54&quot;&gt;&lt;/i&gt; <i class="flaticon-add54"></i></p><p>&lt;i class=&quot;flaticon-add55&quot;&gt;&lt;/i&gt; <i class="flaticon-add55"></i></p></div><div class="image"><p>&lt;span class=&quot;flaticon-address14&quot;&gt;&lt;/span&gt; <span class="flaticon-address14"></span></p><p>&lt;span class=&quot;flaticon-aim1&quot;&gt;&lt;/span&gt; <span class="flaticon-aim1"></span></p><p>&lt;span class=&quot;flaticon-alarm10&quot;&gt;&lt;/span&gt; <span class="flaticon-alarm10"></span></p><p>&lt;span class=&quot;flaticon-align6&quot;&gt;&lt;/span&gt; <span class="flaticon-align6"></span></p><p>&lt;span class=&quot;flaticon-align9&quot;&gt;&lt;/span&gt; <span class="flaticon-align9"></span></p></div><div class="image"><p>&lt;span class=&quot;flaticon-amex&quot;&gt;&lt;/span&gt; <span class="flaticon-amex"></span></p><p>&lt;i class=&quot;flaticon-anchor10&quot;&gt;&lt;/i&gt; <i class="flaticon-anchor10"></i></p><p>&lt;i class=&quot;flaticon-anchor8&quot;&gt;&lt;/i&gt; <i class="flaticon-anchor8"></i></p><p>&lt;i class=&quot;flaticon-arrow165&quot;&gt;&lt;/i&gt; <i class="flaticon-arrow165"></i></p><p>&lt;i class=&quot;flaticon-arrow166&quot;&gt;&lt;/i&gt; <i class="flaticon-arrow166"></i></p></div><div class="image"><p>&lt;span class=&quot;flaticon-arrow167&quot;&gt;&lt;/span&gt; <span class="flaticon-arrow167"></span></p><p>&lt;span class=&quot;flaticon-arrow168&quot;&gt;&lt;/span&gt; <span class="flaticon-arrow168"></span></p><p>&lt;span class=&quot;flaticon-arrow169&quot;&gt;&lt;/span&gt; <span class="flaticon-arrow169"></span></p><p>&lt;span class=&quot;flaticon-arrow170&quot;&gt;&lt;/span&gt; <span class="flaticon-arrow170"></span></p><p>&lt;span class=&quot;flaticon-arrow171&quot;&gt;&lt;/span&gt; <span class="flaticon-arrow171"></span></p></div><div class="image"></div>
+</section>
+<div id="footer">
+    <div>Generated by <a href="http://www.flaticon.com">flaticon.com</a>
+    </div>
+</div>
+	</body>
+</html>

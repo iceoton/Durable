@@ -1,0 +1,48 @@
+<?php
+/*
+Language For BED
+Developer : khumphol  tearmpin (@khumphol)
+Last modified : Mar 3, 2016
+[Copyright 2016 Clear Projects]
+*/
+function menuLanguage($menu_text){
+	switch($menu_text){
+		case 'LA_MN_HOME' : return 'Home';break;
+		case 'LA_MN_ROOM' : return 'Room';break;
+		case 'LA_MN_BOOKING' : return 'Booking';break;
+		case 'LA_MN_PAYMENT' : return 'Payment';break;
+		case 'LA_MN_MEMBERS' : return 'Members';break;
+		case 'LA_MN_DOCUMENT' : return 'Documents';break;
+		case 'LA_MN_ACCOUNT' : return 'Accounting';break;
+		case 'LA_MN_REPORT' : return 'Report';break;
+		case 'LA_MN_SETTING' : return 'Settings';break;
+		case 'LA_MN_LOGOUT' : return 'Logout';break;
+		case 'LA_MN_DAILY_ROOMS' : return 'Daily Rooms';break;
+		case 'LA_MN_MONTHLY_ROOMS' : return 'Monthly Rooms';break;
+		case 'LA_MN_MANAGEMENT' : return 'Management';break;
+		case 'LA_MN_MONTHLY_DETAIL' : return 'Monthly Detail';break;
+		
+		default : return $menu_text;
+	}
+}
+function accessList($access_text){
+	switch($access_text){
+		case "LA_LB_ADMINISTRATOR": return 'Administrator'; break;
+		case "LA_LB_INCOME_LIST": return ' Expenditures'; break;
+		case "LA_LB_ROOMS": return ' About Rooms'; break;
+		
+	}
+}
+function moduleLanguage($module_name){
+	switch($module_name){
+		case "LA_MD_MONTHLY_ROOM": return 'Monthly Rooms';break;
+		case "LA_MD_MONTHLY_ROOM_DETAIL": return 'Monthly Rooms';break;
+		case "LA_MD_ONLINE_BOOKING": return 'Online Booking';break;
+		case "LA_MD_ONLINE_BOOKING_DETAIL": return 'Online Booking';break;
+		case "LA_MD_PAYMENT_CONFIRMATION": return 'Payment Confirmation';break;
+		case "LA_MD_PAYMENT_CONFIRMATION_DETAIL": return 'Payment Confirmation';break;
+		case "LA_MD_ROOM_DETAIL": return 'Room Detail';break;
+		case "LA_MD_ROOM_DETAIL_NOTE": return 'Room Detail';break;
+	}
+}
+?>

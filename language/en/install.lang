@@ -1,0 +1,44 @@
+<?php
+define('LA_IS_ABOUT_SYSTEM','About System');
+define('LA_IS_DATABASE','Setting Database');
+define('LA_IS_ADMINISTRATOR','Setting Administrator');
+define('LA_IS_DATE_AND_TIME','Date & Time');
+define('LA_IS_HEADER_S1','Welcome to the BED.');
+define('LA_IS_ABOUT_1','&nbsp;&nbsp;&nbsp;&nbsp;BED is software used for booking on a daily basis, which is ideal for a small hotel or apartment, which allows reservation is easy and accurate in check. BED space more and more of the following items.
+');
+define('LA_IS_ABOUT_2','<p>- Supports both Thailand and English.</p>
+<p>- Check for and book a room.</p>
+<p>- Preemption could leave the room.</p>
+<p>- You can move a room</p>
+<p>- You can cancel the room</p>
+<p>- To issue receipts.</p>
+<p>- You can add rooms and room type zone unlimited.</p>
+<p>- To increase fees beyond the room.</p>
+<p>- The system handles user segmentation.</p>
+<p>- Can backup database</p>
+<p>- A reporting system that allows for easier operation.</p>
+<p>The developers hope that the software will help you work more efficiently.</p>');
+define('LA_IS_HOST_NAME','Host Name');
+define('LA_IS_USERNAME','Username');
+define('LA_IS_PASSWORD','Password');
+define('LA_IS_DBNAME','Database Name');
+define('LA_IS_ALERT_CANT_CONNECT_DB','Can\'t Connect to Database. Please try agian.');
+define('LA_LB_CANT_OPEN_FILE','Unable to open file!');
+define('LA_IS_ALERT_DATA_IS_WRONG_TRY_AGAIN','Incorrect information Please enter again!');
+define('LA_IS_NEXT','Next');
+define('LA_IS_FINISH','Finish');
+define('LA_IS_NAME','Name');
+define('LA_IS_LASTNAME','Lastname');
+define('LA_IS_USERNAME','Username');
+define('LA_IS_PASSWORD','Password');
+define('LA_IS_EMAIL','Email');
+define('LA_IS_LANGUAGE','Language');
+define('LA_IS_DONE_1','Success! Installation Complete');
+define('LA_IS_DONE_2','Welcome to');
+define('LA_IS_DONE_3','To get started now!');
+define('LA_IS_TIME_ZONE','Time Zone');
+define('LA_IS_YEAR_TYPE','Year Type');
+define('LA_IS_DATE_FORMAT','Date Format');
+define('LA_IS_YEAR_AD','Christian era');
+define('LA_IS_YEAR_BE','Buddhist era');
+?>

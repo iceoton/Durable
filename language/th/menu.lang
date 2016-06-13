@@ -1,0 +1,47 @@
+<?php
+/*
+Language For BED
+Developer : khumphol  tearmpin (@khumphol)
+Last modified : Mar 3, 2016
+[Copyright 2016 Clear Projects]
+*/
+function menuLanguage($menu_text){
+	switch($menu_text){
+		case 'LA_MN_HOME' : return 'หน้าแรก';break;
+		case 'LA_MN_ROOM' : return 'ห้องพัก';break;
+		case 'LA_MN_BOOKING' : return 'จองห้องพัก';break;
+		case 'LA_MN_PAYMENT' : return 'ชำระเงิน';break;
+		case 'LA_MN_MEMBERS' : return 'สมาชิก';break;
+		case 'LA_MN_DOCUMENT' : return 'เอกสาร';break;
+		case 'LA_MN_ACCOUNT' : return 'บัญชี';break;
+		case 'LA_MN_REPORT' : return 'รายงาน';break;
+		case 'LA_MN_SETTING' : return 'ตั้งค่า';break;
+		case 'LA_MN_LOGOUT' : return 'ออกจากระบบ';break;
+		case 'LA_MN_DAILY_ROOMS' : return 'ห้องพักรายวัน';break;
+		case 'LA_MN_MONTHLY_ROOMS' : return 'ห้องพักรายเดือน';break;
+		case 'LA_MN_MANAGEMENT' : return 'การจัดการ';break;
+		case 'LA_MN_MONTHLY_DETAIL' : return 'จัดการห้องพักรายเดือน';break;
+		default : return $menu_text;
+	}
+}
+function accessList($access_text){
+	switch($access_text){
+		case "LA_LB_ADMINISTRATOR": return 'ผู้ดูแลระบบ'; break;
+		case "LA_LB_INCOME_LIST": return ' เกี่ยวกับรายการค่าใช้จ่าย'; break;
+		case "LA_LB_ROOMS": return ' เกี่ยวกับห้องพัก'; break;
+		
+	}
+}
+function moduleLanguage($module_name){
+	switch($module_name){
+		case "LA_MD_MONTHLY_ROOM": return 'จัดการห้องพักแบบรายเดือน';break;
+		case "LA_MD_MONTHLY_ROOM_DETAIL": return 'ระบบจัดการห้องพักแบบรายเดือนเมื่อทำการเปิดระบบนี้แล้วผู้ใช้งานสามารถเพิ่มข้อมูลสำหรับห้องแบบรายเดือนได้';break;
+		case "LA_MD_ONLINE_BOOKING": return 'บริการจองออนไลน์';break;
+		case "LA_MD_ONLINE_BOOKING_DETAIL": return 'บริการจองออนไลน์';break;
+		case "LA_MD_PAYMENT_CONFIRMATION": return 'ยืนยันการชำระเงิน';break;
+		case "LA_MD_PAYMENT_CONFIRMATION_DETAIL": return 'ยืนยันการชำระเงิน';break;
+		case "LA_MD_ROOM_DETAIL": return 'รายละเอียดห้อง';break;
+		case "LA_MD_ROOM_DETAIL_NOTE": return 'รายละเอียดห้อง';break;
+	}
+}
+?>
