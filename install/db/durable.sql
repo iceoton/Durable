@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:8889
--- Generation Time: Jun 07, 2016 at 06:18 PM
+-- Generation Time: Jun 13, 2016 at 03:16 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -11,8 +11,28 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `repair`
+-- Database: `durable`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `asset`
+--
+
+CREATE TABLE `asset` (
+  `id` int(11) NOT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `detail` text NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  `source_id` int(11) NOT NULL,
+  `status_id` int(11) NOT NULL,
+  `unit_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `com_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -35,7 +55,7 @@ CREATE TABLE `autonumber` (
 --
 
 INSERT INTO `autonumber` (`item_number`, `finance_number`, `quotation_number`, `invoice_number`, `year`, `month`, `day`) VALUES
-(0001, 0001, 0001, 0001, 2016, 05, 18);
+(0001, 0001, 0001, 0001, 2016, 06, 07);
 
 -- --------------------------------------------------------
 
@@ -152,6 +172,18 @@ INSERT INTO `card_type` (`ctype_key`, `ctype_name`, `ctype_color`, `ctype_status
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `language`
 --
 
@@ -230,7 +262,20 @@ INSERT INTO `list` (`cases`, `menu`, `pages`, `case_status`) VALUES
 ('card_create_detail', 'card_create', 'card/card_create_detail.php', 1),
 ('search_code', '', 'main/search.php', 1),
 ('card_create', 'card_create', 'card/main.php', 1),
-('setting_products', 'setting', 'settings/setting_products.php', 1);
+('setting_products', 'setting', 'settings/setting_products.php', 1),
+('durable', 'durable', 'card/main.php', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `location`
+--
+
+CREATE TABLE `location` (
+  `id` int(10) NOT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -315,7 +360,9 @@ INSERT INTO `logs` (`log_key`, `log_date`, `log_ipaddress`, `log_text`, `log_use
 ('213837997916c7f7', '2016-06-01 03:03:51', '::1', 'root ออกจากระบบ.', 'c37d695c6f1144abdefa8890a921b8fb'),
 ('037e9da546d3fdc4', '2016-06-07 15:42:29', '::1', 'root เข้าสู่ระบบ.', 'c37d695c6f1144abdefa8890a921b8fb'),
 ('96bcddf69accdb8c', '2016-06-07 15:50:55', '::1', 'root ออกจากระบบ.', 'c37d695c6f1144abdefa8890a921b8fb'),
-('8663ce8b281b008d', '2016-06-07 15:50:57', '::1', 'root เข้าสู่ระบบ.', 'c37d695c6f1144abdefa8890a921b8fb');
+('8663ce8b281b008d', '2016-06-07 15:50:57', '::1', 'root เข้าสู่ระบบ.', 'c37d695c6f1144abdefa8890a921b8fb'),
+('3984997891e43c75', '2016-06-12 17:43:26', '::1', 'root เข้าสู่ระบบ.', 'c37d695c6f1144abdefa8890a921b8fb'),
+('7547f1d5c11b4152', '2016-06-12 18:59:34', '::1', 'root เข้าสู่ระบบ.', 'c37d695c6f1144abdefa8890a921b8fb');
 
 -- --------------------------------------------------------
 
@@ -348,6 +395,30 @@ INSERT INTO `menus` (`menu_key`, `menu_upkey`, `menu_icon`, `menu_name`, `menu_c
 ('b15612beeab346d8359a66a03d9e00a2', 'b15612beeab346d8359a66a03d9e00a2', '<i class="fa fa-edit fa-fw"></i>', 'ครุภัณฑ์', 'durable', '?p=durable', 1, 2),
 ('c6c8729b45d1fec563f8453c16ff03b8', 'c6c8729b45d1fec563f8453c16ff03b8', '<i class="fa fa-lock fa-fw"></i>', 'LA_MN_LOGOUT', 'logout', '../core/logout.core.php', 1, 6),
 ('f1344bc0fb9c5594fa0e3d3f37a56957', 'f1344bc0fb9c5594fa0e3d3f37a56957', '<i class="fa fa-users fa-fw"></i>', 'LA_MN_MEMBERS', 'member', '?p=member', 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `source`
+--
+
+CREATE TABLE `source` (
+  `id` int(10) NOT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id` int(10) NOT NULL,
+  `code` varchar(16) NOT NULL,
+  `name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -415,6 +486,17 @@ INSERT INTO `system_info` (`site_key`, `site_logo`, `site_favicon`, `time_zone`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `unit`
+--
+
+CREATE TABLE `unit` (
+  `id` int(10) NOT NULL,
+  `name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -458,11 +540,22 @@ CREATE TABLE `user_online` (
 --
 
 INSERT INTO `user_online` (`osession`, `user_key`, `otime`) VALUES
-('e2a8b3fca61b48a21480f1ea44c84e2e', 'c37d695c6f1144abdefa8890a921b8fb', 1465315735);
+('e2a8b3fca61b48a21480f1ea44c84e2e', 'c37d695c6f1144abdefa8890a921b8fb', 1465759671);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `asset`
+--
+ALTER TABLE `asset`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `location_id` (`location_id`),
+  ADD KEY `source_id` (`source_id`),
+  ADD KEY `status_id` (`status_id`),
+  ADD KEY `unit_id` (`unit_id`);
 
 --
 -- Indexes for table `autonumber`
@@ -501,6 +594,12 @@ ALTER TABLE `card_type`
   ADD PRIMARY KEY (`ctype_key`);
 
 --
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `language`
 --
 ALTER TABLE `language`
@@ -513,10 +612,34 @@ ALTER TABLE `list`
   ADD PRIMARY KEY (`cases`);
 
 --
+-- Indexes for table `location`
+--
+ALTER TABLE `location`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`menu_key`);
+
+--
+-- Indexes for table `source`
+--
+ALTER TABLE `source`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -525,3 +648,51 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`user_key`),
   ADD UNIQUE KEY `user_key` (`user_key`),
   ADD UNIQUE KEY `user_key_2` (`user_key`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `asset`
+--
+ALTER TABLE `asset`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `source`
+--
+ALTER TABLE `source`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `asset`
+--
+ALTER TABLE `asset`
+  ADD CONSTRAINT `asset_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asset_ibfk_2` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asset_ibfk_3` FOREIGN KEY (`source_id`) REFERENCES `source` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asset_ibfk_4` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asset_ibfk_5` FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON UPDATE CASCADE;
