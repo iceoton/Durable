@@ -40,7 +40,7 @@ if (isset($_POST['save_edit_card'])) {
                     <button type="button" class="close" data-dismiss="modal"><span
                             aria-hidden="true">&times;</span><span class="sr-only"><?php echo @LA_BTN_CLOSE; ?></span>
                     </button>
-                    <h4 class="modal-title" id="memberModalLabel"><?php echo "สถานะครุภัณฑ์"; ?></h4>
+                    <h4 class="modal-title" id="memberModalLabel">สถานะครุภัณฑ์</h4>
                 </div>
                 <div class="ct">
 
