@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa  flaticon-stack4 fa-fw"></i> <?php echo @LA_LB_EXPENDITURES_GROUP; ?></h1>
+        <h1 class="page-header"><i class="fa  flaticon-ring7 fa-fw"></i> <?php echo @LA_LB_EXPENDITURES_GROUP; ?></h1>
     </div>
 </div>
 <ol class="breadcrumb">

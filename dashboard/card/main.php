@@ -1,6 +1,6 @@
 <div class="row">
      <div class="col-lg-12">
-             <h1 class="page-header"><i class="fa fa-edit fa-fw"></i> ส่งซ่อมสินค้า/เคลม</h1>
+             <h1 class="page-header"><i class="fa fa-edit fa-fw"></i>  รายการครุภัณฑ์</h1>
      </div>
 </div>
 <ol class="breadcrumb">
@@ -24,7 +24,7 @@ if(isset($_POST['save_card'])){
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">เพิ่มครุภัณฑ์เข้าระบบ</h4>
+                                            <h4 class="modal-title" id="myModalLabel">เพิ่มครุภัณฑ์</h4>
                                         </div>
                                         <div class="modal-body">
                                           <!--<div class="form-group">
@@ -34,49 +34,49 @@ if(isset($_POST['save_card'])){
                                           <div class="form-group row">
                                            	<div class="col-md-6">
                                            	  <label for="card_customer_name">รหัสครุภัณฑ์</label>
-                                              <input type="text" name="card_customer_name" id="card_customer_name" class="form-control" autocomplete="off">
+                                              <input type="text" name="card_asset_code" id="card_asset_code" class="form-control" autocomplete="off">
                                            	</div>
                                             <div class="col-md-6">
                                               <label for="card_customer_lastname">ชื่อครุภัณฑ์</label>
-                                              <input type="text" name="card_customer_lastname" id="card_customer_lastname" class="form-control"  autocomplete="off">
+                                              <input type="text" name="card_asset_name" id="card_asset_name" class="form-control"  autocomplete="off">
                                             </div>
                                           </div>
                                           <div class="form-group">
-                                            <label for="card_customer_address">รายละเอียด</label>
-                                            <textarea name="card_customer_address" id="card_customer_address" class="form-control"></textarea>
+                                            <label for="card_asset_detail">รายละเอียด</label>
+                                            <textarea name="card_asset_detail" id="card_asset_detail" class="form-control"></textarea>
                                           </div>
                                           <div class="form-group row">
                                             <div class="col-md-6">
-                                              <label for="card_customer_phone">ประเภทสินทรัพย์</label>
-                                              <input type="text" name="card_customer_phone" id="card_customer_phone" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_category">ประเภทสินทรัพย์</label>
+                                              <input type="text" name="card_asset_category" id="card_asset_category" class="form-control"  autocomplete="off">
                                             </div>
                                             <div class="col-md-6">
-                                              <label for="card_customer_email">วันที่ได้มาครั้งแรก</label>
-                                              <input type="text" name="card_customer_email" id="card_customer_email" class="form-control"  autocomplete="off">
+                                              <label for="card_come_date">วันที่ได้มาครั้งแรก</label>
+                                              <input type="text" name="card_come_date" id="card_come_date" class="form-control"  autocomplete="off">
                                             </div>
                                           </div>
                                           <div class="form-group row">
                                             <div class="col-md-6">
-                                              <label for="card_customer_phone">สถานที่ตั้ง</label>
-                                              <input type="text" name="card_customer_phone" id="card_customer_phone" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_location">สถานที่ตั้ง</label>
+                                              <input type="text" name="card_asset_location" id="card_asset_location" class="form-control"  autocomplete="off">
                                             </div>
                                             <div class="col-md-6">
-                                              <label for="card_customer_email">แหล่งที่มา</label>
-                                              <input type="text" name="card_customer_email" id="card_customer_email" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_source">แหล่งที่มา</label>
+                                              <input type="text" name="card_asset_source" id="card_asset_source" class="form-control"  autocomplete="off">
                                             </div>
                                           </div>
                                           <div class="form-group row">
                                             <div class="col-md-4">
-                                              <label for="card_customer_phone">สถานะ</label>
-                                              <input type="text" name="card_customer_phone" id="card_customer_phone" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_status">สถานะ</label>
+                                              <input type="text" name="card_asset_status" id="card_asset_status" class="form-control"  autocomplete="off">
                                             </div>
                                             <div class="col-md-4">
-                                              <label for="card_customer_email">ปริมาณ</label>
-                                              <input type="text" name="card_customer_email" id="card_customer_email" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_quantity">ปริมาณ</label>
+                                              <input type="text" name="card_asset_quantity" id="card_asset_quantity" class="form-control"  autocomplete="off">
                                             </div>
                                             <div class="col-md-4">
-                                              <label for="card_customer_email">หน่วยนับ</label>
-                                              <input type="text" name="card_customer_email" id="card_customer_email" class="form-control"  autocomplete="off">
+                                              <label for="card_asset_unit">หน่วยนับ</label>
+                                              <input type="text" name="card_asset_unit" id="card_asset_unit" class="form-control"  autocomplete="off">
                                             </div>
                                           </div>
                                           <!--<div class="form-group">
@@ -131,12 +131,17 @@ if(isset($_POST['save_card'])){
   	<table width="100%" border="0" class="table table-bordered">
     <thead>
   <tr style="font-weight:bold; color:#FFF; text-align:center; background:#ff7709;">
-    <td width="12%">รหัสส่งซ่อม/เคลม</td>
-    <td width="16%">วันที่</td>
-    <td width="28%">ชื่อผู้ส่งซ่อม/เคลม</td>
-    <td width="13%">หมายเลขโทรศัพท์</td>
-    <td width="16%">สถานะ</td>
-    <td width="15%">จัดการ</td>
+    <td width="5%">รหัสครุภัณฑ์</td>
+    <td width="15%">ชื่อครุภัณฑ์</td>
+    <td width="25%">รายละเอียด</td>
+    <td width="5%">ประเภท</td>
+    <td width="5%">วันที่ได้มาครั้งแรก</td>
+    <td width="10%">สถานที่ตั้ง</td>
+    <td width="10%">แหล่งที่มา</td>
+    <td width="5%">สถานะ</td>
+    <td width="5%">ปริมาณ</td>
+    <td width="5%">หน่วยนับ</td>
+    <td width="10%">จัดการ</td>
   </tr>
   </thead>
   <tbody>
@@ -150,6 +155,11 @@ if(isset($_POST['save_card'])){
     <td>&nbsp;<?php echo @$showcard->card_customer_name.'&nbsp;&nbsp;&nbsp;'.$showcard->card_customer_lastname;?></td>
     <td align="center"><?php echo @$showcard->card_customer_phone;?></td>
     <td align="center"><?php echo @cardStatus($showcard->card_status);?></td>
+    <td align="center"><?php echo ""?></td>
+    <td align="center"><?php echo ""?></td>
+    <td align="center"><?php echo ""?></td>
+    <td align="center"><?php echo ""?></td>
+    <td align="center"><?php echo ""?></td>
     <td align="right"><a href="?p=card_create_detail&key=<?php echo @$showcard->card_key;?>" title="แก้ไข" class="btn btn-xs btn-info"><i class="fa fa-edit"></i></a><a onClick="javascript:deleteCard('<?php echo @$showcard->card_key;?>');" title="ลบข้อมูล" class="btn btn-xs btn-danger"><i class="fa fa-times"></i></a></td>
   </tr>
   <?php
@@ -162,12 +172,12 @@ if(isset($_POST['save_card'])){
 </div>
 <?php
    }else{
-	   echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ไม่พบข้อมูลใบสั่งซ่อม/เคลมที่ไม่สมบูรณ์</div>';
+	   echo '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ไม่พบข้อมูลครุภัณฑ์</div>';
    }
 ?>
 <script language="javascript">
 function deleteCard(cardkey){
-	if(confirm('คุณต้องการลบใบสั่งซ่อม/เคลมนี้ใช่หรือไม่ ?')){
+	if(confirm('คุณต้องการลบครุภัณฑ์นี้ใช่หรือไม่ ?')){
 	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
 	 	xmlhttp=new XMLHttpRequest();
 	}else{// code for IE6, IE5

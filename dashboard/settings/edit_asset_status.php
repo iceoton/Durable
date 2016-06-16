@@ -21,20 +21,29 @@ if (@$_SESSION['lang'] != NULL) {
     $_SESSION['lang'] = 'th';
 
 }
-$getcat_detail = $getdata->my_sql_query(NULL, "categories", "cat_key='" . addslashes($_GET['key']) . "'");
+$getctype_detail = $getdata->my_sql_query(NULL, "status", "id='" . addslashes($_GET['key']) . "'");
 ?>
 <div class="modal-body">
-    <div class="form-group">
-        <label for="edit_cat_title"><?php echo @LA_LB_CAT_NAME; ?></label>
-        <input type="text" name="edit_cat_title" id="edit_cat_title" class="form-control"
-               value="<?php echo @$getcat_detail->cat_name; ?>" autofocus>
-        <input type="hidden" name="cat_key" id="cat_key" value="<?php echo @addslashes($_GET['key']); ?>">
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="edit_status_code">รหัสสถานะ</label>
+            <input type="text" name="edit_status_code" id="edit_status_code" class="form-control"
+                   value="<?php echo @$getctype_detail->code; ?>" autofocus>
+        </div>
+        <div class="col-md-6">
+            <label for="edit_status_name">ชื่อสถานะของครุภัณฑ์</label>
+            <input type="text" name="edit_status_name" id="edit_status_name" class="form-control"
+                   value="<?php echo @$getctype_detail->name; ?>">
+        </div>
+        <input type="hidden" name="status_id" id="status_id" value="<?php echo @addslashes($_GET['key']);?>">
     </div>
+
 </div>
+
 <div class="modal-footer">
     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i
             class="fa fa-times fa-fw"></i><?php echo @LA_BTN_CLOSE; ?></button>
-    <button type="submit" name="save_edit_cat" class="btn btn-primary btn-sm"><i
+    <button type="submit" name="save_edit_card" class="btn btn-primary btn-sm"><i
             class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
 </div>
-                                    
+                                        

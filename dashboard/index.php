@@ -126,6 +126,7 @@ if(@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "i
                       <?php
 					  $getmenus = $getdata->my_sql_select(NULL,"menus","menu_status='1' AND menu_key=menu_upkey ORDER BY menu_sorting");
 					  while($showmenus = mysql_fetch_object($getmenus)){
+							// ตรวจสอบว่ามีเมนูนั้นจริงๆ
 						  $cksub = $getdata->my_sql_show_rows("menus","menu_status='1' AND menu_key <> menu_upkey AND '".$showmenus->menu_key."' = menu_upkey");
 
 						  if($cksub != 0){

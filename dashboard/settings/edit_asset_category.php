@@ -21,14 +21,21 @@ if (@$_SESSION['lang'] != NULL) {
     $_SESSION['lang'] = 'th';
 
 }
-$getcat_detail = $getdata->my_sql_query(NULL, "categories", "cat_key='" . addslashes($_GET['key']) . "'");
+$getcat_detail = $getdata->my_sql_query(NULL, "category", "id='" . addslashes($_GET['key']) . "'");
 ?>
 <div class="modal-body">
-    <div class="form-group">
-        <label for="edit_cat_title"><?php echo @LA_LB_CAT_NAME; ?></label>
-        <input type="text" name="edit_cat_title" id="edit_cat_title" class="form-control"
-               value="<?php echo @$getcat_detail->cat_name; ?>" autofocus>
-        <input type="hidden" name="cat_key" id="cat_key" value="<?php echo @addslashes($_GET['key']); ?>">
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="edit_category_code">รหัสประเภท</label>
+            <input type="text" name="edit_category_code" id="edit_category_code" class="form-control"
+                   value="<?php echo @$getcat_detail->code; ?>" autofocus>
+        </div>
+        <div class="col-md-6">
+            <label for="edit_category_name">ชื่อประเภทของครุภัณฑ์</label>
+            <input type="text" name="edit_category_name" id="edit_category_name" class="form-control"
+                   value="<?php echo @$getcat_detail->name; ?>">
+        </div>
+        <input type="hidden" name="category_id" id="category_id" value="<?php echo @addslashes($_GET['key']);?>">
     </div>
 </div>
 <div class="modal-footer">
