@@ -11,16 +11,16 @@
 if(isset($_POST['save_card'])){
 	if(htmlentities($_POST['card_customer_name'])!= NULL && htmlentities($_POST['card_customer_phone']) != NULL ){
 		$card_key=md5(htmlentities($_POST['card_customer_name']).htmlentities($_POST['card_code']).time("now"));
-		$getdata->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."'");
+		$getDB->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."'");
 		echo '<script>window.location="?p=card_create_detail&key='.$card_key.'";</script>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
 	}
 }
 if(isset($_POST['save_new_status'])){
-	$getdata->my_sql_update("card_info","card_status='".htmlentities($_POST['card_status'])."'","card_key='".htmlentities($_POST['card_key'])."'");
+	$getDB->my_sql_update("card_info","card_status='".htmlentities($_POST['card_status'])."'","card_key='".htmlentities($_POST['card_key'])."'");
 	$cstatus_key=md5(htmlentities($_POST['card_status']).time("now"));
-	$getdata->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".htmlentities($_POST['card_key'])."',card_status='".htmlentities($_POST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
+	$getDB->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".htmlentities($_POST['card_key'])."',card_status='".htmlentities($_POST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
 	$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>บันทึกข้อมูลสถานะ สำเร็จ</div>';
 }
 ?>
@@ -113,12 +113,12 @@ if(isset($_POST['save_new_status'])){
           <ul class="dropdown-menu" role="menu">
           <?php
 		  if(htmlentities($_GET['type']) != NULL){
-			  $gettype_detail = $getdata->my_sql_query(NULL,"card_type","ctype_key='".htmlentities($_GET['type'])."'");
+			  $gettype_detail = $getDB->my_sql_query(NULL,"card_type","ctype_key='".htmlentities($_GET['type'])."'");
 			  $text_cat = $gettype_detail->ctype_name;
 		  }else{
 			 $text_cat = 'ทุกสถานะ';
 		  }
-		  $gettype = $getdata->my_sql_select(NULL,"card_type","ctype_status='1' ORDER BY ctype_insert");
+		  $gettype = $getDB->my_sql_select(NULL,"card_type","ctype_status='1' ORDER BY ctype_insert");
 		  		echo '<li><a href="?p=card">ทุกสถานะ</a></li>';
             while($showtype = mysql_fetch_object($gettype)){
 				echo '<li><a href="?p=card&type='.$showtype->ctype_key.'">'.$showtype->ctype_name.'</a></li>';
@@ -141,9 +141,9 @@ if(isset($_POST['save_new_status'])){
   </nav>
   <?php
    if(htmlentities($_GET['type']) != NULL){
-	   $getcard_count = $getdata->my_sql_show_rows("card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
+	   $getcard_count = $getDB->my_sql_show_rows("card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
   }else{
-	   $getcard_count = $getdata->my_sql_show_rows("card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert");
+	   $getcard_count = $getDB->my_sql_show_rows("card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert");
   }
    
    if($getcard_count != 0){
@@ -163,9 +163,9 @@ if(isset($_POST['save_new_status'])){
   <tbody>
   <?php
   if(htmlentities($_GET['type']) != NULL){
-	   $getcard = $getdata->my_sql_select(NULL,"card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
+	   $getcard = $getDB->my_sql_select(NULL,"card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
   }else{
-	   $getcard = $getdata->my_sql_select(NULL,"card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert");
+	   $getcard = $getDB->my_sql_select(NULL,"card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert");
   }
  
   while($showcard = mysql_fetch_object($getcard)){

@@ -2,7 +2,7 @@
 if(htmlentities($_GET['key']) == NULL){
 	echo '<script>window.location="?p=card_create";</script>';
 }else{
-	$card_detail = $getdata->my_sql_query(NULL,"card_info","card_key='".htmlentities($_GET['key'])."'");
+	$card_detail = $getDB->my_sql_query(NULL,"card_info","card_key='".htmlentities($_GET['key'])."'");
 	updateDateNow();
 }
 ?>
@@ -27,7 +27,7 @@ if(isset($_POST['save_item'])){
 		}
 		
 		
-		$getdata->my_sql_insert("card_item","item_key='".$item_key."',card_key='".$card_detail->card_key."',item_number='".INumber()."',item_name='".htmlentities($_POST['item_name'])."',item_note='".@htmlentities($_POST['item_note'])."',item_price_aprox='".@$price_aprox."'");
+		$getDB->my_sql_insert("card_item","item_key='".$item_key."',card_key='".$card_detail->card_key."',item_number='".INumber()."',item_name='".htmlentities($_POST['item_name'])."',item_note='".@htmlentities($_POST['item_note'])."',item_price_aprox='".@$price_aprox."'");
 		updateItem();
 		$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>บันทึกข้อมูล สำเร็จ !</div>';
 	}else{
@@ -36,7 +36,7 @@ if(isset($_POST['save_item'])){
 }
 if(isset($_POST['save_edit_item'])){
 	if(htmlentities($_POST['edit_item_name']) != NULL && htmlentities($_POST['edit_item_note']) != NULL){
-		$getdata->my_sql_update("card_item","item_name='".htmlentities($_POST['edit_item_name'])."',item_note='".htmlentities($_POST['edit_item_note'])."',item_price_aprox='".@htmlentities($_POST['edit_item_price_aprox'])."'","item_key='".htmlentities($_POST['item_key'])."'");
+		$getDB->my_sql_update("card_item","item_name='".htmlentities($_POST['edit_item_name'])."',item_note='".htmlentities($_POST['edit_item_note'])."',item_price_aprox='".@htmlentities($_POST['edit_item_price_aprox'])."'","item_key='".htmlentities($_POST['item_key'])."'");
 		$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>อัพเดทข้อมูล สำเร็จ !</div>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
@@ -48,9 +48,9 @@ if(isset($_POST['save_confirm_card'])){
 	}else{
 		$card_done_aprox = '0000-00-00';
 	}
-	$getdata->my_sql_update("card_info","card_done_aprox='".@$card_done_aprox."',card_status='".htmlentities($_REQUEST['card_status'])."',user_key='".$userdata->user_key."'","card_key='".$card_detail->card_key."'");
+	$getDB->my_sql_update("card_info","card_done_aprox='".@$card_done_aprox."',card_status='".htmlentities($_REQUEST['card_status'])."',user_key='".$userdata->user_key."'","card_key='".$card_detail->card_key."'");
 	$cstatus_key=md5(htmlentities($_REQUEST['card_status']).rand().time("now"));
-	$getdata->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".$card_detail->card_key."',card_status='".htmlentities($_REQUEST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
+	$getDB->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".$card_detail->card_key."',card_status='".htmlentities($_REQUEST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
 	echo '<script>alert("บันทึกข้อมูล สำเร็จ !");window.open("card/print_card.php?key='.$card_detail->card_key.'", "_blank");window.location="?p=card";</script>';
 }
 ?>
@@ -89,7 +89,7 @@ if(isset($_POST['save_confirm_card'])){
                                              <label for="card_status">สถานะปัจจุบัน</label>
                                              <select name="card_status" id="card_status" class="form-control">
                                              <?php
-											 $getcard_type = $getdata->my_sql_select(NULL,"card_type","ctype_status='1' ORDER BY ctype_insert");
+											 $getcard_type = $getDB->my_sql_select(NULL,"card_type","ctype_status='1' ORDER BY ctype_insert");
 											 while($showcard_type = mysql_fetch_object($getcard_type)){
 												 if($showcard_type->ctype_key == '89da7d193f3c67e4310f50cbb5b36b90'){
 													   echo '<option value="'.$showcard_type->ctype_key.'" selected>'.$showcard_type->ctype_name.'</option>';
@@ -163,7 +163,7 @@ if(isset($_POST['save_confirm_card'])){
     <td bgcolor="#888888">จัดการ</td>
     </tr>
     <?php 
-	$getitem = $getdata->my_sql_select(NULL,"card_item","card_key='".$card_detail->card_key."' ORDER BY item_insert");
+	$getitem = $getDB->my_sql_select(NULL,"card_item","card_key='".$card_detail->card_key."' ORDER BY item_insert");
 	while($showitem = mysql_fetch_object($getitem)){
 	?>
   <tr id="<?php echo @$showitem->item_key;?>">

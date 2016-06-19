@@ -15,7 +15,7 @@ if(isset($_POST['backup'])){
 	$myFile = "../backup/".date("Y-m-d.bk").".sql";
 	$fn = date("Y-m-d.bk").".sql";
 	$fh = fopen($myFile, 'w') or die("can't open file");
-	$showresult = $getdata->my_sql_string("SHOW TABLES;");
+	$showresult = $getDB->my_sql_string("SHOW TABLES;");
 	while ( $row = mysql_fetch_row($showresult) ) {
   		$table = $row[0];
 	    // dump data
@@ -31,7 +31,7 @@ fclose($fh);
   //  $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> '.LA_ALERT_NOT_BACKUP_PATH_ERROR.'</div>'; 
 //}
 $bk=md5($fn.time("now"));
-$getdata->my_sql_insert("backup_logs","backup_key='".$bk."',backup_file='".$fn."',user_key='".$_SESSION['ukey']."'");
+$getDB->my_sql_insert("backup_logs","backup_key='".$bk."',backup_file='".$fn."',user_key='".$_SESSION['ukey']."'");
 }
 
 if(isset($_POST['submit_restore'])){
@@ -118,7 +118,7 @@ echo @$alert;
   <tbody>
   <?php
   $i=0;
-  $getbackup = $getdata->my_sql_select(NULL,"backup_logs,user","backup_logs.user_key=user.user_key ORDER BY backup_date DESC");
+  $getbackup = $getDB->my_sql_select(NULL,"backup_logs,user","backup_logs.user_key=user.user_key ORDER BY backup_date DESC");
   while($showbackup = mysql_fetch_object($getbackup)){
 	  $i++;
   ?>

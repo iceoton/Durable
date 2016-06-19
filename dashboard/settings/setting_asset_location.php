@@ -14,7 +14,7 @@ if (isset($_POST['save_location'])) {
     if ((addslashes($_POST['location_code']) != NULL) && (addslashes($_POST['location_name']) != NULL)) {
         $locationCode = $_POST['location_code'];
         $locationName = $_POST['location_name'];
-        $getdata->my_sql_insert("location", "code='" . $locationCode . "', name='" . $locationName . "'");
+        $getDB->my_sql_insert("location", "code='" . $locationCode . "', name='" . $locationName . "'");
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานที่ตั้งครุภัณฑ์สำเร็จ" . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิสถานที่ตั้งครุภัณฑ์ไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
@@ -24,7 +24,7 @@ if (isset($_POST['save_edit_location'])) {
     if ((addslashes($_POST['edit_location_code']) != NULL) && (addslashes($_POST['edit_location_name']) != NULL)) {
         $locationCode = $_POST['edit_location_code'];
         $locationName = $_POST['edit_location_name'];
-        $getdata->my_sql_update("location", "code='" . $locationCode . "', name='" . $locationName . "'", "id='" . addslashes($_POST['location_id']) . "'");
+        $getDB->my_sql_update("location", "code='" . $locationCode . "', name='" . $locationName . "'", "id='" . addslashes($_POST['location_id']) . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขสถานที่ตั้งครุภัณฑ์์สำเร็จ" . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -109,7 +109,7 @@ echo @$alert;
             <tbody>
             <?php
             $x = 0;
-            $getcat = $getdata->my_sql_select(NULL, "location", "code <> '' ORDER BY code");
+            $getcat = $getDB->my_sql_select(NULL, "location", "code <> '' ORDER BY code");
             while ($showcat = mysql_fetch_object($getcat)) {
                 $x++;
                 ?>

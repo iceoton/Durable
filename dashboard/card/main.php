@@ -11,7 +11,7 @@
 if(isset($_POST['save_card'])){
 	if(addslashes($_POST['card_customer_name'])!= NULL && addslashes($_POST['card_customer_phone']) != NULL ){
 		$card_key=md5(htmlentities($_POST['card_customer_name']).htmlentities($_POST['card_code']).time("now"));
-		$getdata->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."',card_done_aprox='0000-00-00',user_key='".$user_data->user_key."',card_status=''");
+		$getDB->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."',card_done_aprox='0000-00-00',user_key='".$user_data->user_key."',card_status=''");
 		echo '<script>window.location="?p=card_create_detail&key='.$card_key.'";</script>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
@@ -124,7 +124,7 @@ if(isset($_POST['save_card'])){
   </div>
   </nav>
   <?php
-   $getcard_count = $getdata->my_sql_show_rows("card_info","card_status = ''  ORDER BY card_insert");
+   $getcard_count = $getDB->my_sql_show_rows("card_info","card_status = ''  ORDER BY card_insert");
    if($getcard_count != 0){
   ?>
   <div class="table-responsive">
@@ -146,7 +146,7 @@ if(isset($_POST['save_card'])){
   </thead>
   <tbody>
   <?php
-  $getcard = $getdata->my_sql_select(NULL,"card_info"," card_status = ''  ORDER BY card_insert");
+  $getcard = $getDB->my_sql_select(NULL,"card_info"," card_status = ''  ORDER BY card_insert");
   while($showcard = mysql_fetch_object($getcard)){
   ?>
   <tr style="font-weight:bold;" id="<?php echo @$showcard->card_key;?>">

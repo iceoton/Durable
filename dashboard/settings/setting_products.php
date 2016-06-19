@@ -13,7 +13,7 @@
 if(isset($_POST['save_categories'])){
 	if(addslashes($_POST['cat_name']) != NULL){
 		$cat_key = md5(addslashes($_POST['cat_name']).time("now"));
-		$getdata->my_sql_insert("categories","cat_key='".$cat_key."',cat_name='".addslashes($_POST['cat_name'])."',cat_status='".addslashes($_POST['cat_status'])."'");
+		$getDB->my_sql_insert("categories","cat_key='".$cat_key."',cat_name='".addslashes($_POST['cat_name'])."',cat_status='".addslashes($_POST['cat_status'])."'");
 		$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_ADD_EXPENDITURES_GROUP.'</div>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_DATA_MISMATCH.'</div>'; 
@@ -34,9 +34,9 @@ if(isset($_POST['save_product'])){
 	
 	if($File_name != NULL){
 		resizeProductThumb($File_ext,$newfilename);
-		$getdata->my_sql_insert("products","pro_key='".$pro_key."',cat_key='".addslashes($_REQUEST['cat_key'])."',pro_std_code='".addslashes($_POST['pro_std_code'])."',pro_name='".addslashes($_POST['pro_name'])."',pro_detail='".addslashes($_POST['pro_detail'])."',pro_cover='".$newfilename."',pro_price='".addslashes($_POST['pro_price'])."',pro_status='".addslashes($_REQUEST['pro_status'])."'");
+		$getDB->my_sql_insert("products","pro_key='".$pro_key."',cat_key='".addslashes($_REQUEST['cat_key'])."',pro_std_code='".addslashes($_POST['pro_std_code'])."',pro_name='".addslashes($_POST['pro_name'])."',pro_detail='".addslashes($_POST['pro_detail'])."',pro_cover='".$newfilename."',pro_price='".addslashes($_POST['pro_price'])."',pro_status='".addslashes($_REQUEST['pro_status'])."'");
 	}else{
-		$getdata->my_sql_insert("products","pro_key='".$pro_key."',cat_key='".addslashes($_REQUEST['cat_key'])."',pro_std_code='".addslashes($_POST['pro_std_code'])."',pro_name='".addslashes($_POST['pro_name'])."',pro_detail='".addslashes($_POST['pro_detail'])."',pro_price='".addslashes($_POST['pro_price'])."',pro_status='".addslashes($_REQUEST['pro_status'])."'");
+		$getDB->my_sql_insert("products","pro_key='".$pro_key."',cat_key='".addslashes($_REQUEST['cat_key'])."',pro_std_code='".addslashes($_POST['pro_std_code'])."',pro_name='".addslashes($_POST['pro_name'])."',pro_detail='".addslashes($_POST['pro_detail'])."',pro_price='".addslashes($_POST['pro_price'])."',pro_status='".addslashes($_REQUEST['pro_status'])."'");
 	}
 	//updateLynda();
 	$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_ADD_EXPENDITURES.'</div>';
@@ -60,9 +60,9 @@ if(isset($_POST['save_edit_item'])){
 	
 	if($File_name_e != NULL){
 		resizeProductThumb($File_ext_e,$newfilename_e);
-		$getdata->my_sql_update("products","cat_key='".addslashes($_REQUEST['edit_cat_key'])."',pro_std_code='".addslashes($_POST['edit_pro_std_code'])."',pro_name='".addslashes($_POST['edit_pro_name'])."',pro_detail='".addslashes($_POST['edit_pro_detail'])."',pro_cover='".$newfilename_e."',pro_price='".addslashes($_POST['edit_pro_price'])."'","pro_key='".addslashes($_POST['pro_key'])."'");
+		$getDB->my_sql_update("products","cat_key='".addslashes($_REQUEST['edit_cat_key'])."',pro_std_code='".addslashes($_POST['edit_pro_std_code'])."',pro_name='".addslashes($_POST['edit_pro_name'])."',pro_detail='".addslashes($_POST['edit_pro_detail'])."',pro_cover='".$newfilename_e."',pro_price='".addslashes($_POST['edit_pro_price'])."'","pro_key='".addslashes($_POST['pro_key'])."'");
 	}else{
-		$getdata->my_sql_update("products","cat_key='".addslashes($_REQUEST['edit_cat_key'])."',pro_std_code='".addslashes($_POST['edit_pro_std_code'])."',pro_name='".addslashes($_POST['edit_pro_name'])."',pro_detail='".addslashes($_POST['edit_pro_detail'])."',pro_price='".addslashes($_POST['edit_pro_price'])."'","pro_key='".addslashes($_POST['pro_key'])."'");
+		$getDB->my_sql_update("products","cat_key='".addslashes($_REQUEST['edit_cat_key'])."',pro_std_code='".addslashes($_POST['edit_pro_std_code'])."',pro_name='".addslashes($_POST['edit_pro_name'])."',pro_detail='".addslashes($_POST['edit_pro_detail'])."',pro_price='".addslashes($_POST['edit_pro_price'])."'","pro_key='".addslashes($_POST['pro_key'])."'");
 	}
 	updateLynda();
 	$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_UPDATE_DATA_DONE.'</div>';
@@ -136,7 +136,7 @@ if(isset($_POST['save_edit_item'])){
                                          <div class="form-group">
                                            <label for="cat_key"><?php echo @LA_LB_CAT_NAME;?></label>
                                            <select name="cat_key" id="cat_key" class="form-control">
-                                            <?php $getcat = $getdata->my_sql_select(NULL,"categories","cat_status='1' ORDER BY cat_insert");
+                                            <?php $getcat = $getDB->my_sql_select(NULL,"categories","cat_status='1' ORDER BY cat_insert");
 											while($showcat = mysql_fetch_object($getcat)){
 												echo '<option value="'.$showcat->cat_key.'">'.$showcat->cat_name.'</option>';
 											}
@@ -214,12 +214,12 @@ if(isset($_POST['save_edit_item'])){
           <ul class="dropdown-menu" role="menu">
           <?php
 		  if(addslashes($_GET['type']) != NULL){
-			  $gettype_detail = $getdata->my_sql_query(NULL,"categories","cat_key='".addslashes($_GET['type'])."'");
+			  $gettype_detail = $getDB->my_sql_query(NULL,"categories","cat_key='".addslashes($_GET['type'])."'");
 			  $text_cat = $gettype_detail->cat_name;
 		  }else{
 			 $text_cat = LA_LB_ALL;
 		  }
-		  $gettype = $getdata->my_sql_select(NULL,"categories","cat_status='1' ORDER BY cat_insert");
+		  $gettype = $getDB->my_sql_select(NULL,"categories","cat_status='1' ORDER BY cat_insert");
 		  		echo '<li><a href="?p=setting_products">'.LA_LB_ALL.'</a></li>';
             while($showtype = mysql_fetch_object($gettype)){
 				echo '<li><a href="?p=setting_products&type='.$showtype->cat_key.'">'.$showtype->cat_name.'</a></li>';
@@ -256,9 +256,9 @@ if(isset($_POST['save_edit_item'])){
   <?php
   $x=0;
    if(@addslashes($_GET['type']) != NULL){
-	   $getproduct = $getdata->my_sql_select(NULL,"products","cat_key='".addslashes($_GET['type'])."' ORDER BY pro_std_code");
+	   $getproduct = $getDB->my_sql_select(NULL,"products","cat_key='".addslashes($_GET['type'])."' ORDER BY pro_std_code");
    }else{
-	   $getproduct = $getdata->my_sql_select(NULL,"products","pro_status <> '2' ORDER BY pro_std_code");
+	   $getproduct = $getDB->my_sql_select(NULL,"products","pro_status <> '2' ORDER BY pro_std_code");
 	}
   while($showproduct = mysql_fetch_object($getproduct)){
 	  $x++;

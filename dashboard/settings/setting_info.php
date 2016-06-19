@@ -21,9 +21,9 @@
 	}
 	if($File_name2 != NULL){
 		resizeUserThumb($File_ext2,$newfilename2);
-		$getdata->my_sql_update("user","name='".addslashes($_POST['mname'])."',lastname='".addslashes($_POST['mlastname'])."',user_language='".addslashes($_REQUEST['mlanguage'])."',email='".addslashes($_POST['memail'])."',user_photo='".$newfilename2."'","user_key='".$userdata->user_key."'");
+		$getDB->my_sql_update("user","name='".addslashes($_POST['mname'])."',lastname='".addslashes($_POST['mlastname'])."',user_language='".addslashes($_REQUEST['mlanguage'])."',email='".addslashes($_POST['memail'])."',user_photo='".$newfilename2."'","user_key='".$userdata->user_key."'");
 	}else{
-		$getdata->my_sql_update("user","name='".addslashes($_POST['mname'])."',lastname='".addslashes($_POST['mlastname'])."',user_language='".addslashes($_REQUEST['mlanguage'])."',email='".addslashes($_POST['memail'])."'","user_key='".$userdata->user_key."'");
+		$getDB->my_sql_update("user","name='".addslashes($_POST['mname'])."',lastname='".addslashes($_POST['mlastname'])."',user_language='".addslashes($_REQUEST['mlanguage'])."',email='".addslashes($_POST['memail'])."'","user_key='".$userdata->user_key."'");
 	}
 	$_SESSION['lang'] = addslashes($_REQUEST['mlanguage']);
 	 $alert = '<div class="alert alert-block alert-success fade in"><button data-dismiss="alert" class="close" type="button">×</button>'.LA_ALERT_EDIT_DATA_INFO_DONE.'</div>';
@@ -38,7 +38,7 @@
 				$alert = '<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close" type="button">×</button>'.LA_ALERT_NEW_PASSWORD_NOTMATCH.'</div>';
 			}else{
 				if(addslashes($_POST['new_password']) != NULL && addslashes($_POST['re_new_password']) != NULL){
-					$getdata->my_sql_update("user","password='".md5(addslashes($_POST['new_password']))."'","user_key='".$_SESSION['ukey']."'");
+					$getDB->my_sql_update("user","password='".md5(addslashes($_POST['new_password']))."'","user_key='".$_SESSION['ukey']."'");
 					$alert = '<div class="alert alert-block alert-success fade in"><button data-dismiss="alert" class="close" type="button">×</button>'.LA_ALERT_PASSWORD_CHANGED.'</div>';
 				}else{
 					$alert = '<div class="alert alert-block alert-danger fade in"><button data-dismiss="alert" class="close" type="button">×</button>'.LA_ALERT_DATA_MISMATCH.'</div>';
@@ -48,12 +48,12 @@
 		}
  }
  if(isset($_POST['change_font_size'])){
-	 $getdata->my_sql_update("user","system_font_size='".addslashes($_POST['change_font_size'])."'","user_key='".$_SESSION['ukey']."'");
-	 $userdata = $getdata->my_sql_query(NULL,"user,system_font_size","user.user_key='".$_SESSION['ukey']."' AND user.system_font_size=system_font_size.font_key");
+	 $getDB->my_sql_update("user","system_font_size='".addslashes($_POST['change_font_size'])."'","user_key='".$_SESSION['ukey']."'");
+	 $userdata = $getDB->my_sql_query(NULL,"user,system_font_size","user.user_key='".$_SESSION['ukey']."' AND user.system_font_size=system_font_size.font_key");
 	 $alert = '<div class="alert alert-block alert-success fade in"><button data-dismiss="alert" class="close" type="button">×</button>เปลี่ยนขนาดตัวอักษร สำเร็จ!</div>';
  }
  
-  $getmember_info = $getdata->my_sql_query(NULL,"user","user_key='".$_SESSION['ukey']."'");
+  $getmember_info = $getDB->my_sql_query(NULL,"user","user_key='".$_SESSION['ukey']."'");
  echo @$alert;
  ?>
  <style>
@@ -106,7 +106,7 @@
                                               <label for="mlanguage"><?php echo @LA_LB_LANGUAGE;?></label>
                                               <select name="mlanguage" id="mlanguage" class="form-control">
                                               <?php
-											  $getlanguage = $getdata->my_sql_select(NULL,"language","language_status='1' ORDER BY language_name");
+											  $getlanguage = $getDB->my_sql_select(NULL,"language","language_status='1' ORDER BY language_name");
 											  while($showlanguage = mysql_fetch_object($getlanguage)){
 												  if($getmember_info->user_language == $showlanguage->language_code){
 													  echo '<option value="'.$showlanguage->language_code.'" selected>'.$showlanguage->language_name.'</option>';
@@ -130,7 +130,7 @@
                              
                              <div class="col-md-12"><strong>ขนาดตัวอักษร</strong></div>
                              <?php
-							 $getfont = $getdata->my_sql_select(NULL,"system_font_size","font_status='1' ORDER BY font_name");
+							 $getfont = $getDB->my_sql_select(NULL,"system_font_size","font_status='1' ORDER BY font_name");
 							 while($showfont = mysql_fetch_object($getfont)){
 								  if($showfont->font_key == $userdata->system_font_size){
 									  echo '<div class="col-md-2"><button type="submit" name="change_font_size" class="btn btn-primary btn-block" id="submit" value="'.$showfont->font_key.'">'.$showfont->font_name.'</button></div>';

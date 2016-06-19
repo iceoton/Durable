@@ -10,11 +10,11 @@
   <li class="active"><?php echo @LA_BTN_ACCESS_DATA;?></li>
 </ol>
 <?php
-$showuser_detail = $getdata->my_sql_query(NULL,"user","user_key='".addslashes($_GET['key'])."'");
+$showuser_detail = $getDB->my_sql_query(NULL,"user","user_key='".addslashes($_GET['key'])."'");
 if(isset($_POST['save_access'])){
-	$getdata->my_sql_delete("access_user","user_key='".addslashes($_GET['key'])."'");
+	$getDB->my_sql_delete("access_user","user_key='".addslashes($_GET['key'])."'");
 	for($ac=0;$ac<count($_POST['access_list']);$ac++){
-		$getdata->my_sql_insert("access_user","access_key='".addslashes($_POST['access_list'][$ac])."',user_key='".addslashes($_GET['key'])."'");
+		$getDB->my_sql_insert("access_user","access_key='".addslashes($_POST['access_list'][$ac])."',user_key='".addslashes($_GET['key'])."'");
 	}
 }
 ?>
@@ -24,9 +24,9 @@ if(isset($_POST['save_access'])){
                         </div>
                         <div class="panel-body">
                           <?php
-	   $getaccess  = $getdata->my_sql_select(NULL,"access_list","access_status='1' ORDER BY access_name");
+	   $getaccess  = $getDB->my_sql_select(NULL,"access_list","access_status='1' ORDER BY access_name");
 	   while($showaccess = mysql_fetch_object($getaccess)){
-		   $nowaccess = $getdata->my_sql_show_rows("access_user","user_key='".addslashes($_GET['key'])."' AND access_key='".$showaccess->access_key."'");
+		   $nowaccess = $getDB->my_sql_show_rows("access_user","user_key='".addslashes($_GET['key'])."' AND access_key='".$showaccess->access_key."'");
 		   if($nowaccess != 0 ){
 			   echo '<div class="col-lg-6"><label><div class="input-group"><span class="input-group-addon"><input type="checkbox" name="access_list[]" id="access_list[]"  value="'.$showaccess->access_key.'" checked="checked"></span><p class="form-control" style="background:#468cc8;color:#FFF">'.$showaccess->access_name.'</p></div></label></div>';
 		   }else{

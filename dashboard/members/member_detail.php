@@ -30,11 +30,11 @@ if(isset($_POST['save_member_info'])){
 	$member_born = addslashes($_REQUEST['year']).'-'.addslashes($_REQUEST['month']).'-'.addslashes($_REQUEST['day']);
 	if($File_name != NULL){
 		resizeMemberThumb($File_ext,$newfilename);
-		$getdata->my_sql_update("member","member_name='".addslashes($_POST['member_name'])."',member_lastname='".addslashes($_POST['member_lastname'])."',member_passport='".addslashes($_POST['member_passport'])."',member_pid='".addslashes($_POST['member_pid'])."',member_tax_id='".addslashes($_POST['member_tax_id'])."',member_born='".$member_born."',member_nationality='".addslashes($_POST['member_nationality'])."',member_religion='".addslashes($_POST['member_religion'])."',member_photo='".$newfilename."',member_address='".addslashes($_POST['member_address'])."',member_address_now='".addslashes($_POST['member_address_now'])."',member_tel='".addslashes($_POST['member_phone'])."',member_email='".addslashes($_POST['member_email'])."',member_relative_name='".addslashes($_POST['member_relative_name'])."',member_relative='".addslashes($_POST['member_relative'])."',member_status='".addslashes($_REQUEST['member_status'])."',member_group='".addslashes($_REQUEST['member_group'])."'","member_key='".addslashes($_GET['key'])."'");
-		$getdata->my_sql_update("user","name='".addslashes($_POST['member_name'])."',lastname='".addslashes($_POST['member_lastname'])."',user_photo='".$newfilename."',email='".addslashes($_POST['member_email'])."',user_status='".addslashes($_REQUEST['member_status'])."'","user_key='".addslashes($_GET['key'])."'");
+		$getDB->my_sql_update("member","member_name='".addslashes($_POST['member_name'])."',member_lastname='".addslashes($_POST['member_lastname'])."',member_passport='".addslashes($_POST['member_passport'])."',member_pid='".addslashes($_POST['member_pid'])."',member_tax_id='".addslashes($_POST['member_tax_id'])."',member_born='".$member_born."',member_nationality='".addslashes($_POST['member_nationality'])."',member_religion='".addslashes($_POST['member_religion'])."',member_photo='".$newfilename."',member_address='".addslashes($_POST['member_address'])."',member_address_now='".addslashes($_POST['member_address_now'])."',member_tel='".addslashes($_POST['member_phone'])."',member_email='".addslashes($_POST['member_email'])."',member_relative_name='".addslashes($_POST['member_relative_name'])."',member_relative='".addslashes($_POST['member_relative'])."',member_status='".addslashes($_REQUEST['member_status'])."',member_group='".addslashes($_REQUEST['member_group'])."'","member_key='".addslashes($_GET['key'])."'");
+		$getDB->my_sql_update("user","name='".addslashes($_POST['member_name'])."',lastname='".addslashes($_POST['member_lastname'])."',user_photo='".$newfilename."',email='".addslashes($_POST['member_email'])."',user_status='".addslashes($_REQUEST['member_status'])."'","user_key='".addslashes($_GET['key'])."'");
 	}else{
-		$getdata->my_sql_update("member","member_name='".addslashes($_POST['member_name'])."',member_lastname='".addslashes($_POST['member_lastname'])."',member_passport='".addslashes($_POST['member_passport'])."',member_pid='".addslashes($_POST['member_pid'])."',member_tax_id='".addslashes($_POST['member_tax_id'])."',member_born='".$member_born."',member_nationality='".addslashes($_POST['member_nationality'])."',member_religion='".addslashes($_POST['member_religion'])."',member_address='".addslashes($_POST['member_address'])."',member_address_now='".addslashes($_POST['member_address_now'])."',member_tel='".addslashes($_POST['member_phone'])."',member_email='".addslashes($_POST['member_email'])."',member_relative_name='".addslashes($_POST['member_relative_name'])."',member_relative='".addslashes($_POST['member_relative'])."',member_status='".addslashes($_REQUEST['member_status'])."',member_group='".addslashes($_REQUEST['member_group'])."'","member_key='".addslashes($_GET['key'])."'");
-		$getdata->my_sql_update("user","name='".addslashes($_POST['member_name'])."',lastname='".addslashes($_POST['member_lastname'])."',email='".addslashes($_POST['member_email'])."',user_status='".addslashes($_REQUEST['member_status'])."'","user_key='".addslashes($_GET['key'])."'");
+		$getDB->my_sql_update("member","member_name='".addslashes($_POST['member_name'])."',member_lastname='".addslashes($_POST['member_lastname'])."',member_passport='".addslashes($_POST['member_passport'])."',member_pid='".addslashes($_POST['member_pid'])."',member_tax_id='".addslashes($_POST['member_tax_id'])."',member_born='".$member_born."',member_nationality='".addslashes($_POST['member_nationality'])."',member_religion='".addslashes($_POST['member_religion'])."',member_address='".addslashes($_POST['member_address'])."',member_address_now='".addslashes($_POST['member_address_now'])."',member_tel='".addslashes($_POST['member_phone'])."',member_email='".addslashes($_POST['member_email'])."',member_relative_name='".addslashes($_POST['member_relative_name'])."',member_relative='".addslashes($_POST['member_relative'])."',member_status='".addslashes($_REQUEST['member_status'])."',member_group='".addslashes($_REQUEST['member_group'])."'","member_key='".addslashes($_GET['key'])."'");
+		$getDB->my_sql_update("user","name='".addslashes($_POST['member_name'])."',lastname='".addslashes($_POST['member_lastname'])."',email='".addslashes($_POST['member_email'])."',user_status='".addslashes($_REQUEST['member_status'])."'","user_key='".addslashes($_GET['key'])."'");
 	}
 		$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>แก้ไขข้อมูลผู้ใช้งาน สำเร็จ</div>';
 	}else{
@@ -42,18 +42,18 @@ if(isset($_POST['save_member_info'])){
 	}
 }
 if(isset($_POST['submit_bank'])){
-	$getdata->my_sql_update("member","member_bank_name='".addslashes($_POST['member_bank_name'])."',member_bank_acc='".addslashes($_POST['member_bank_acc'])."',member_bank_acc_name='".addslashes($_POST['member_bank_acc_name'])."',member_bank_type='".addslashes($_POST['member_bank_type'])."',member_bank_branch='".addslashes($_POST['member_bank_branch'])."'","member_key='".addslashes($_GET['key'])."'");
+	$getDB->my_sql_update("member","member_bank_name='".addslashes($_POST['member_bank_name'])."',member_bank_acc='".addslashes($_POST['member_bank_acc'])."',member_bank_acc_name='".addslashes($_POST['member_bank_acc_name'])."',member_bank_type='".addslashes($_POST['member_bank_type'])."',member_bank_branch='".addslashes($_POST['member_bank_branch'])."'","member_key='".addslashes($_GET['key'])."'");
 	$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>แก้ไขข้อมูลบัญชีธนาคาร สำเร็จ</div>';
 }
 if(isset($_POST['save_info_login'])){
 	if(addslashes($_POST['member_username'])!= NULL && addslashes($_POST['member_password']) != NULL){
-		$check_old =  $getdata->my_sql_query("username","user","user_key='".addslashes($_GET['key'])."'");
-		$check = $getdata->my_sql_show_rows("user","username='".addslashes($_POST['member_username'])."'");
+		$check_old =  $getDB->my_sql_query("username","user","user_key='".addslashes($_GET['key'])."'");
+		$check = $getDB->my_sql_show_rows("user","username='".addslashes($_POST['member_username'])."'");
 		if($check != 0 && $check_old->username != addslashes($_POST['member_username'])){
 			$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ชื่อผู้ใช้งานนี้ไม่พร้อมใช้งาน</div>';
 		}else{
-			$getdata->my_sql_update("user","username='".addslashes($_POST['member_username'])."',password='".md5(addslashes($_POST['member_password']))."'","user_key='".addslashes($_GET['key'])."'");
-			$getdata->my_sql_update("member","member_password='".addslashes($_POST['member_password'])."'","member_key='".addslashes($_GET['key'])."'");
+			$getDB->my_sql_update("user","username='".addslashes($_POST['member_username'])."',password='".md5(addslashes($_POST['member_password']))."'","user_key='".addslashes($_GET['key'])."'");
+			$getDB->my_sql_update("member","member_password='".addslashes($_POST['member_password'])."'","member_key='".addslashes($_GET['key'])."'");
 			$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>แก้ไขข้อมูลผู้ใช้งาน สำเร็จ</div>';
 		}
 	}else{
@@ -62,8 +62,8 @@ if(isset($_POST['save_info_login'])){
 }
 
 if(isset($_POST['save_acc_close'])){
-	$getdata->my_sql_update("member","member_status='2'","member_key='".addslashes($_GET['key'])."'");
-	$getdata->my_sql_update("user","user_status='2'","user_key='".addslashes($_GET['key'])."'");
+	$getDB->my_sql_update("member","member_status='2'","member_key='".addslashes($_GET['key'])."'");
+	$getDB->my_sql_update("user","user_status='2'","user_key='".addslashes($_GET['key'])."'");
 	$alert = '  <div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ทำการปิดบัญชีของสมาชิก สำเร็จ กำลังพาท่านไปยังหน้าสมาชิกทั้งหมด...</div>';
 		echo '<script>javascript:setTimeout(redirectLink("?p=member"), 3000);</script>';
 }
@@ -71,10 +71,10 @@ if(isset($_POST['save_acc_transfer'])){
 	if(addslashes($_POST['point_transfer']) <= addslashes($_POST['h_point_member']) && addslashes($_POST['point_transfer']) != NULL && addslashes($_POST['point_transfer']) != '0'){
 		if(addslashes($_REQUEST['member_receipt']) != NULL){
 			$point_key = md5(addslashes($_GET['key']).time("now"));
-			$getdata->my_sql_update("member","`member_point`=`member_point`-".addslashes($_POST['point_transfer'])."","member_key='".addslashes($_GET['key'])."'");
+			$getDB->my_sql_update("member","`member_point`=`member_point`-".addslashes($_POST['point_transfer'])."","member_key='".addslashes($_GET['key'])."'");
 			
-			$getdata->my_sql_update("member","`member_point`=`member_point`+".addslashes($_POST['point_transfer'])."","member_key='".addslashes($_REQUEST['member_receipt'])."'");
-			$getdata->my_sql_insert("point_logs","point_key='".$point_key."',transfer_reciept='".addslashes($_REQUEST['member_receipt'])."',transfer_member='".addslashes($_GET['key'])."',user_key='".$_SESSION['ukey']."',point_type='2',point_transfer='".addslashes($_POST['point_transfer'])."'");
+			$getDB->my_sql_update("member","`member_point`=`member_point`+".addslashes($_POST['point_transfer'])."","member_key='".addslashes($_REQUEST['member_receipt'])."'");
+			$getDB->my_sql_insert("point_logs","point_key='".$point_key."',transfer_reciept='".addslashes($_REQUEST['member_receipt'])."',transfer_member='".addslashes($_GET['key'])."',user_key='".$_SESSION['ukey']."',point_type='2',point_transfer='".addslashes($_POST['point_transfer'])."'");
 			$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>โอนย้ายแต้มสะสม สำเร็จ</div>';
 			
 		}else{
@@ -84,7 +84,7 @@ if(isset($_POST['save_acc_transfer'])){
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_DATA_MISMATCH.'</div>'; 
 	}
 }
-$member_detail = $getdata->my_sql_query(NULL,"member,user","member.member_key='".addslashes($_GET['key'])."' AND member.member_key=user.user_key");
+$member_detail = $getDB->my_sql_query(NULL,"member,user","member.member_key='".addslashes($_GET['key'])."' AND member.member_key=user.user_key");
 echo @$alert;
 
 $tab1h=$tab1=$tab2h=$tab3h=$tab2=$tab3=NULL;
@@ -246,7 +246,7 @@ switch(addslashes($_GET['tab'])){
 										  ?>
                                   <div class="form-group">
                                     <label for="member_ref">ผู้แนะนำ</label>
-                                    <input type="text" name="member_ref" id="member_ref" class="form-control" value="<?php @$refx = $getdata->my_sql_query("member_name,member_lastname,member_code","member","member_key='".@$member_detail->member_ref."'"); echo '['.@$refx->member_code.'] '.@$refx->member_name.'&nbsp;&nbsp;&nbsp;'.@$refx->member_lastname;?>" readonly>
+                                    <input type="text" name="member_ref" id="member_ref" class="form-control" value="<?php @$refx = $getDB->my_sql_query("member_name,member_lastname,member_code","member","member_key='".@$member_detail->member_ref."'"); echo '['.@$refx->member_code.'] '.@$refx->member_name.'&nbsp;&nbsp;&nbsp;'.@$refx->member_lastname;?>" readonly>
                                     </div>
                                     <?php
 										  }
@@ -256,7 +256,7 @@ switch(addslashes($_GET['tab'])){
                                                <label for="member_group"><?php echo @LA_LB_GROUP;?></label>
                                                <select name="member_group" id="select" class="form-control">
                                                <?php 
-											   $getgroup = $getdata->my_sql_select(NULL,"member_group","grp_status='1' ORDER BY grp_name");
+											   $getgroup = $getDB->my_sql_select(NULL,"member_group","grp_status='1' ORDER BY grp_name");
 											   while($showgroup = mysql_fetch_object($getgroup)){
 												   if($member_detail->member_group == $showgroup->grp_key){
 													   echo '<option value="'.$showgroup->grp_key.'" selected>'.$showgroup->grp_name.'</option>';
@@ -383,7 +383,7 @@ switch(addslashes($_GET['tab'])){
                            <div class="col-md-8"> <select  id="member_receipt" class="form-control combobox" name="member_receipt" autofocus>
                                            <option></option>
                                            <?php
-										   $getmember = $getdata->my_sql_select(NULL,"member","member_status='1' AND member_key <> '".addslashes($_GET['key'])."' ORDER BY member_code");
+										   $getmember = $getDB->my_sql_select(NULL,"member","member_status='1' AND member_key <> '".addslashes($_GET['key'])."' ORDER BY member_code");
 										   while($showmember = mysql_fetch_object($getmember)){
 											   echo '<option value="'.$showmember->member_key.'">['.$showmember->member_code.']&nbsp;'.$showmember->member_name.'&nbsp;&nbsp;&nbsp;'.$showmember->member_lastname.'</option>';
 										   }

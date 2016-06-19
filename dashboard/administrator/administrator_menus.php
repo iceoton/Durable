@@ -17,7 +17,7 @@ if(isset($_POST['save_menu'])){
 		}else{
 			$menu_upkey = $menu_key;
 		}
-		$getdata->my_sql_insert("menus","menu_key='".$menu_key."',menu_upkey='".$menu_upkey."',menu_icon='".addslashes($_POST['menu_icon'])."',menu_name='".addslashes($_POST['menu_name'])."',menu_case='".addslashes($_POST['menu_case'])."',menu_link='".addslashes($_POST['menu_link'])."',menu_status='".addslashes($_REQUEST['menu_status'])."',menu_sorting='".addslashes($_POST['menu_sorting'])."'");
+		$getDB->my_sql_insert("menus","menu_key='".$menu_key."',menu_upkey='".$menu_upkey."',menu_icon='".addslashes($_POST['menu_icon'])."',menu_name='".addslashes($_POST['menu_name'])."',menu_case='".addslashes($_POST['menu_case'])."',menu_link='".addslashes($_POST['menu_link'])."',menu_status='".addslashes($_REQUEST['menu_status'])."',menu_sorting='".addslashes($_POST['menu_sorting'])."'");
 		$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>เพิ่มข้อมูลเมนู สำเร็จ !</div>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
@@ -38,7 +38,7 @@ if(isset($_POST['save_menu'])){
                                             <select name="main_menu" id="main_menu" class="form-control">
                                             <option value=""></option>
                                             <?php
-													$getmain = $getdata->my_sql_select(NULL,"menus","menu_key=menu_upkey AND menu_status='1' ORDER BY menu_sorting");
+													$getmain = $getDB->my_sql_select(NULL,"menus","menu_key=menu_upkey AND menu_status='1' ORDER BY menu_sorting");
 													while($showmain = mysql_fetch_object($getmain)){
 														echo '<option value="'.$showmain->menu_key.'">'.menuLanguage($showmain->menu_name).'</option>';
 													}
@@ -100,13 +100,13 @@ if(isset($_POST['save_menu'])){
 			 }else{
 				 $muk = addslashes($_GET['key']);
 			 }
-			 $getdata->my_sql_update("menus","menu_upkey='".$muk."',menu_icon='".addslashes($_POST['edit_menu_icon'])."',menu_name='".addslashes($_POST['edit_menu_name'])."',menu_case='".addslashes($_POST['edit_menu_case'])."',menu_link='".addslashes($_POST['edit_menu_link'])."',menu_sorting='".addslashes($_POST['edit_menu_sorting'])."'","menu_key='".addslashes($_GET['key'])."'");
+			 $getDB->my_sql_update("menus","menu_upkey='".$muk."',menu_icon='".addslashes($_POST['edit_menu_icon'])."',menu_name='".addslashes($_POST['edit_menu_name'])."',menu_case='".addslashes($_POST['edit_menu_case'])."',menu_link='".addslashes($_POST['edit_menu_link'])."',menu_sorting='".addslashes($_POST['edit_menu_sorting'])."'","menu_key='".addslashes($_GET['key'])."'");
 			 echo '<script>window.location="?p=administrator_menus";</script>';
 		 }else{
 			 $alert2 = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
 		 }
 	 }
-	 $getmenu_detail = $getdata->my_sql_query(NULL,"menus","menu_key='".addslashes($_GET['key'])."'");
+	 $getmenu_detail = $getDB->my_sql_query(NULL,"menus","menu_key='".addslashes($_GET['key'])."'");
 	 if($getmenu_detail->menu_key == $getmenu_detail->menu_upkey){
 		 $getupmenu = '';
 	 }else{
@@ -122,7 +122,7 @@ if(isset($_POST['save_menu'])){
                                             <select name="edit_main_menu" id="edit_main_menu" class="form-control">
                                             <option value=""></option>
                                             <?php
-													$getmain = $getdata->my_sql_select(NULL,"menus","menu_key=menu_upkey AND menu_status='1' ORDER BY menu_sorting");
+													$getmain = $getDB->my_sql_select(NULL,"menus","menu_key=menu_upkey AND menu_status='1' ORDER BY menu_sorting");
 													while($showmain = mysql_fetch_object($getmain)){
 														if($showmain->menu_key == $getupmenu){
 															echo '<option value="'.$showmain->menu_key.'" selected>'.menuLanguage($showmain->menu_name).'</option>';
@@ -176,7 +176,7 @@ if(isset($_POST['save_menu'])){
   <tbody>
   <?php
   $x=0;
-  $getmenu = $getdata->my_sql_select(NULL,"menus","menu_key=menu_upkey ORDER BY menu_sorting");
+  $getmenu = $getDB->my_sql_select(NULL,"menus","menu_key=menu_upkey ORDER BY menu_sorting");
   while($showmenu = mysql_fetch_object($getmenu)){
 	  $x++;
   ?>
@@ -195,7 +195,7 @@ if(isset($_POST['save_menu'])){
       <a href="?p=administrator_menus&e=y&key=<?php echo @$showmenu->menu_key;?>" type="button" class="btn btn-info btn-xs"><i class="fa fa-edit"></i> แก้ไข</a><button type="button" class="btn btn-danger btn-xs" onClick="javascript:deleteMenu('<?php echo @$showmenu->menu_key;?>');"><i class="glyphicon glyphicon-remove"></i> ลบ</button></td>
   </tr>
   <?php
- 	 $getsubmenu = $getdata->my_sql_select(NULL,"menus","menu_upkey='".$showmenu->menu_key."' AND menu_key <> menu_upkey ORDER BY menu_sorting");
+ 	 $getsubmenu = $getDB->my_sql_select(NULL,"menus","menu_upkey='".$showmenu->menu_key."' AND menu_key <> menu_upkey ORDER BY menu_sorting");
   	 while($showsubmenu = mysql_fetch_object($getsubmenu)){
   ?>
   <tr id="<?php echo @$showmenu->menu_key;?>">

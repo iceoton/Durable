@@ -14,7 +14,7 @@ if (isset($_POST['save_source'])) {
     if ((addslashes($_POST['source_code']) != NULL) && (addslashes($_POST['source_name']) != NULL)) {
         $statusCode = $_POST['source_code'];
         $statusName = $_POST['source_name'];
-        $getdata->my_sql_insert("source", "code='" . $statusCode . "', name='" . $statusName . "'");
+        $getDB->my_sql_insert("source", "code='" . $statusCode . "', name='" . $statusName . "'");
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มแหล่งที่มาของครุภัณฑ์์สำเร็จ" . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มแหล่งที่มาของครุภัณฑ์์ไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
@@ -24,7 +24,7 @@ if (isset($_POST['save_edit_source'])) {
     if ((addslashes($_POST['edit_source_code']) != NULL) && (addslashes($_POST['edit_source_name']) != NULL)) {
         $statusCode = $_POST['edit_source_code'];
         $statusName = $_POST['edit_source_name'];
-        $getdata->my_sql_update("source", "code='" . $statusCode . "', name='" . $statusName. "'", "id='" . addslashes($_POST['source_id']) . "'");
+        $getDB->my_sql_update("source", "code='" . $statusCode . "', name='" . $statusName. "'", "id='" . addslashes($_POST['source_id']) . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขแหล่งที่มาของครุภัณฑ์์์สำเร็จ"  . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -108,7 +108,7 @@ echo @$alert;
             <tbody>
             <?php
             $x = 0;
-            $getcat = $getdata->my_sql_select(NULL, "source", "code <> '' ORDER BY code");
+            $getcat = $getDB->my_sql_select(NULL, "source", "code <> '' ORDER BY code");
             while ($showsource = mysql_fetch_object($getcat)) {
                 $x++;
                 ?>

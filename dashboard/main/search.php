@@ -10,9 +10,9 @@
 <?php
 
 if(isset($_POST['save_new_status'])){
-	$getdata->my_sql_update("card_info","card_status='".htmlentities($_POST['card_status'])."'","card_key='".htmlentities($_POST['card_key'])."'");
+	$getDB->my_sql_update("card_info","card_status='".htmlentities($_POST['card_status'])."'","card_key='".htmlentities($_POST['card_key'])."'");
 	$cstatus_key=md5(htmlentities($_POST['card_status']).time("now"));
-	$getdata->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".htmlentities($_POST['card_key'])."',card_status='".htmlentities($_POST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
+	$getDB->my_sql_insert("card_status","cstatus_key='".$cstatus_key."',card_key='".htmlentities($_POST['card_key'])."',card_status='".htmlentities($_POST['card_status'])."',card_status_note='".htmlentities($_POST['card_status_note'])."',user_key='".$userdata->user_key."'");
 	$alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>บันทึกข้อมูลสถานะ สำเร็จ</div>';
 }
 ?>
@@ -80,7 +80,7 @@ if(isset($_POST['save_new_status'])){
   <tbody>
   <?php
   
-	   $getcard = $getdata->my_sql_select(NULL,"card_info"," (card_customer_name LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_lastname LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_phone LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_email LIKE '%".htmlentities($_GET['q'])."%') OR (card_code LIKE '%".htmlentities($_GET['q'])."%') ORDER BY card_insert");
+	   $getcard = $getDB->my_sql_select(NULL,"card_info"," (card_customer_name LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_lastname LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_phone LIKE '%".htmlentities($_GET['q'])."%') OR (card_customer_email LIKE '%".htmlentities($_GET['q'])."%') OR (card_code LIKE '%".htmlentities($_GET['q'])."%') ORDER BY card_insert");
  
  
   while($showcard = mysql_fetch_object($getcard)){

@@ -11,11 +11,11 @@
 <?php
 if(isset($_POST['save_user'])){
 	if(addslashes($_POST['username']) != NULL && addslashes($_POST['password']) != NULL && addslashes($_POST['repassword']) != NULL){
-		$getuser =$getdata->my_sql_show_rows("user","username='".addslashes($_POST['username'])."' OR email='".addslashes($_POST['email'])."'");
+		$getuser =$getDB->my_sql_show_rows("user","username='".addslashes($_POST['username'])."' OR email='".addslashes($_POST['email'])."'");
 		if($getuser == 0){
 			if(addslashes($_POST['password']) == addslashes($_POST['repassword'])){
 				$user_key=md5(addslashes($_POST['username']).time("now"));
-				$getdata->my_sql_insert("user","user_key='".$user_key."',name='".addslashes($_POST['name'])."',lastname='".addslashes($_POST['lastname'])."',username='".addslashes($_POST['username'])."',password='".md5(addslashes($_POST['password']))."',email='".addslashes($_POST['email'])."',user_class='2',user_status='".addslashes($_REQUEST['user_status'])."'");
+				$getDB->my_sql_insert("user","user_key='".$user_key."',name='".addslashes($_POST['name'])."',lastname='".addslashes($_POST['lastname'])."',username='".addslashes($_POST['username'])."',password='".md5(addslashes($_POST['password']))."',email='".addslashes($_POST['email'])."',user_class='2',user_status='".addslashes($_REQUEST['user_status'])."'");
 				$alert = '  <div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_INSERT_USER_DONE.'</div>';
 			}else{
 				$alert = ' <div class="alert alert-warning alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_PASSWORD_MISMATCH.'</div>';
@@ -87,18 +87,18 @@ if(isset($_POST['save_user'])){
  <br/><br/>
  <?php
  if(@addslashes($_GET['e']) == 'y'){
-	 $getuser_detail = $getdata->my_sql_query(NULL,"user","user_key='".addslashes($_GET['key'])."'");
+	 $getuser_detail = $getDB->my_sql_query(NULL,"user","user_key='".addslashes($_GET['key'])."'");
 	 if(isset($_POST['edit_user_info'])){
 		 if(addslashes($_POST['edit_password']) != NULL && addslashes($_POST['edit_repassword']) != NULL){
 			 if(addslashes($_POST['edit_password']) == addslashes($_POST['edit_repassword'])){
-				 $getdata->my_sql_update("user","name='".addslashes($_POST['edit_name'])."',lastname='".addslashes($_POST['edit_lastname'])."',password='".md5(addslashes($_POST['edit_password']))."',email='".addslashes($_POST['edit_email'])."'","user_key='".addslashes($_GET['key'])."'");
+				 $getDB->my_sql_update("user","name='".addslashes($_POST['edit_name'])."',lastname='".addslashes($_POST['edit_lastname'])."',password='".md5(addslashes($_POST['edit_password']))."',email='".addslashes($_POST['edit_email'])."'","user_key='".addslashes($_GET['key'])."'");
 				  echo '<script>window.location="?p=setting_users"</script>';
 			 }else{
 				  $alert2 = '  <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_PASSWORD_MISMATCH.'</div>';
 			 }
 			
 		 }else{
-			 $getdata->my_sql_update("user","name='".addslashes($_POST['edit_name'])."',lastname='".addslashes($_POST['edit_lastname'])."',email='".addslashes($_POST['edit_email'])."'","user_key='".addslashes($_GET['key'])."'");
+			 $getDB->my_sql_update("user","name='".addslashes($_POST['edit_name'])."',lastname='".addslashes($_POST['edit_lastname'])."',email='".addslashes($_POST['edit_email'])."'","user_key='".addslashes($_GET['key'])."'");
 			  echo '<script>window.location="?p=setting_users"</script>';
 		 }
 	 }
@@ -185,10 +185,10 @@ if(isset($_POST['save_user'])){
   <tbody>
    <?php
    $l=0;
-	   $getalluser  = $getdata->my_sql_select(NULL,"user","user_class='2' AND user_status <> '2' ORDER BY username");
+	   $getalluser  = $getDB->my_sql_select(NULL,"user","user_class='2' AND user_status <> '2' ORDER BY username");
 	   while($showalluser = mysql_fetch_object($getalluser)){
 		   $l++;
-		   $getonline = $getdata->my_sql_show_rows("user_online","user_key='".$showalluser->user_key."'");
+		   $getonline = $getDB->my_sql_show_rows("user_online","user_key='".$showalluser->user_key."'");
 		   if($getonline != 0){
 			   $color = 'color:#0C0;';
 		   }else{
@@ -230,10 +230,10 @@ if(isset($_POST['save_user'])){
   <tbody>
    <?php
    $l=0;
-	   $getalluser  = $getdata->my_sql_select(NULL,"user","user_class='1' AND user_status <> '2' ORDER BY username");
+	   $getalluser  = $getDB->my_sql_select(NULL,"user","user_class='1' AND user_status <> '2' ORDER BY username");
 	   while($showalluser = mysql_fetch_object($getalluser)){
 		   $l++;
-		   $getonline = $getdata->my_sql_show_rows("user_online","user_key='".$showalluser->user_key."'");
+		   $getonline = $getDB->my_sql_show_rows("user_online","user_key='".$showalluser->user_key."'");
 		   if($getonline != 0){
 			   $color = 'color:#0C0;';
 		   }else{

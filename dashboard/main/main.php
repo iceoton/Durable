@@ -10,7 +10,7 @@
 if(isset($_POST['save_card'])){
 	if(htmlentities($_POST['card_customer_name'])!= NULL && htmlentities($_POST['card_customer_phone']) != NULL ){
 		$card_key=md5(htmlentities($_POST['card_customer_name']).htmlentities($_POST['card_code']).time("now"));
-		$getdata->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."',card_done_aprox='0000-00-00',user_key='".$user_data->user_key."',card_status=''");
+		$getDB->my_sql_insert("card_info","card_key='".$card_key."',card_code='".htmlentities($_POST['card_code'])."',card_customer_name='".htmlentities($_POST['card_customer_name'])."',card_customer_lastname='".htmlentities($_POST['card_customer_lastname'])."',card_customer_address='".htmlentities($_POST['card_customer_address'])."',card_customer_phone='".htmlentities($_POST['card_customer_phone'])."',card_customer_email='".htmlentities($_POST['card_customer_email'])."',card_note='".htmlentities($_POST['card_note'])."',card_done_aprox='0000-00-00',user_key='".$user_data->user_key."',card_status=''");
 		echo '<script>window.location="?p=card_create_detail&key='.$card_key.'";</script>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
@@ -105,7 +105,7 @@ if(isset($_POST['save_card'])){
                                     <i class="fa fa-edit fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php @$getall = $getdata->my_sql_show_rows("card_info","card_status <> 'hidden'"); echo @number_format($getall);?></div>
+                                    <div class="huge"><?php @$getall = $getDB->my_sql_show_rows("card_info","card_status <> 'hidden'"); echo @number_format($getall);?></div>
                                     <div>ใบสั่งซ่อม/เคลมทั้งหมด</div>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@ if(isset($_POST['save_card'])){
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php @$gettoday = $getdata->my_sql_show_rows("card_info","card_status <> 'hidden' AND (card_insert LIKE '%".date("Y-m-d")."%')"); echo @number_format($gettoday);?></div>
+                                    <div class="huge"><?php @$gettoday = $getDB->my_sql_show_rows("card_info","card_status <> 'hidden' AND (card_insert LIKE '%".date("Y-m-d")."%')"); echo @number_format($gettoday);?></div>
                                     <div>ใบสั่งซ่อม/เคลม วันนี้</div>
                                 </div>
                             </div>
@@ -149,9 +149,9 @@ if(isset($_POST['save_card'])){
   <tbody>
   <?php
   if(htmlentities($_GET['type']) != NULL){
-	   $getcard = $getdata->my_sql_select(NULL,"card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
+	   $getcard = $getDB->my_sql_select(NULL,"card_info","card_status = '".htmlentities($_GET['type'])."' ORDER BY card_insert");
   }else{
-	   $getcard = $getdata->my_sql_select(NULL,"card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert DESC LIMIT 10");
+	   $getcard = $getDB->my_sql_select(NULL,"card_info","card_status <> 'hidden'  AND  card_status <> '' ORDER BY card_insert DESC LIMIT 10");
   }
  
   while($showcard = mysql_fetch_object($getcard)){

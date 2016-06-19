@@ -14,7 +14,7 @@ if (isset($_POST['save_card'])) {
     if ((addslashes($_POST['status_code']) != NULL) && (addslashes($_POST['status_name']) != NULL)) {
         $statusCode = $_POST['status_code'];
         $statusName = $_POST['status_name'];
-        $getdata->my_sql_insert("status", "code='" . $statusCode . "', name='" . $statusName . "'");
+        $getDB->my_sql_insert("status", "code='" . $statusCode . "', name='" . $statusName . "'");
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะครุภัณฑ์สำเร็จ" . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
@@ -24,7 +24,7 @@ if (isset($_POST['save_edit_card'])) {
     if ((addslashes($_POST['edit_status_code']) != NULL) && (addslashes($_POST['edit_status_name']) != NULL)) {
         $statusCode = $_POST['edit_status_code'];
         $statusName = $_POST['edit_status_name'];
-        $getdata->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName. "'", "id='" . addslashes($_POST['status_id']) . "'");
+        $getDB->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName. "'", "id='" . addslashes($_POST['status_id']) . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขสถานะครุภัณฑ์สำเร็จ"  . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -108,7 +108,7 @@ echo @$alert;
             <tbody>
             <?php
             $x = 0;
-            $getcat = $getdata->my_sql_select(NULL, "status", "code <> '' ORDER BY code");
+            $getcat = $getDB->my_sql_select(NULL, "status", "code <> '' ORDER BY code");
             while ($showcat = mysql_fetch_object($getcat)) {
                 $x++;
                 ?>

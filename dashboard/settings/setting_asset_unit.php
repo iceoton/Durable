@@ -13,7 +13,7 @@
 if (isset($_POST['save_unit'])) {
     if (addslashes($_POST['unit_name']) != NULL) {
         $unitName = $_POST['unit_name'];
-        $getdata->my_sql_insert("unit", "name='" . $unitName . "'");
+        $getDB->my_sql_insert("unit", "name='" . $unitName . "'");
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์สำเร็จ" . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์ไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
@@ -22,7 +22,7 @@ if (isset($_POST['save_unit'])) {
 if (isset($_POST['save_edit_unit'])) {
     if (addslashes($_POST['edit_unit_name']) != NULL) {
         $unitName = $_POST['edit_unit_name'];
-        $getdata->my_sql_update("unit", "name='" . $unitName. "'", "id='" . addslashes($_POST['unit_id']) . "'");
+        $getDB->my_sql_update("unit", "name='" . $unitName. "'", "id='" . addslashes($_POST['unit_id']) . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขหน่วยนับของครุภัณฑ์์สำเร็จ"  . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -101,7 +101,7 @@ echo @$alert;
             <tbody>
             <?php
             $x = 0;
-            $getunit = $getdata->my_sql_select(NULL, "unit", NULL);
+            $getunit = $getDB->my_sql_select(NULL, "unit", NULL);
             while ($showunit = mysql_fetch_object($getunit)) {
                 $x++;
                 ?>

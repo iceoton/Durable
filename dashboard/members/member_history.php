@@ -1,5 +1,5 @@
 <?php
-$getmember_detail = $getdata->my_sql_query(NULL,"member","member_key='".addslashes($_GET['key'])."'");
+$getmember_detail = $getDB->my_sql_query(NULL,"member","member_key='".addslashes($_GET['key'])."'");
 ?>
 <div class="row">
      <div class="col-lg-12">
@@ -62,7 +62,7 @@ $getmember_detail = $getdata->my_sql_query(NULL,"member","member_key='".addslash
   <tbody>
   <?php
   $i=0;
-  $getneed_checkin_today=$getdata->my_sql_select(NULL,"booking,member,bed","booking.member_key='".addslashes($_GET['key'])."' AND booking.member_key=member.member_key AND booking.bed_key=bed.bed_key ORDER BY booking.booking_insert");
+  $getneed_checkin_today=$getDB->my_sql_select(NULL,"booking,member,bed","booking.member_key='".addslashes($_GET['key'])."' AND booking.member_key=member.member_key AND booking.bed_key=bed.bed_key ORDER BY booking.booking_insert");
   while($showneed_checkin_today = mysql_fetch_object($getneed_checkin_today)){
 	  $i++;
   ?>
@@ -71,7 +71,7 @@ $getmember_detail = $getdata->my_sql_query(NULL,"member","member_key='".addslash
     <td rowspan="2" align="center"><strong><?php echo @dateOnlyConvertor($showneed_checkin_today->booking_start_date,$system_info->year_type,$system_info->year_format).' - '.dateOnlyConvertor($showneed_checkin_today->booking_end_date,$system_info->year_type,$system_info->year_format).' ('.dateCount($showneed_checkin_today->booking_start_date,$showneed_checkin_today->booking_end_date).' '.@LA_LB_NIGHT.')';?></strong></td>
     <td rowspan="2" align="center"><?php echo @$showneed_checkin_today->bed_name;?></td>
     <td align="center"><strong><a href="?p=search_code&keyword=<?php echo @$showneed_checkin_today->booking_code;?>"><?php echo @$showneed_checkin_today->booking_code;?></a></strong></td>
-    <td rowspan="2" align="center"><?php $getuserx = $getdata->my_sql_query("name,lastname","user","user_key='".$showneed_checkin_today->user_key."'"); echo $getuserx->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getuserx->lastname;?></td>
+    <td rowspan="2" align="center"><?php $getuserx = $getDB->my_sql_query("name,lastname","user","user_key='".$showneed_checkin_today->user_key."'"); echo $getuserx->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getuserx->lastname;?></td>
     </tr>
   <tr>
     <td align="center"><?php echo @bookingStatus($showneed_checkin_today->booking_key);?></td>

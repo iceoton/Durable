@@ -12,7 +12,7 @@
 
 //update Check
 updateCenter($system_info->system_version,$system_info->system_update_url);
-$system_info = $getdata->my_sql_query(NULL,"system_info","1");
+$system_info = $getDB->my_sql_query(NULL,"system_info","1");
 ?>
 
 

@@ -25,17 +25,17 @@ if(isset($_POST['save_info'])){
 						
 	}
 	if($File_name != NULL && $File_name2 != NULL){
-		$getdata->my_sql_update("system_info","site_logo='".$File_name."',site_favicon='".$File_name2."'",NULL);
+		$getDB->my_sql_update("system_info","site_logo='".$File_name."',site_favicon='".$File_name2."'",NULL);
 	}else if($File_name != NULL && $File_name2 == NULL){
-		$getdata->my_sql_update("system_info","site_logo='".$File_name."'",NULL);
+		$getDB->my_sql_update("system_info","site_logo='".$File_name."'",NULL);
 	}else if($File_name == NULL && $File_name2 != NULL){
-		$getdata->my_sql_update("system_info","site_favicon='".$File_name2."'",NULL);
+		$getDB->my_sql_update("system_info","site_favicon='".$File_name2."'",NULL);
 	}else{
-		$getdata->my_sql_update("system_info","site_title='".addslashes($_POST['site_title'])."',site_footer='".addslashes($_POST['site_footer'])."'",NULL);
+		$getDB->my_sql_update("system_info","site_title='".addslashes($_POST['site_title'])."',site_footer='".addslashes($_POST['site_footer'])."'",NULL);
 	}
 	$alert = '  <div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.LA_ALERT_UPDATE_DATA_DONE.'</div>';
 }
-$getsystem_info = $getdata->my_sql_query(NULL,"system_info",NULL);
+$getsystem_info = $getDB->my_sql_query(NULL,"system_info",NULL);
 ?>
  <ul class="nav nav-tabs">
                                 <li class="active"><a href="#basic_setting" data-toggle="tab"><?php echo @LA_LB_STD_DATA;?></a>

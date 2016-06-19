@@ -2,7 +2,7 @@
 if(addslashes($_GET['key']) == NULL){
 	echo '<script>window.location="?p=card_create";</script>';
 }else{
-	$card_detail = $getdata->my_sql_query(NULL,"card_info","card_key='".addslashes($_GET['key'])."'");
+	$card_detail = $getDB->my_sql_query(NULL,"card_info","card_key='".addslashes($_GET['key'])."'");
 }
 ?>
 <div class="row">
@@ -60,7 +60,7 @@ if(addslashes($_GET['key']) == NULL){
                               </div>
                               <div class="row form-group">
                               <div class="col-md-3"><strong>เจ้าหน้าที่</strong></div>
-                             <div class="col-md-3"><?php $getuserx = $getdata->my_sql_query("name,lastname","user","user_key='".$card_detail->user_key."'"); echo $getuserx->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getuserx->lastname;?></div>
+                             <div class="col-md-3"><?php $getuserx = $getDB->my_sql_query("name,lastname","user","user_key='".$card_detail->user_key."'"); echo $getuserx->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getuserx->lastname;?></div>
                              </div>
                               <div class="table-responsive">
                                     <table width="100%"  class="table table-bordered">
@@ -74,7 +74,7 @@ if(addslashes($_GET['key']) == NULL){
     </thead>
     <tbody>
  <?php 
-	$getitem = $getdata->my_sql_select(NULL,"card_item","card_key='".$card_detail->card_key."' ORDER BY item_insert");
+	$getitem = $getDB->my_sql_select(NULL,"card_item","card_key='".$card_detail->card_key."' ORDER BY item_insert");
 	while($showitem = mysql_fetch_object($getitem)){
 	?>
   <tr id="<?php echo @$showitem->item_key;?>">
@@ -108,14 +108,14 @@ if(addslashes($_GET['key']) == NULL){
   </thead>
   <tbody>
   <?php
-  $getcard_status = $getdata->my_sql_select(NULL,"card_status,card_type","card_status.card_key='".$card_detail->card_key."' AND card_status.card_status=card_type.ctype_key ORDER BY card_status.cstatus_insert DESC");
+  $getcard_status = $getDB->my_sql_select(NULL,"card_status,card_type","card_status.card_key='".$card_detail->card_key."' AND card_status.card_status=card_type.ctype_key ORDER BY card_status.cstatus_insert DESC");
   while($showcard_status = mysql_fetch_object($getcard_status)){
   ?>
   <tr style="font-weight:bold;">
     <td align="center"><?php echo @dateTimeConvertor($showcard_status->cstatus_insert);?></td>
     <td align="center"><?php echo @cardStatus($showcard_status->card_status);?></td>
     <td>&nbsp;<?php echo @$showcard_status->card_status_note;?></td>
-    <td align="center"><?php $getusery = $getdata->my_sql_query("name,lastname","user","user_key='".$showcard_status->user_key."'"); echo $getusery->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getusery->lastname;?></td>
+    <td align="center"><?php $getusery = $getDB->my_sql_query("name,lastname","user","user_key='".$showcard_status->user_key."'"); echo $getusery->name.'&nbsp;&nbsp;&nbsp;&nbsp;'.$getusery->lastname;?></td>
   </tr>
   <?php
   }

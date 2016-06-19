@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+date_default_timezone_set('Asia/Bangkok');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,11 +12,11 @@ if($_SESSION['uname']==NULL || $_SESSION['uclass'] == 1){
 require("../core/config.core.php");
 require("../core/connect.core.php");
 require("../core/functions.core.php");
-$getdata = new clear_db();
-$connect = $getdata->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
-$getdata->my_sql_set_utf8();
-$userdata = $getdata->my_sql_query(NULL,"user","user_key='".$_SESSION['ukey']."'");
-$system_info = $getdata->my_sql_query(NULL,"system_info",NULL);
+$getDB = new clear_db();
+$connect = $getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+$getDB->my_sql_set_utf8();
+$userdata = $getDB->my_sql_query(NULL,"user","user_key='".$_SESSION['ukey']."'");
+$system_info = $getDB->my_sql_query(NULL,"system_info",NULL);
 date_default_timezone_set('Asia/Bangkok');
 require("../core/online.core.php");
 ?>
@@ -124,18 +125,18 @@ if(@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "i
               <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                       <?php
-					  $getmenus = $getdata->my_sql_select(NULL,"menus","menu_status='1' AND menu_key=menu_upkey ORDER BY menu_sorting");
+					  $getmenus = $getDB->my_sql_select(NULL,"menus","menu_status='1' AND menu_key=menu_upkey ORDER BY menu_sorting");
 					  while($showmenus = mysql_fetch_object($getmenus)){
 							// ตรวจสอบว่ามีเมนูนั้นจริงๆ
-						  $cksub = $getdata->my_sql_show_rows("menus","menu_status='1' AND menu_key <> menu_upkey AND '".$showmenus->menu_key."' = menu_upkey");
+						  $cksub = $getDB->my_sql_show_rows("menus","menu_status='1' AND menu_key <> menu_upkey AND '".$showmenus->menu_key."' = menu_upkey");
 
 						  if($cksub != 0){
 							  $showm ='<li><a href="'.$showmenus->menu_link.'" ';
 							  if(@addslashes($_GET['p']) == $showmenus->menu_link){$showm .='class="active"';}
 							  $showm .='>'.$showmenus->menu_icon.' '.menuLanguage($showmenus->menu_name).' <span class="fa arrow"></span></a><ul class="nav nav-second-level">';
-							  $getsubmenus = $getdata->my_sql_select(NULL,"menus","menu_status='1' AND menu_key <> menu_upkey AND '".$showmenus->menu_key."' = menu_upkey ORDER BY menu_sorting");
+							  $getsubmenus = $getDB->my_sql_select(NULL,"menus","menu_status='1' AND menu_key <> menu_upkey AND '".$showmenus->menu_key."' = menu_upkey ORDER BY menu_sorting");
 							  while($showsubmenus = mysql_fetch_object($getsubmenus)){
-								  $getactive = $getdata->my_sql_query("menu","list","cases='".addslashes($_GET['p'])."'");
+								  $getactive = $getDB->my_sql_query("menu","list","cases='".addslashes($_GET['p'])."'");
 								  $showm .='<li><a href="'.$showsubmenus->menu_link.'" ';
 								  if(@addslashes($_GET['p']) == $showsubmenus->menu_case || $getactive->menu == $showsubmenus->menu_case){$showm .='class="active"';}
 								  $showm .='>'.$showsubmenus->menu_icon.' '.menuLanguage($showsubmenus->menu_name).' </a></li>';
@@ -144,7 +145,7 @@ if(@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "i
 							  echo @$showm;
 						  }else{
 							  $showm ='<li><a href="'.$showmenus->menu_link.'" ';
-							   $getactive = $getdata->my_sql_query("menu","list","cases='".addslashes($_GET['p'])."'");
+							   $getactive = $getDB->my_sql_query("menu","list","cases='".addslashes($_GET['p'])."'");
 							  if(@addslashes($_GET['p']) == $showmenus->menu_case || $getactive->menu == $showmenus->menu_case){$showm .='class="active"';}
 							  $showm .='>'.$showmenus->menu_icon.' '.menuLanguage($showmenus->menu_name).' </a></li>';
 							  echo @$showm;
@@ -165,7 +166,7 @@ if(@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "i
         <div class="margin_top">
           <?php
                 $page=addslashes(@$_GET['p']);
-                $listdata=$getdata->my_sql_query(NULL,"list","cases='".$page."' AND case_status='1'");
+                $listdata=$getDB->my_sql_query(NULL,"list","cases='".$page."' AND case_status='1'");
                 if($listdata != NULL){
                     require($listdata->pages);
                 }else{

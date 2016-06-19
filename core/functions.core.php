@@ -3,14 +3,14 @@ date_default_timezone_set('Asia/Bangkok');
 //------------ in use -------------
 
 function updateDateNow(){
-	$getdata = new clear_db();
-	$getdata->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
-	$getdata->my_sql_set_utf8();
-	$gety = $getdata->my_sql_query("month","autonumber",NULL);
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$gety = $getDB->my_sql_query("month","autonumber",NULL);
 	if(date("m") != $gety->month){
-		$getdata->my_sql_update("autonumber","item_number='1',finance_number='1',quotation_number='1',invoice_number='1',year='".date("Y")."',month='".date("m")."',day='".date("d")."'",NULL);
+		$getDB->my_sql_update("autonumber","item_number='1',finance_number='1',quotation_number='1',invoice_number='1',year='".date("Y")."',month='".date("m")."',day='".date("d")."'",NULL);
 	}else{
-		$getdata->my_sql_update("autonumber","year='".date("Y")."',month='".date("m")."',day='".date("d")."'",NULL);
+		$getDB->my_sql_update("autonumber","year='".date("Y")."',month='".date("m")."',day='".date("d")."'",NULL);
 	}
 	
 }
@@ -433,6 +433,51 @@ function cardStatus($card_status){
 		}else if($card_status == 'hidden'){
 			return '<span class="label  label-danger" >ข้อมูลถูกซ่อน</span>';
 		}
+	}
+}
+function categoryIdToString($category_id){
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$getData=$getDB->my_sql_select(NULL,"category","id=$category_id");
+	while($row = mysql_fetch_object($getData)){
+		return $row->name;
+	}
+}
+function locationIdToString($location_id){
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$getData=$getDB->my_sql_select(NULL,"location","id=$location_id");
+	while($row = mysql_fetch_object($getData)){
+		return $row->name;
+	}
+}
+function sourceIdToString($location_id){
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$getData=$getDB->my_sql_select(NULL,"source","id=$location_id");
+	while($row = mysql_fetch_object($getData)){
+		return $row->name;
+	}
+}
+function statusIdToString($location_id){
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$getData=$getDB->my_sql_select(NULL,"status","id=$location_id");
+	while($row = mysql_fetch_object($getData)){
+		return $row->name;
+	}
+}
+function unitIdToString($location_id){
+	$getDB = new clear_db();
+	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+	$getDB->my_sql_set_utf8();
+	$getdata=$getDB->my_sql_select(NULL,"unit","id=$location_id");
+	while($row = mysql_fetch_object($getdata)){
+		return $row->name;
 	}
 }
 function url(){

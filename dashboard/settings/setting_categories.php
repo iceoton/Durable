@@ -12,7 +12,7 @@
 if (isset($_POST['save_cat'])) {
     if (addslashes($_POST['cat_title']) != NULL) {
         $cat_key = md5(addslashes($_POST['cat_title']) . time("now"));
-        $getdata->my_sql_insert("categories", "cat_key='" . $cat_key . "',cat_name='" . addslashes($_POST['cat_title']) . "',cat_status='" . addslashes($_REQUEST['cat_status']) . "'");
+        $getDB->my_sql_insert("categories", "cat_key='" . $cat_key . "',cat_name='" . addslashes($_POST['cat_title']) . "',cat_status='" . addslashes($_REQUEST['cat_status']) . "'");
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_ADD_EXPENDITURES_GROUP . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -20,7 +20,7 @@ if (isset($_POST['save_cat'])) {
 }
 if (isset($_POST['save_edit_cat'])) {
     if (addslashes($_POST['edit_cat_title']) != NULL) {
-        $getdata->my_sql_update("categories", "cat_name='" . addslashes($_POST['edit_cat_title']) . "'", "cat_key='" . addslashes($_POST['cat_key']) . "'");
+        $getDB->my_sql_update("categories", "cat_name='" . addslashes($_POST['edit_cat_title']) . "'", "cat_key='" . addslashes($_POST['cat_key']) . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_UPDATE_DATA_DONE . '</div>';
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
@@ -106,7 +106,7 @@ echo @$alert;
             <tbody>
             <?php
             $x = 0;
-            $getcat = $getdata->my_sql_select(NULL, "categories", "cat_status <> '2' AND cat_name <> '' ORDER BY cat_insert");
+            $getcat = $getDB->my_sql_select(NULL, "categories", "cat_status <> '2' AND cat_name <> '' ORDER BY cat_insert");
             while ($showcat = mysql_fetch_object($getcat)) {
                 $x++;
                 ?>

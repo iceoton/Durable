@@ -11,7 +11,7 @@
 <?php
 if(isset($_POST['save_case'])){
 	if(addslashes($_POST['case_name']) != NULL){
-		$getdata->my_sql_insert("list","cases='".addslashes($_POST['case_name'])."',menu='".addslashes($_POST['case_menu'])."',pages='".addslashes($_POST['case_page'])."',case_status='".addslashes($_REQUEST['case_status'])."'");
+		$getDB->my_sql_insert("list","cases='".addslashes($_POST['case_name'])."',menu='".addslashes($_POST['case_menu'])."',pages='".addslashes($_POST['case_page'])."',case_status='".addslashes($_REQUEST['case_status'])."'");
 		$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>เพิ่มข้อมูลหน้า สำเร็จ !</div>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
@@ -69,13 +69,13 @@ if(isset($_POST['save_case'])){
  if(@addslashes($_GET['e'])=="y"){
 	 if(isset($_POST['save_edit_case'])){
 		 if(addslashes($_POST['edit_case_name'])!= NULL){
-			 $getdata->my_sql_update("list","cases='".addslashes($_POST['edit_case_name'])."',menu='".addslashes($_POST['edit_case_menu'])."',pages='".addslashes($_POST['edit_case_page'])."'","cases='".addslashes($_GET['key'])."'");
+			 $getDB->my_sql_update("list","cases='".addslashes($_POST['edit_case_name'])."',menu='".addslashes($_POST['edit_case_menu'])."',pages='".addslashes($_POST['edit_case_page'])."'","cases='".addslashes($_GET['key'])."'");
 			 echo '<script>window.location="?p=administrator_cases";</script>';
 		 }else{
 			 $alert2 = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
 		 }
 	 }
-	 $getcase_detail =$getdata->my_sql_query(NULL,"list","cases='".addslashes($_GET['key'])."'");
+	 $getcase_detail =$getDB->my_sql_query(NULL,"list","cases='".addslashes($_GET['key'])."'");
 	 ?>
       <form id="form2" name="form2" method="post">
  <div class="panel panel-info">
@@ -118,7 +118,7 @@ if(isset($_POST['save_case'])){
   <tbody>
   <?php
   $x=0;
-  $getcase = $getdata->my_sql_select(NULL,"list","1 ORDER BY cases,menu");
+  $getcase = $getDB->my_sql_select(NULL,"list","1 ORDER BY cases,menu");
   while($showcase = mysql_fetch_object($getcase)){
 	  $x++;
   ?>

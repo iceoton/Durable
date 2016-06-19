@@ -12,7 +12,7 @@
 if(isset($_POST['save_access'])){
 	if(addslashes($_POST['access_title']) != NULL){
 		$access_key = md5(addslashes($_POST['access_title']).time("now"));
-		$getdata->my_sql_insert("access_list","access_key='".$access_key."',access_name='".addslashes($_POST['access_title'])."',access_detail='".addslashes($_POST['access_detail'])."',access_status='".addslashes($_REQUEST['access_status'])."'");
+		$getDB->my_sql_insert("access_list","access_key='".$access_key."',access_name='".addslashes($_POST['access_title'])."',access_detail='".addslashes($_POST['access_detail'])."',access_status='".addslashes($_REQUEST['access_status'])."'");
 		$alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>เพิ่มข้อมูลการเข้าถึง สำเร็จ !</div>';
 	}else{
 		$alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
@@ -67,13 +67,13 @@ if(isset($_POST['save_access'])){
  if(@addslashes($_GET['e'])=="y"){
 	 if(isset($_POST['save_edit_unit'])){
 		 if(addslashes($_POST['edit_access_title'])!= NULL){
-			 $getdata->my_sql_update("access_list","access_name='".addslashes($_POST['edit_access_title'])."',access_detail='".addslashes($_POST['edit_access_detail'])."'","access_key='".addslashes($_GET['key'])."'");
+			 $getDB->my_sql_update("access_list","access_name='".addslashes($_POST['edit_access_title'])."',access_detail='".addslashes($_POST['edit_access_detail'])."'","access_key='".addslashes($_GET['key'])."'");
 			 echo '<script>window.location="?p=administrator_access_list";</script>';
 		 }else{
 			 $alert2 = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุข้อมูลอีกครั้ง !</div>'; 
 		 }
 	 }
-	 $getaccess_detail =$getdata->my_sql_query(NULL,"access_list","access_key='".addslashes($_GET['key'])."'");
+	 $getaccess_detail =$getDB->my_sql_query(NULL,"access_list","access_key='".addslashes($_GET['key'])."'");
 	 ?>
       <form id="form2" name="form2" method="post">
  <div class="panel panel-info">
@@ -112,7 +112,7 @@ if(isset($_POST['save_access'])){
   <tbody>
   <?php
   $x=0;
-  $getaccess = $getdata->my_sql_select(NULL,"access_list","1 ORDER BY access_name");
+  $getaccess = $getDB->my_sql_select(NULL,"access_list","1 ORDER BY access_name");
   while($showaccess = mysql_fetch_object($getaccess)){
 	  $x++;
   ?>
@@ -120,7 +120,7 @@ if(isset($_POST['save_access'])){
     <td align="center"><?php echo @$x;?></td>
     <td align="center"><?php echo @$showaccess->access_key;?></td>
     <td>&nbsp;<span data-toggle="tooltip" data-placement="right" title="<?php echo $showaccess->access_detail;?>"><?php echo @$showaccess->access_name;?></span></td>
-    <td align="center" valign="middle"><?php echo @number_format($getdata->my_sql_show_rows("access_user","access_key='".$showaccess->access_key."'"));?></td>
+    <td align="center" valign="middle"><?php echo @number_format($getDB->my_sql_show_rows("access_user","access_key='".$showaccess->access_key."'"));?></td>
     <td align="center" valign="middle"><?php
 	  if($showaccess->access_status == '1'){
 		  echo '<button type="button" class="btn btn-success btn-xs" id="btn-'.@$showaccess->access_key.'" onClick="javascript:changeAccessStatus(\''.@$showaccess->access_key.'\');"><i class="fa fa-unlock-alt" id="icon-'.@$showaccess->access_key.'"></i> <span id="text-'.@$showaccess->access_key.'">แสดง</span></button>';
