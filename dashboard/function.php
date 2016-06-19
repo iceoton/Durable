@@ -161,6 +161,8 @@ $getdata->my_sql_set_utf8();
 		break;
 		case "delete_asset_unit" : $getdata->my_sql_delete("unit","id='".addslashes($_GET['id'])."'");
 		break;
+		case "delete_asset" : $getdata->my_sql_delete("asset","id='".addslashes($_GET['id'])."'");
+		break;
 		case "delete_card" : $getdata->my_sql_delete("card_info","card_key='".addslashes($_GET['key'])."'");
 		$getdata->my_sql_delete("card_item","card_key='".addslashes($_GET['key'])."'");
 		$getdata->my_sql_delete("card_status","card_key='".addslashes($_GET['key'])."'");

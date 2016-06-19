@@ -453,29 +453,29 @@ function locationIdToString($location_id){
 		return $row->name;
 	}
 }
-function sourceIdToString($location_id){
+function sourceIdToString($source_id){
 	$getDB = new clear_db();
 	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 	$getDB->my_sql_set_utf8();
-	$getData=$getDB->my_sql_select(NULL,"source","id=$location_id");
+	$getData=$getDB->my_sql_select(NULL,"source","id=$source_id");
 	while($row = mysql_fetch_object($getData)){
 		return $row->name;
 	}
 }
-function statusIdToString($location_id){
+function statusIdToString($status_id){
 	$getDB = new clear_db();
 	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 	$getDB->my_sql_set_utf8();
-	$getData=$getDB->my_sql_select(NULL,"status","id=$location_id");
+	$getData=$getDB->my_sql_select(NULL,"status","id=$status_id");
 	while($row = mysql_fetch_object($getData)){
 		return $row->name;
 	}
 }
-function unitIdToString($location_id){
+function unitIdToString($unit_id){
 	$getDB = new clear_db();
 	$getDB->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 	$getDB->my_sql_set_utf8();
-	$getdata=$getDB->my_sql_select(NULL,"unit","id=$location_id");
+	$getdata=$getDB->my_sql_select(NULL,"unit","id=$unit_id");
 	while($row = mysql_fetch_object($getdata)){
 		return $row->name;
 	}

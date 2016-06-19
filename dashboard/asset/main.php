@@ -272,9 +272,10 @@ if ($getcard_count != 0) {
             while ($showcard = mysql_fetch_object($getcard)) {
                 ?>
                 <tr style="font-weight:bold;" id="<?php echo @$showcard->id; ?>">
-                    <td align="center"><a
-                            href="?p=asset_detail&id=<?php echo @$showcard->id; ?>"><?php echo @$showcard->code; ?></a>
-                    </td>
+                    <!--<td align="center"><a
+                            href="?p=asset_detail&id=<?php /*echo @$showcard->id; */?>"><?php /*echo @$showcard->code; */?></a>
+                    </td>-->
+                    <td align="center"><?php echo @$showcard->code; ?></td>
                     <td align="left"><?php echo @$showcard->name; ?></td>
                     <td align="left"><?php echo @$showcard->detail; ?></td>
                     <td align="center"><?php echo @categoryIdToString($showcard->category_id); ?></td>
@@ -288,7 +289,7 @@ if ($getcard_count != 0) {
                         <a data-toggle="modal" data-target="#edit_asset" data-whatever="<?php echo @$showcard->id; ?>"
                            title="แก้ไข" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>
                         </a>
-                        <a onClick="javascript:deleteCard('<?php echo @$showcard->id; ?>');"
+                        <a onClick="javascript:deleteAsset('<?php echo @$showcard->id; ?>');"
                            title="ลบข้อมูล" class="btn btn-xs btn-danger"><i class="fa fa-times"></i>
                         </a>
                     </td>
@@ -307,7 +308,7 @@ if ($getcard_count != 0) {
 }
 ?>
 <script language="javascript">
-    function deleteCard(cardkey) {
+    function deleteAsset(assetId) {
         if (confirm('คุณต้องการลบครุภัณฑ์นี้ใช่หรือไม่ ?')) {
             if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
@@ -316,10 +317,10 @@ if ($getcard_count != 0) {
             }
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById(cardkey).innerHTML = '';
+                    document.getElementById(assetId).innerHTML = '';
                 }
             }
-            xmlhttp.open("GET", "function.php?type=delete_card&key=" + cardkey, true);
+            xmlhttp.open("GET", "function.php?type=delete_asset&id=" + assetId, true);
             xmlhttp.send();
         }
     }
