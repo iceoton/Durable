@@ -24,10 +24,11 @@ $connect = $loginclass->my_sql_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
 				$_SESSION['lang'] = $getinfo->user_language;
 				$_SESSION['ukey'] = $getinfo->user_key;
 				insertLogs($getinfo->username." เข้าสู่ระบบ.",$_SERVER['REMOTE_ADDR'],$getinfo->user_key);
-				if($getinfo->user_class != 1){
+				if($getinfo->user_class > 1){
 					echo "<script>window.location=\"../dashboard/\"</script>";
 				}else{
-					echo "<script>window.location=\"../members/\"</script>";
+					//echo "<script>window.location=\"../members/\"</script>";
+					echo "<script>window.location=\"../index.php?c=nouser\"</script>";
 				}
 
 			}
