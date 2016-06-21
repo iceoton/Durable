@@ -19,7 +19,7 @@
     }
     ?>
     <div class="panel panel-primary">
-        <div class="panel-heading">การตั้งค่าการใช้งาน</div>
+        <div class="panel-heading">การตั้งค่าเกี่ยวกับครุภัณฑ์</div>
         <div class="panel-body">
             <a href="?p=setting_asset_status" class="btn btn-primary btn_main_wd"><i
                     class="fa flaticon-tag20 fa-fw fa-6x"></i><br/><br/>สถานะของครุภัณฑ์</a>

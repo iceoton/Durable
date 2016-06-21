@@ -55,8 +55,8 @@ echo @$alert; ?>
                     </div>
                     <div class="col-xs-9 text-right">
                         <div
-                            class="huge"><?php @$gettoday = $getDB->my_sql_show_rows("card_info", "card_status <> 'hidden' AND (card_insert LIKE '%" . date("Y-m-d") . "%')");
-                            echo @number_format($gettoday); ?></div>
+                            class="huge"><?php @$getMember = $getDB->my_sql_show_rows("user", "user_class=0 OR user_class =1");
+                            echo @number_format($getMember); ?></div>
                         <div>จำนวนสมาชิก</div>
                     </div>
                 </div>
