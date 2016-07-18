@@ -5,8 +5,10 @@ date_default_timezone_set('Asia/Bangkok');
 error_reporting(1);
 
 require_once 'controller/UserController.php';
+require_once 'controller/AssetController.php';
 
 $userController = new UserController();
+$assetController = new AssetController();
 
 $response = array();
 $response['success'] = 0;
@@ -21,7 +23,7 @@ if (!isset($_POST)) {
     echo $json_response;
     exit();
 }
-if (isset($_POST['tag']) && isset($_POST['data'])) {
+if (isset($_POST['tag'])) {
     $tag = $_POST['tag'];
     $data_json = $_POST['data'];
 
@@ -36,6 +38,15 @@ if (isset($_POST['tag']) && isset($_POST['data'])) {
         }
     } elseif ($tag == 'forgetPassword') {
 
+    } elseif ($tag == 'getAllAsset') {
+        $result = $assetController->getAll();
+        if ($result == false) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่สามารถเข้าถึงข้อมูลได้';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
     } else {
         $response['error'] = 1;
         $response['error_msg'] = "ไม่พบ tag ที่คุณต้องการ";
