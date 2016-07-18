@@ -16,8 +16,8 @@ html{
         moz-background-size: cover;
         o-background-size: cover;
         background-size: cover ;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/bg.png',     sizingMethod='scale');
-    -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/bg.png', sizingMethod='scale');
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/bg.png',     sizingMethod=scale);
+    -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg/bg.png', sizingMethod=scale);
 }
 .box_install{
 	margin-top:100px;
@@ -163,7 +163,7 @@ if(!mysql_select_db(addslashes($_POST['db_name']),$connect) ){
 	$restore_obj->username = DB_USERNAME;
 	$restore_obj->password = DB_PASSWORD;
 	$restore_obj->database = DB_NAME;
-	if (!$restore_obj->Execute('db/repair.sql',MSR_FILE, false, false))
+	if (!$restore_obj->Execute('database/repair.sql',MSR_FILE, false, false))
 	{
 		die($restore_obj->error);
 
@@ -177,7 +177,7 @@ if(!mysql_select_db(addslashes($_POST['db_name']),$connect) ){
 	$restore_obj->username = DB_USERNAME;
 	$restore_obj->password = DB_PASSWORD;
 	$restore_obj->database = DB_NAME;
-	if (!$restore_obj->Execute('db/repair.sql',MSR_FILE, false, false))
+	if (!$restore_obj->Execute('database/repair.sql',MSR_FILE, false, false))
 	{
 		die($restore_obj->error);
 	}
