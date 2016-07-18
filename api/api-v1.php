@@ -40,13 +40,14 @@ if (isset($_POST['tag'])) {
 
     } elseif ($tag == 'getAllAsset') {
         $result = $assetController->getAll();
-        if ($result == false) {
+        if ($result == 0) {
             $response['error'] = 1;
-            $response['error_msg'] = 'ไม่สามารถเข้าถึงข้อมูลได้';
+            $response['error_msg'] = 'ไม่มีข้อมูลได้';
         } else {
             $response['result'] = $result;
             $response['success'] = 1;
         }
+
     } else {
         $response['error'] = 1;
         $response['error_msg'] = "ไม่พบ tag ที่คุณต้องการ";

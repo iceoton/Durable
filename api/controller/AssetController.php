@@ -19,11 +19,14 @@ class AssetController
         $query = $conn->prepare("SELECT * FROM asset");
         $values = array();
         $query->execute($values);
-        $rowcout = $query->rowCount();
-        if ($rowcout > 0) {
-            return $query->fetchAll(PDO::FETCH_ASSOC);
-        } else {
-            return false;
+        $rowCount = $query->rowCount();
+        $result = 0;
+        if ($rowCount > 0) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            $conn = null;
         }
+
+        return $result;
     }
 }
