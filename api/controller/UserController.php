@@ -17,7 +17,7 @@ Class UserController
     public function getUser($data_json){
         $user = User::createLogin($data_json);
         $conn = $this->pdo->connect();
-        $query = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? AND password = ? AND user_status = 1");
+        $query = $conn->prepare("SELECT * FROM user WHERE (username = ? OR email = ?) AND password = ? AND user_status = 1");
         $values = array($user->username,$user->username, $user->password);
         $query->execute($values);
         $rowCount = $query->rowCount();
