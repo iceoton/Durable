@@ -6,9 +6,11 @@ error_reporting(1);
 
 require_once 'controller/UserController.php';
 require_once 'controller/AssetController.php';
+require_once 'controller/CategoryController.php';
 
 $userController = new UserController();
 $assetController = new AssetController();
+$categoryController = new CategoryController();
 
 $response = array();
 $response['success'] = 0;
@@ -42,7 +44,17 @@ if (isset($_POST['tag'])) {
         $result = $assetController->getAll();
         if ($result == 0) {
             $response['error'] = 1;
-            $response['error_msg'] = 'ไม่มีข้อมูลได้';
+            $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
+
+    } elseif ($tag == 'getAllAssetCategory') {
+        $result = $categoryController->getAll();
+        if ($result == 0) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่พบข้อมูล';
         } else {
             $response['result'] = $result;
             $response['success'] = 1;

@@ -2,11 +2,10 @@
 date_default_timezone_set('Asia/Bangkok');
 header('Content-type:application/json;charset=utf-8');
 ini_set('display_errors', 'on');
-require_once __DIR__.'/../core/config.core.php';
 
-$db_name = DB_NAME;
-$db_user = DB_USERNAME;
-$db_pass = DB_PASSWORD;
+$db_name = 'durable';
+$db_user = 'adminfUMeDEG';
+$db_pass = '6i9iEuF6xE3w';
 $db_host = '127.4.145.2';
 
 try {
