@@ -16,7 +16,7 @@ class AssetController
     function getAll()
     {
         $conn = $this->link->connect();
-        $query = $conn->prepare("SELECT * FROM asset");
+        $query = $conn->prepare("SELECT asset.id, asset.code, asset.name, detail, quantity, come_date, update_date, unit.name as unit FROM asset INNER JOIN unit ON asset.unit_id = unit.id");
         $values = array();
         $query->execute($values);
         $rowCount = $query->rowCount();
