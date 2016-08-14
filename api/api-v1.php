@@ -50,6 +50,18 @@ if (isset($_POST['tag'])) {
             $response['success'] = 1;
         }
 
+    } elseif ($tag == 'getAssetDetail') {
+        $data = json_decode($data_json);
+        $assetCode = $data->code;
+        $result = $assetController->getAssetDetail($assetCode);
+        if ($result == 0) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
+
     } elseif ($tag == 'getAllAssetCategory') {
         $result = $categoryController->getAll();
         if ($result == 0) {

@@ -32,4 +32,20 @@ class CategoryController
 
         return $result;
     }
+
+    public function getDetail($id){
+        $conn = $this->pdo->connect();
+        $query = $conn->prepare("SELECT * FROM category WHERE id = ?");
+        $values = array($id);
+        $query->execute($values);
+        $rowCount = $query->rowCount();
+        $result = 0;
+        if($rowCount > 0) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC)[0];
+            $query->closeCursor();
+            $conn = null;
+        }
+
+        return $result;
+    }
 }
