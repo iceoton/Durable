@@ -13,8 +13,12 @@
 if (isset($_POST['save_unit'])) {
     if (addslashes($_POST['unit_name']) != NULL) {
         $unitName = $_POST['unit_name'];
-        $getDB->my_sql_insert("unit", "name='" . $unitName . "'");
-        $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์สำเร็จ" . '</div>';
+        if (@getAssetUnitByName($unitName) != null){
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์ไม่สำเร็จ ข้อมูลซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_insert("unit", "name='" . $unitName . "'");
+            $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มหน่วยนับของครุภัณฑ์ไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
     }
@@ -22,8 +26,12 @@ if (isset($_POST['save_unit'])) {
 if (isset($_POST['save_edit_unit'])) {
     if (addslashes($_POST['edit_unit_name']) != NULL) {
         $unitName = $_POST['edit_unit_name'];
-        $getDB->my_sql_update("unit", "name='" . $unitName. "'", "id='" . addslashes($_POST['unit_id']) . "'");
-        $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขหน่วยนับของครุภัณฑ์์สำเร็จ"  . '</div>';
+        if (@getAssetUnitByName($unitName) != null){
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ ข้อมูลซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_update("unit", "name='" . $unitName . "'", "id='" . addslashes($_POST['unit_id']) . "'");
+            $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขหน่วยนับของครุภัณฑ์์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }

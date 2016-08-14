@@ -15,7 +15,7 @@ if (isset($_POST['save_card'])) {
         $statusCode = $_POST['status_code'];
         $statusName = $_POST['status_name'];
         if (@getAssetStatus($statusCode) != null) {
-            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะไม่สำเร็จ รหัสครุภัณฑ์ซ้ำ" . '</div>';
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะไม่สำเร็จ รหัสสถานะซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_insert("status", "code='" . $statusCode . "', name='" . $statusName . "'");
             $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะครุภัณฑ์สำเร็จ" . '</div>';
@@ -29,7 +29,7 @@ if (isset($_POST['save_edit_card'])) {
         $statusCode = $_POST['edit_status_code'];
         $statusName = $_POST['edit_status_name'];
         if (@getAssetStatus($statusCode) != null) {
-            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสครุภัณฑ์ซ้ำ" . '</div>';
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสสถานะซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName . "'", "id='" . addslashes($_POST['status_id']) . "'");
             $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขสถานะครุภัณฑ์สำเร็จ" . '</div>';

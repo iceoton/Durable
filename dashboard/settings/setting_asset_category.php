@@ -13,8 +13,12 @@ if (isset($_POST['save_cat'])) {
     if ((addslashes($_POST['category_code']) != NULL) && (addslashes($_POST['category_name']) != NULL)) {
         $categoryCode = $_POST['category_code'];
         $categoryName = $_POST['category_name'];
-        $getDB->my_sql_insert("category", "code='" . $categoryCode . "', name='" . $categoryName . "'");
-        $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' ."เพิ่มประเภทครุภัณฑ์สำเร็จ" . '</div>';
+        if(@getAssetCategory($categoryCode) != null){
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มประเภทครุภัณฑ์ไม่สำเร็จ รหัสประเภทซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_insert("category", "code='" . $categoryCode . "', name='" . $categoryName . "'");
+            $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มประเภทครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มประเภทครุภัณฑ์ไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
     }
@@ -23,8 +27,12 @@ if (isset($_POST['save_edit_cat'])) {
     if ((addslashes($_POST['edit_category_code']) != NULL) && (addslashes($_POST['edit_category_name']) != NULL)) {
         $categoryCode = $_POST['edit_category_code'];
         $categoryName = $_POST['edit_category_name'];
-        $getDB->my_sql_update("category", "code='" . $categoryCode . "', name='" . $categoryName . "'", "id='" . addslashes($_POST['category_id']) . "'");
-        $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขประเภทของครุภัณฑ์สำเร็จ" . '</div>';
+        if(@getAssetCategory($categoryCode) != null){
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสประเภทซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_update("category", "code='" . $categoryCode . "', name='" . $categoryName . "'", "id='" . addslashes($_POST['category_id']) . "'");
+            $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขประเภทของครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }

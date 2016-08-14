@@ -571,9 +571,45 @@ function getAssetStatus($status_code)
     $getDB = new clear_db();
     $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     $getDB->my_sql_set_utf8();
-    $getdata = $getDB->my_sql_select(NULL, "status", "code=$status_code");
+    $getdata = $getDB->my_sql_select(NULL, "status", "code='$status_code'");
     $row = mysql_fetch_object($getdata);
     return $row;
 }
-
+function getAssetCategory($category_code)
+{
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "category", "code='$category_code'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
+function getAssetLocation($location_code)
+{
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "location", "code='$location_code'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
+function getAssetSource($source_code)
+{
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "source", "code='$source_code'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
+function getAssetUnitByName($name)
+{
+    $name = trim($name);
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "unit", "name='$name'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
 ?>
