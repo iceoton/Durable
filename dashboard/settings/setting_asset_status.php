@@ -14,8 +14,12 @@ if (isset($_POST['save_card'])) {
     if ((addslashes($_POST['status_code']) != NULL) && (addslashes($_POST['status_name']) != NULL)) {
         $statusCode = $_POST['status_code'];
         $statusName = $_POST['status_name'];
-        $getDB->my_sql_insert("status", "code='" . $statusCode . "', name='" . $statusName . "'");
-        $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะครุภัณฑ์สำเร็จ" . '</div>';
+        if (@getAssetStatus($statusCode) != null) {
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะไม่สำเร็จ รหัสครุภัณฑ์ซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_insert("status", "code='" . $statusCode . "', name='" . $statusName . "'");
+            $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานะไม่สำเร็จ กรุณากรอกข้อมูลให้ครบ" . '</div>';
     }
@@ -24,15 +28,20 @@ if (isset($_POST['save_edit_card'])) {
     if ((addslashes($_POST['edit_status_code']) != NULL) && (addslashes($_POST['edit_status_name']) != NULL)) {
         $statusCode = $_POST['edit_status_code'];
         $statusName = $_POST['edit_status_name'];
-        $getDB->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName. "'", "id='" . addslashes($_POST['status_id']) . "'");
-        $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขสถานะครุภัณฑ์สำเร็จ"  . '</div>';
+        if (@getAssetStatus($statusCode) != null) {
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสครุภัณฑ์ซ้ำ" . '</div>';
+        } else {
+            $getDB->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName . "'", "id='" . addslashes($_POST['status_id']) . "'");
+            $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขสถานะครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }
 }
 ?>
 <!-- Modal Edit -->
-<div class="modal fade" id="edit_asset_status" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit_asset_status" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel"
+     aria-hidden="true">
     <form id="form2" name="form2" method="post">
         <div class="modal-dialog">
             <div class="modal-content">
