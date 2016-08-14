@@ -110,7 +110,8 @@ echo @$alert; ?>
                             <td align="center"><a href="?q=<?php echo @$showAsset->code; ?>&p=search"><?php echo @$showAsset->code; ?></a>
                             </td>
                             <td td align="center"><?php echo @$showAsset->name; ?></td>
-                            <td align="center"><?php echo @statusIdToString($showAsset->status_id); ?></td>
+                            <!--<td align="center">--><?php //echo @statusIdToString($showAsset->status_id); ?><!--</td>-->
+                            <td align="center"><?php echo @$showAsset->status_id; ?></td>
                         </tr>
                         <?php
                     }
