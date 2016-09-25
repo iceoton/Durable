@@ -97,7 +97,7 @@ if (isset($_POST['save_edit_asset'])) {
                         <div class="col-md-6">
                             <label for="asset_code">รหัสครุภัณฑ์</label>
                             <input type="text" name="asset_code" id="asset_code" class="form-control"
-                                   autocomplete="off">
+                                   autofocus autocomplete="off">
                         </div>
                         <div class="col-md-6">
                             <label for="asset_name">ชื่อครุภัณฑ์</label>
@@ -230,7 +230,8 @@ echo @$alert;
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;"><i class="fa fa-plus"></i>
+                <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;">
+                        <i class="fa fa-plus"></i>
                         เพิ่มครุภัณฑ์</a></li>
             </ul>
 
@@ -278,7 +279,7 @@ if ($getcard_count != 0) {
                     <td align="center"><?php echo @$showcard->code; ?></td>
                     <td align="left"><?php echo @$showcard->name; ?></td>
                     <td align="left"><?php echo @$showcard->detail; ?></td>
-                    <td align="center"><?php echo @categoryIdToString($showcard->category_id); ?></td>
+                    <td align="center"><?php echo @getAssetCategoryById($showcard->category_id)->code; ?></td>
                     <td align="center"><?php echo @$showcard->come_date; ?></td>
                     <td align="center"><?php echo @locationIdToString($showcard->location_id); ?></td>
                     <td align="center"><?php echo @sourceIdToString($showcard->source_id); ?></td>
@@ -346,4 +347,9 @@ if ($getcard_count != 0) {
             }
         });
     })
+
+    //เพื่อให้ใช้ autofocus ใน modal ได้
+    $('#myModal').on('shown.bs.modal', function() {
+        $(this).find('[autofocus]').focus();
+    });
 </script>
