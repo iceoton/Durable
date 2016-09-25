@@ -26,9 +26,11 @@ if (isset($_POST['save_card'])) {
 }
 if (isset($_POST['save_edit_card'])) {
     if ((addslashes($_POST['edit_status_code']) != NULL) && (addslashes($_POST['edit_status_name']) != NULL)) {
+        $editStatusId = $_POST['status_id'];
         $statusCode = $_POST['edit_status_code'];
         $statusName = $_POST['edit_status_name'];
-        if (@getAssetStatus($statusCode) != null) {
+        $statusItem = getAssetStatus($statusCode);
+        if ($statusItem != null && $editStatusId != $statusItem->id) {
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสสถานะซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("status", "code='" . $statusCode . "', name='" . $statusName . "'", "id='" . addslashes($_POST['status_id']) . "'");
