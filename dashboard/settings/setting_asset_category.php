@@ -25,9 +25,12 @@ if (isset($_POST['save_cat'])) {
 }
 if (isset($_POST['save_edit_cat'])) {
     if ((addslashes($_POST['edit_category_code']) != NULL) && (addslashes($_POST['edit_category_name']) != NULL)) {
+        $editCategoryId = $_POST['category_id'];
         $categoryCode = $_POST['edit_category_code'];
         $categoryName = $_POST['edit_category_name'];
-        if(@getAssetCategory($categoryCode) != null){
+        $category = getAssetCategory($categoryCode);
+        if($category != null && $editCategoryId != $category->id){
+            // มี category นี้แล้ว
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสประเภทซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("category", "code='" . $categoryCode . "', name='" . $categoryName . "'", "id='" . addslashes($_POST['category_id']) . "'");
