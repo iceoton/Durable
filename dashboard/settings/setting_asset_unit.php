@@ -25,8 +25,10 @@ if (isset($_POST['save_unit'])) {
 }
 if (isset($_POST['save_edit_unit'])) {
     if (addslashes($_POST['edit_unit_name']) != NULL) {
+        $editUnitId = $_POST['unit_id'];
         $unitName = $_POST['edit_unit_name'];
-        if (@getAssetUnitByName($unitName) != null){
+        $unitItem = getAssetUnitByName($unitName);
+        if ($unitItem != null && $editUnitId != $unitItem->id){
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ ข้อมูลซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("unit", "name='" . $unitName . "'", "id='" . addslashes($_POST['unit_id']) . "'");
