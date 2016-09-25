@@ -26,9 +26,12 @@ if (isset($_POST['save_source'])) {
 }
 if (isset($_POST['save_edit_source'])) {
     if ((addslashes($_POST['edit_source_code']) != NULL) && (addslashes($_POST['edit_source_name']) != NULL)) {
+        $editSourceId = $_POST['source_id'];
         $sourceCode = $_POST['edit_source_code'];
         $sourceName = $_POST['edit_source_name'];
-        if(@getAssetSource($sourceCode) != null){
+        $sourceItem = getAssetSource($sourceCode);
+        if($sourceItem != null && $editSourceId != $sourceItem->id){
+            // มีแหล่งที่มาของครุภัณฑ์นี้แล้ว
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสแหล่งที่มาซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("source", "code='" . $sourceCode . "', name='" . $sourceName . "'", "id='" . addslashes($_POST['source_id']) . "'");
