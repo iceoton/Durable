@@ -14,7 +14,7 @@ if (isset($_POST['save_location'])) {
     if ((addslashes($_POST['location_code']) != NULL) && (addslashes($_POST['location_name']) != NULL)) {
         $locationCode = $_POST['location_code'];
         $locationName = $_POST['location_name'];
-        if(@getAssetLocation($locationCode) != null){
+        if (@getAssetLocation($locationCode) != null) {
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มสถานที่ตั้งครุภัณฑ์ไม่สำเร็จ รหัสสถานที่ซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_insert("location", "code='" . $locationCode . "', name='" . $locationName . "'");
@@ -26,9 +26,12 @@ if (isset($_POST['save_location'])) {
 }
 if (isset($_POST['save_edit_location'])) {
     if ((addslashes($_POST['edit_location_code']) != NULL) && (addslashes($_POST['edit_location_name']) != NULL)) {
+        $editLocationId = $_POST['location_id'];
         $locationCode = $_POST['edit_location_code'];
         $locationName = $_POST['edit_location_name'];
-        if(@getAssetLocation($locationCode) != null){
+        $locationItem = getAssetLocation($locationCode);
+        if ($locationItem != null && $editLocationId != $locationItem->id) {
+            // location ที่จะแก้ไขนั้นมีข้อมูลอยู่แล้ว
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสสถานที่ซ้ำ" . '</div>';
         } else {
             $getDB->my_sql_update("location", "code='" . $locationCode . "', name='" . $locationName . "'", "id='" . addslashes($_POST['location_id']) . "'");
