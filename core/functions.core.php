@@ -542,6 +542,17 @@ function statusIdToString($status_id)
     }
 }
 
+function getAssetStatusCode($status_id)
+{
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getData = $getDB->my_sql_select(NULL, "status", "id=$status_id");
+    while ($row = mysql_fetch_object($getData)) {
+        return $row->code;
+    }
+}
+
 function unitIdToString($unit_id)
 {
     $getDB = new clear_db();
