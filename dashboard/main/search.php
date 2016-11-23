@@ -11,7 +11,8 @@
 
 if (isset($_POST['save_edit_asset'])) {
     if ((addslashes($_POST['asset_id']) != NULL) && (addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetId = addslashes($_POST['asset_id']);
         $assetCode = $_POST['asset_code'];
@@ -25,12 +26,17 @@ if (isset($_POST['save_edit_asset'])) {
         $assetQuantity = $_POST['asset_quantity'];
         $assetUnit = $_POST['asset_unit'];
 
-        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'"
-            , "id='" . $assetId . "'");
-        $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
+        $assetInDB = getAssetByCode($assetCode);
+        if ($assetInDB != null && $assetInDB->id != $assetId) {
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขครุภัณฑ์ไม่สำเร็จ มีครุภัณฑ์รหัสนี้แล้ว" . '</div>';
+        } else {
+            $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+                . "', category_id=" . $assetCategoryId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+                . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+                . ", update_date='" . date("Y-m-d H:i:s") . "'"
+                , "id='" . $assetId . "'");
+            $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }
@@ -118,7 +124,7 @@ echo @$alert; ?>
                 <td align="center"><?php echo @$showAsset->code; ?></td>
                 <td align="left"><?php echo @$showAsset->name; ?></td>
                 <td align="left"><?php echo @$showAsset->detail; ?></td>
-                <td align="center"><?php echo @categoryIdToString($showAsset->category_id); ?></td>
+                <td align="center"><?php echo @getAssetCategoryById($showAsset->category_id)->code; ?></td>
                 <td align="center"><?php echo @$showAsset->come_date; ?></td>
                 <td align="center"><?php echo @locationIdToString($showAsset->location_id); ?></td>
                 <td align="center"><?php echo @sourceIdToString($showAsset->source_id); ?></td>

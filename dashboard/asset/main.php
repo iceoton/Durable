@@ -10,7 +10,8 @@
 <?php
 if (isset($_POST['save_asset'])) {
     if ((addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetCode = $_POST['asset_code'];
         $assetName = $_POST['asset_name'];
@@ -22,14 +23,17 @@ if (isset($_POST['save_asset'])) {
         $assetStatus = $_POST['asset_status'];
         $assetQuantity = $_POST['asset_quantity'];
         $assetUnit = $_POST['asset_unit'];
-        //$card_key = md5(htmlentities($_POST['card_customer_name']) . htmlentities($_POST['card_code']) . time("now"));
 
-        $getDB->my_sql_insert("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'");
+        if (@getAssetByCode($assetCode) != null) {
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มครุภัณฑ์ไม่สำเร็จ มีครุภัณฑ์รหัสนี้แล้ว" . '</div>';
+        } else {
+            $getDB->my_sql_insert("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+                . "', category_id=" . $assetCategoryId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+                . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+                . ", update_date='" . date("Y-m-d H:i:s") . "'");
 
-        $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มครุภัณฑ์สำเร็จ" . '</div>';
+            $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
     }
@@ -37,7 +41,8 @@ if (isset($_POST['save_asset'])) {
 
 if (isset($_POST['save_edit_asset'])) {
     if ((addslashes($_POST['asset_id']) != NULL) && (addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetId = addslashes($_POST['asset_id']);
         $assetCode = $_POST['asset_code'];
@@ -51,12 +56,17 @@ if (isset($_POST['save_edit_asset'])) {
         $assetQuantity = $_POST['asset_quantity'];
         $assetUnit = $_POST['asset_unit'];
 
-        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'"
-            , "id='" . $assetId . "'");
-        $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
+        $assetInDB = getAssetByCode($assetCode);
+        if ($assetInDB != null && $assetInDB->id != $assetId) {
+            $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขครุภัณฑ์ไม่สำเร็จ มีครุภัณฑ์รหัสนี้แล้ว" . '</div>';
+        } else {
+            $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+                . "', category_id=" . $assetCategoryId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+                . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+                . ", update_date='" . date("Y-m-d H:i:s") . "'"
+                , "id='" . $assetId . "'");
+            $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
+        }
     } else {
         $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }
@@ -274,7 +284,7 @@ if ($getcard_count != 0) {
                 ?>
                 <tr style="font-weight:bold;" id="<?php echo @$showcard->id; ?>">
                     <!--<td align="center"><a
-                            href="?p=asset_detail&id=<?php /*echo @$showcard->id; */?>"><?php /*echo @$showcard->code; */?></a>
+                            href="?p=asset_detail&id=<?php /*echo @$showcard->id; */ ?>"><?php /*echo @$showcard->code; */ ?></a>
                     </td>-->
                     <td align="center"><?php echo @$showcard->code; ?></td>
                     <td align="left"><?php echo @$showcard->name; ?></td>
@@ -349,7 +359,7 @@ if ($getcard_count != 0) {
     })
 
     //เพื่อให้ใช้ autofocus ใน modal ได้
-    $('#myModal').on('shown.bs.modal', function() {
+    $('#myModal').on('shown.bs.modal', function () {
         $(this).find('[autofocus]').focus();
     });
 </script>
