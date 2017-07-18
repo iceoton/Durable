@@ -2,6 +2,7 @@
 /** MySQL's config a constant value */
 
 // MySQL hostname
+//define('DB_HOST', '127.4.145.2');
 define('DB_HOST', 'localhost');
 
 // MySQL database username
