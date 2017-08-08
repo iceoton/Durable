@@ -6,9 +6,11 @@
 define('DB_HOST', 'localhost');
 
 // MySQL database username
+//define('DB_USERNAME', 'adminfUMeDEG');
 define('DB_USERNAME', 'root');
 
 // MySQL database password
+//define('DB_PASSWORD', '6i9iEuF6xE3w');
 define('DB_PASSWORD', 'root');
 
 // MySQL database name

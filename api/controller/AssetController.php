@@ -92,4 +92,30 @@ class AssetController
         }
         return $result;
     }
+
+    function mangeAsset($manageAssetRequest)
+    {
+        $currentDateTime = date('Y-m-d H:i:s');
+        $conn = $this->link->connect();
+        $query = $conn->prepare("INSERT INTO asset_management (user_key, asset_id, manage_type, quantity, create_date, update_date) 
+                                           VALUES (?, ?, ?, ?, ?, ?)");
+        $values = array($manageAssetRequest->userKey,
+            $manageAssetRequest->assetId,
+            $manageAssetRequest->manageType,
+            $manageAssetRequest->quantity,
+            $currentDateTime,
+            $currentDateTime);
+
+        $query->execute($values);
+        $rowCount = $query->rowCount();
+        echo "count row insert =".$rowCount;
+        $result = false;
+        if ($rowCount > 0) {
+            $result = true;
+            $query->closeCursor();
+            $conn = null;
+        }
+
+        return $result;
+    }
 }

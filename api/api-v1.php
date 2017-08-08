@@ -3,10 +3,12 @@ header('Content-type:application/json;charset=utf-8');
 date_default_timezone_set('Asia/Bangkok');
 // 0 :Turn off all error reporting
 error_reporting(1);
+ini_set('display_errors', 'on');
 
 require_once 'controller/UserController.php';
 require_once 'controller/AssetController.php';
 require_once 'controller/CategoryController.php';
+require_once 'model/ManageAssetRequest.php';
 
 $userController = new UserController();
 $assetController = new AssetController();
@@ -79,6 +81,22 @@ if (isset($_POST['tag'])) {
         if ($result == 0) {
             $response['error'] = 1;
             $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
+
+    } elseif ($tag == 'manageAsset') {
+        $data = json_decode($data_json);
+        $manageAssetRequest = ManageAssetRequest::create();
+        $manageAssetRequest->userKey = $data->user_key;
+        $manageAssetRequest->assetId = $data->asset_id;
+        $manageAssetRequest->manageType = $data->manage_type;
+        $manageAssetRequest->quantity = $data->quantity;
+        $result = $assetController->mangeAsset($manageAssetRequest);
+        if ($result == false) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่สามารถจัดการครุภัณฑ์ได้';
         } else {
             $response['result'] = $result;
             $response['success'] = 1;
