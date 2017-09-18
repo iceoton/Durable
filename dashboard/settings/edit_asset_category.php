@@ -37,6 +37,19 @@ $getcat_detail = $getdata->my_sql_query(NULL, "category", "id='" . addslashes($_
         </div>
         <input type="hidden" name="category_id" id="category_id" value="<?php echo @addslashes($_GET['key']);?>">
     </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="category_type">ชนิดประเภทครุภัณฑ์</label>
+            <select name="category_type" id="user_class" class="form-control">
+                <option value="1" <?php if(@$getcat_detail->category_type == "วัสดุถาวร") {
+                    echo "selected=\"selected\"";
+                }; ?>>วัสดุถาวร</option>
+                <option value="0" <?php if(@$getcat_detail->category_type == "สินทรัพย์ถาวร") {
+                    echo "selected=\"selected\"";
+                }; ?>>สินทรัพย์ถาวร</option>
+            </select>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i

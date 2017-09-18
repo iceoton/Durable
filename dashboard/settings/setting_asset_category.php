@@ -13,10 +13,16 @@ if (isset($_POST['save_cat'])) {
     if ((addslashes($_POST['category_code']) != NULL) && (addslashes($_POST['category_name']) != NULL)) {
         $categoryCode = $_POST['category_code'];
         $categoryName = $_POST['category_name'];
+        $categoryType = $_POST['category_type'];
+        if($categoryType == 1) {
+            $categoryType = "วัสดุถาวร";
+        } else {
+            $categoryType = "สินทรัพย์ถาวร";
+        }
         if(@getAssetCategory($categoryCode) != null){
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มประเภทครุภัณฑ์ไม่สำเร็จ รหัสประเภทซ้ำ" . '</div>';
         } else {
-            $getDB->my_sql_insert("category", "code='" . $categoryCode . "', name='" . $categoryName . "'");
+            $getDB->my_sql_insert("category", "code='" . $categoryCode . "', name='" . $categoryName . "'".", category_type='". $categoryType."'");
             $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มประเภทครุภัณฑ์สำเร็จ" . '</div>';
         }
     } else {
@@ -29,11 +35,17 @@ if (isset($_POST['save_edit_cat'])) {
         $categoryCode = $_POST['edit_category_code'];
         $categoryName = $_POST['edit_category_name'];
         $category = getAssetCategory($categoryCode);
+        $categoryType = $_POST['category_type'];
+        if($categoryType == 1) {
+            $categoryType = "วัสดุถาวร";
+        } else {
+            $categoryType = "สินทรัพย์ถาวร";
+        }
         if($category != null && $editCategoryId != $category->id){
             // มี category นี้แล้ว
             $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขไม่สำเร็จ รหัสประเภทซ้ำ" . '</div>';
         } else {
-            $getDB->my_sql_update("category", "code='" . $categoryCode . "', name='" . $categoryName . "'", "id='" . addslashes($_POST['category_id']) . "'");
+            $getDB->my_sql_update("category", "category_type='". $categoryType."', code='" . $categoryCode . "', name='" . $categoryName . "'", "id='" . addslashes($_POST['category_id']) . "'");
             $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขประเภทของครุภัณฑ์สำเร็จ" . '</div>';
         }
     } else {
@@ -80,6 +92,15 @@ if (isset($_POST['save_edit_cat'])) {
                             <input type="text" name="category_name" id="category_name" class="form-control">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label for="category_type">ชนิดประเภทครุภัณฑ์</label>
+                            <select name="category_type" id="user_class" class="form-control">
+                                <option value="1" >วัสดุถาวร</option>
+                                <option value="0" selected="selected">สินทรัพย์ถาวร</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i
@@ -111,7 +132,8 @@ echo @$alert;
             <tr style="color:#FFF;">
                 <th width="3%" bgcolor="#5fb760">#</th>
                 <th width="10%" bgcolor="#5fb760">รหัสประเภท</th>
-                <th width="64%" bgcolor="#5fb760">ชื่อประเภทของครุภัณฑ์</th>
+                <th width="44%" bgcolor="#5fb760">ชื่อประเภทของครุภัณฑ์</th>
+                <th width="20%" bgcolor="#5fb760">ชนิดประเภทครุภัณฑ์</th>
                 <th width="23%" bgcolor="#5fb760"><?php echo @LA_LB_MANAGE; ?></th>
             </tr>
             </thead>
@@ -126,6 +148,7 @@ echo @$alert;
                     <td align="center"><?php echo @$x; ?></td>
                     <td><?php echo @$showcat->code; ?></td>
                     <td><?php echo @$showcat->name; ?></td>
+                    <td><?php echo @$showcat->category_type; ?></td>
                     <td align="center" valign="middle">
                         <a data-toggle="modal" data-target="#edit_asset_category"
                            data-whatever="<?php echo @$showcat->id; ?>" class="btn btn-xs btn-info"
