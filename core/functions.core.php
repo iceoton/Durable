@@ -594,6 +594,15 @@ function getAssetCategoryById($category_id)
     return mysql_fetch_object($getData);
 }
 
+function getAssetTypeById($asset_type_id)
+{
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getData = $getDB->my_sql_select(NULL, "asset_type", "id=$asset_type_id");
+    return mysql_fetch_object($getData);
+}
+
 function getAssetLocation($location_code)
 {
     $getDB = new clear_db();
