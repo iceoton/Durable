@@ -10,11 +10,13 @@
 <?php
 if (isset($_POST['save_asset'])) {
     if ((addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetCode = $_POST['asset_code'];
         $assetName = $_POST['asset_name'];
         $assetDetail = $_POST['asset_detail'];
+        $assetTypeId = $_POST['asset_type'];
         $assetCategoryId = $_POST['asset_category'];
         $assetComeDate = $_POST['come_date'];
         $assetLocationId = $_POST['asset_location'];
@@ -24,10 +26,10 @@ if (isset($_POST['save_asset'])) {
         $assetUnit = $_POST['asset_unit'];
         //$card_key = md5(htmlentities($_POST['card_customer_name']) . htmlentities($_POST['card_code']) . time("now"));
 
-        $getDB->my_sql_insert("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'");
+        $getDB->my_sql_insert("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+            . "', category_id=" . $assetCategoryId . ", type_id=" . $assetTypeId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+            . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+            . ", update_date='" . date("Y-m-d H:i:s") . "'");
 
         $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มครุภัณฑ์สำเร็จ" . '</div>';
     } else {
@@ -37,12 +39,14 @@ if (isset($_POST['save_asset'])) {
 
 if (isset($_POST['save_edit_asset'])) {
     if ((addslashes($_POST['asset_id']) != NULL) && (addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetId = addslashes($_POST['asset_id']);
         $assetCode = $_POST['asset_code'];
         $assetName = $_POST['asset_name'];
         $assetDetail = $_POST['asset_detail'];
+        $assetTypeId = $_POST['asset_type'];
         $assetCategoryId = $_POST['asset_category'];
         $assetComeDate = $_POST['come_date'];
         $assetLocationId = $_POST['asset_location'];
@@ -51,10 +55,10 @@ if (isset($_POST['save_edit_asset'])) {
         $assetQuantity = $_POST['asset_quantity'];
         $assetUnit = $_POST['asset_unit'];
 
-        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'"
+        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+            . "', category_id=" . $assetCategoryId . ", type_id=" . $assetTypeId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+            . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+            . ", update_date='" . date("Y-m-d H:i:s") . "'"
             , "id='" . $assetId . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
     } else {
@@ -110,7 +114,7 @@ if (isset($_POST['save_edit_asset'])) {
                         <textarea name="asset_detail" id="asset_detail" class="form-control"></textarea>
                     </div>
                     <div class="form-group row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <label for="asset_category">ประเภทสินทรัพย์</label>
                             <select name="asset_category" id="asset_category" class="form-control">
                                 <?php
@@ -124,7 +128,21 @@ if (isset($_POST['save_edit_asset'])) {
                                 ?>
                             </select>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label for="asset_type">ชนิดครุภัณฑ์</label>
+                            <select name="asset_type" id="asset_type" class="form-control">
+                                <?php
+                                $get_asset_type = $getDB->my_sql_select(NULL, "asset_type", NULL);
+                                while ($show_asset_type = mysql_fetch_object($get_asset_type)) {
+                                    ?>
+                                    <option
+                                        value="<?php echo @$show_asset_type->id; ?>"><?php echo @$show_asset_type->name; ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
                             <label for="come_date">วันที่ได้มาครั้งแรก</label>
                             <input type="text" name="come_date" id="come_date" class="form-control"
                                    autocomplete="off">
@@ -275,7 +293,7 @@ if ($getcard_count != 0) {
                 ?>
                 <tr style="font-weight:bold;" id="<?php echo @$showcard->id; ?>">
                     <!--<td align="center"><a
-                            href="?p=asset_detail&id=<?php /*echo @$showcard->id; */?>"><?php /*echo @$showcard->code; */?></a>
+                            href="?p=asset_detail&id=<?php /*echo @$showcard->id; */ ?>"><?php /*echo @$showcard->code; */ ?></a>
                     </td>-->
                     <td align="center"><?php echo @$showcard->code; ?></td>
                     <td align="left"><?php echo @$showcard->name; ?></td>
@@ -351,7 +369,7 @@ if ($getcard_count != 0) {
     })
 
     //เพื่อให้ใช้ autofocus ใน modal ได้
-    $('#myModal').on('shown.bs.modal', function() {
+    $('#myModal').on('shown.bs.modal', function () {
         $(this).find('[autofocus]').focus();
     });
 </script>

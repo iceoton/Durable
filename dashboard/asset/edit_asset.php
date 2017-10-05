@@ -42,7 +42,7 @@ $getAsset_detail = $getdata->my_sql_query(NULL, "asset", "id='" . addslashes($_G
                   class="form-control"><?php echo @$getAsset_detail->detail; ?></textarea>
     </div>
     <div class="form-group row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <label for="asset_category">ประเภทสินทรัพย์</label>
             <select name="asset_category" id="asset_category" class="form-control">
                 <?php
@@ -62,7 +62,27 @@ $getAsset_detail = $getdata->my_sql_query(NULL, "asset", "id='" . addslashes($_G
                 ?>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
+            <label for="asset_type">ชนิดครุภัณฑ์</label>
+            <select name="asset_type" id="asset_type" class="form-control">
+                <?php
+                $get_asset_type = $getdata->my_sql_select(NULL, "asset_type", NULL);
+                while ($show_asset_type = mysql_fetch_object($get_asset_type)) {
+                    if ($getAsset_detail->type_id == $show_asset_type->id) {
+                        ?>
+                        <option value="<?php echo @$show_asset_type->id; ?>"
+                                selected="selected"><?php echo @$show_asset_type->name; ?></option>
+                        <?php
+                    } else {
+                        ?>
+                        <option value="<?php echo @$show_asset_type->id; ?>"><?php echo @$show_asset_type->name; ?></option>
+                        <?php
+                    }
+                }
+                ?>
+            </select>
+        </div>
+        <div class="col-md-4">
             <label for="come_date">วันที่ได้มาครั้งแรก</label>
             <input type="text" name="come_date" id="come_date" class="form-control"
                    value="<?php echo @$getAsset_detail->come_date; ?>">

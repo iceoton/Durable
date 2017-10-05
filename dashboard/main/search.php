@@ -11,12 +11,14 @@
 
 if (isset($_POST['save_edit_asset'])) {
     if ((addslashes($_POST['asset_id']) != NULL) && (addslashes($_POST['asset_code']) != NULL) && (addslashes($_POST['asset_name']) != NULL)
-        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)) {
+        && (addslashes($_POST['come_date']) != NULL) && (addslashes($_POST['asset_quantity']) != NULL)
+    ) {
 
         $assetId = addslashes($_POST['asset_id']);
         $assetCode = $_POST['asset_code'];
         $assetName = $_POST['asset_name'];
         $assetDetail = $_POST['asset_detail'];
+        $assetTypeId = $_POST['asset_type'];
         $assetCategoryId = $_POST['asset_category'];
         $assetComeDate = $_POST['come_date'];
         $assetLocationId = $_POST['asset_location'];
@@ -25,10 +27,10 @@ if (isset($_POST['save_edit_asset'])) {
         $assetQuantity = $_POST['asset_quantity'];
         $assetUnit = $_POST['asset_unit'];
 
-        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='".$assetDetail
-            ."', category_id=".$assetCategoryId.", come_date='".$assetComeDate."', location_id=".$assetLocationId
-            .", source_id=".$assetSourceId.", status_id=".$assetStatus.", quantity=".$assetQuantity.", unit_id=".$assetUnit
-            .", update_date='".date("Y-m-d H:i:s")."'"
+        $getDB->my_sql_update("asset", "code='" . $assetCode . "', name='" . $assetName . "', detail='" . $assetDetail
+            . "', category_id=" . $assetCategoryId . ", type_id=" . $assetTypeId . ", come_date='" . $assetComeDate . "', location_id=" . $assetLocationId
+            . ", source_id=" . $assetSourceId . ", status_id=" . $assetStatus . ", quantity=" . $assetQuantity . ", unit_id=" . $assetUnit
+            . ", update_date='" . date("Y-m-d H:i:s") . "'"
             , "id='" . $assetId . "'");
         $alert = '<div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "แก้ไขรายละเอียดครุภัณฑ์สำเร็จ" . '</div>';
     } else {
@@ -97,8 +99,9 @@ echo @$alert; ?>
         <tr style="font-weight:bold; color:#FFF; text-align:center; background:#ff7709;">
             <td width="5%">รหัสครุภัณฑ์</td>
             <td width="15%">ชื่อครุภัณฑ์</td>
-            <td width="25%">รายละเอียด</td>
+            <td width="20%">รายละเอียด</td>
             <td width="5%">ประเภท</td>
+            <th width="5%">ชนิดครุภัณฑ์</th>
             <td width="5%">วันที่ได้มาครั้งแรก</td>
             <td width="10%">สถานที่ตั้ง</td>
             <td width="10%">แหล่งที่มา</td>
@@ -111,7 +114,7 @@ echo @$alert; ?>
         <tbody>
         <?php
 
-        $getAsset = $getDB->my_sql_select(NULL, "asset", " (code LIKE '%" . htmlentities($_GET['q']) . "%') OR (name LIKE '%" . htmlentities($_GET['q']) . "%') ORDER BY update_date");
+        $getAsset = $getDB->my_sql_select(NULL, "asset", " (code LIKE '%" . htmlentities($_GET['q']) . "%') OR (name LIKE '%" . htmlentities($_GET['q']) . "%') ORDER BY update_date DESC");
         while ($showAsset = mysql_fetch_object($getAsset)) {
             ?>
             <tr style="font-weight:bold;" id="<?php echo @$showAsset->id; ?>">
@@ -119,6 +122,7 @@ echo @$alert; ?>
                 <td align="left"><?php echo @$showAsset->name; ?></td>
                 <td align="left"><?php echo @$showAsset->detail; ?></td>
                 <td align="center"><?php echo @categoryIdToString($showAsset->category_id); ?></td>
+                <td align="center"><?php echo @getAssetTypeById($showAsset->type_id)->name; ?></td>
                 <td align="center"><?php echo @$showAsset->come_date; ?></td>
                 <td align="center"><?php echo @locationIdToString($showAsset->location_id); ?></td>
                 <td align="center"><?php echo @sourceIdToString($showAsset->source_id); ?></td>
