@@ -111,7 +111,7 @@ echo @$alert; ?>
                             </td>
                             <td td align="center"><?php echo @$showAsset->name; ?></td>
                             <!--<td align="center">--><?php //echo @statusIdToString($showAsset->status_id); ?><!--</td>-->
-                            <td align="center"><?php echo @$showAsset->status_id; ?></td>
+                            <td align="center"><?php echo @getAssetStatusById($showAsset->status_id)->code; ?></td>
                         </tr>
                         <?php
                     }

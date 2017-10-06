@@ -25,7 +25,7 @@ class AssetController
     function getAll()
     {
         $conn = $this->link->connect();
-        $query = $conn->prepare("SELECT asset.id, asset.code, asset.name, detail, quantity, come_date, update_date, unit.name as unit FROM asset INNER JOIN unit ON asset.unit_id = unit.id");
+        $query = $conn->prepare("SELECT asset.id, asset.code, asset.name, detail, quantity, come_date, update_date, status.code as status_code FROM asset INNER JOIN status ON asset.status_id = status.id ORDER BY update_date DESC");
         $values = array();
         $query->execute($values);
         $rowCount = $query->rowCount();
