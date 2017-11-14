@@ -39,12 +39,12 @@ class AssetController
         return $result;
     }
 
-    function getAssetListByType($assetType)
+    function getAssetListByType($assetType, $queryAssetCode)
     {
         $conn = $this->link->connect();
         $query = $conn->prepare("SELECT asset.id, asset.code, asset.name, detail, quantity, come_date, update_date, unit.name as unit 
-                                           FROM asset INNER JOIN unit ON asset.unit_id = unit.id WHERE asset.type_id=? ");
-        $values = array($assetType);
+                                           FROM asset INNER JOIN unit ON asset.unit_id = unit.id WHERE asset.type_id=? AND asset.code like ?");
+        $values = array($assetType, "$queryAssetCode%");
         $query->execute($values);
         $rowCount = $query->rowCount();
         $result = 0;

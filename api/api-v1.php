@@ -57,7 +57,8 @@ if (isset($_POST['tag'])) {
     } elseif ($tag == 'getAssetByType') {
         $data = json_decode($data_json);
         $typeId= $data->typeId;
-        $result = $assetController->getAssetListByType($typeId);
+        $queryAssetCode = $data->queryAssetCode;
+        $result = $assetController->getAssetListByType($typeId, $queryAssetCode);
         if ($result == 0) {
             $response['error'] = 1;
             $response['error_msg'] = 'ไม่พบข้อมูล';
