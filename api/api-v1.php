@@ -7,11 +7,13 @@ ini_set('display_errors', 'on');
 
 require_once 'controller/UserController.php';
 require_once 'controller/AssetController.php';
+require_once 'controller/AssetTypeController.php';
 require_once 'controller/CategoryController.php';
 require_once 'model/ManageAssetRequest.php';
 
 $userController = new UserController();
 $assetController = new AssetController();
+$assetTypeController = new AssetTypeController();
 $categoryController = new CategoryController();
 
 $response = array();
@@ -52,7 +54,18 @@ if (isset($_POST['tag'])) {
             $response['success'] = 1;
         }
 
-    } elseif ($tag == 'getAssetList') {
+    } elseif ($tag == 'getAssetByType') {
+        $data = json_decode($data_json);
+        $typeId= $data->typeId;
+        $result = $assetController->getAssetListByType($typeId);
+        if ($result == 0) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
+    } elseif ($tag == 'getAssetByCategory') {
         $data = json_decode($data_json);
         $categoryId = $data->categoryId;
         $result = $assetController->getAssetListByCategory($categoryId);
@@ -68,6 +81,16 @@ if (isset($_POST['tag'])) {
         $data = json_decode($data_json);
         $assetCode = $data->code;
         $result = $assetController->getAssetDetail($assetCode);
+        if ($result == 0) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
+
+    } elseif ($tag == 'getAllAssetType') {
+        $result = $assetTypeController->getAll();
         if ($result == 0) {
             $response['error'] = 1;
             $response['error_msg'] = 'ไม่พบข้อมูล';

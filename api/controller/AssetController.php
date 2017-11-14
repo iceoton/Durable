@@ -39,6 +39,24 @@ class AssetController
         return $result;
     }
 
+    function getAssetListByType($assetType)
+    {
+        $conn = $this->link->connect();
+        $query = $conn->prepare("SELECT asset.id, asset.code, asset.name, detail, quantity, come_date, update_date, unit.name as unit 
+                                           FROM asset INNER JOIN unit ON asset.unit_id = unit.id WHERE asset.type_id=? ");
+        $values = array($assetType);
+        $query->execute($values);
+        $rowCount = $query->rowCount();
+        $result = 0;
+        if ($rowCount > 0) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $query->closeCursor();
+            $conn = null;
+        }
+
+        return $result;
+    }
+
     function getAssetListByCategory($categoryId)
     {
         $conn = $this->link->connect();
