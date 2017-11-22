@@ -236,21 +236,17 @@ echo @$alert;
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><i class="fa fa-edit"></i></a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="navbar-default" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;">
                         <i class="fa fa-plus"></i>
                         เพิ่มครุภัณฑ์</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="?p=asset_management" style="cursor:pointer;">
+                        <i class="fa fa-edit"></i>
+                        เบิก/ยืม/คืน/ส่งซ่อม</a></li>
             </ul>
 
             <form class="navbar-form from-group navbar-right" role="search" method="get" action="?p=search">
@@ -366,7 +362,7 @@ if ($getcard_count != 0) {
                 console.log(err);
             }
         });
-    })
+    });
 
     //เพื่อให้ใช้ autofocus ใน modal ได้
     $('#myModal').on('shown.bs.modal', function () {
