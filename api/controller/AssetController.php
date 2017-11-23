@@ -111,6 +111,42 @@ class AssetController
         return $result;
     }
 
+    function getAssetDetailById($assetId)
+    {
+        $conn = $this->link->connect();
+        $query = $conn->prepare("SELECT * FROM asset WHERE id = ?");
+        $values = array($assetId);
+        $query->execute($values);
+        $rowCount = $query->rowCount();
+        $result = 0;
+        if ($rowCount > 0) {
+            $result = $query->fetchAll(PDO::FETCH_ASSOC)[0];
+            $query->closeCursor();
+            $conn = null;
+
+            $category = $this->categoryController->getDetail($result["category_id"]);
+            unset($result["category_id"]);
+            $result["category"] = $category;
+
+            $status = $this->statusController->getDetail($result["status_id"]);
+            unset($result["status_id"]);
+            $result["status"] = $status;
+
+            $location = LocationController::getDetail($result["location_id"]);
+            unset($result["location_id"]);
+            $result["location"] = $location;
+
+            $source = SourceController::getDetail($result["source_id"]);
+            unset($result["source_id"]);
+            $result["source"] = $source;
+
+            $unit = UnitController::getDetail($result["unit_id"]);
+            unset($result["unit_id"]);
+            $result["unit"] = $unit;
+        }
+        return $result;
+    }
+
     function mangeAsset($manageAssetRequest)
     {
         $currentDateTime = date('Y-m-d H:i:s');
@@ -126,11 +162,35 @@ class AssetController
 
         $query->execute($values);
         $rowCount = $query->rowCount();
-        echo "count row insert =".$rowCount;
+        echo "count row insert =" . $rowCount;
         $result = false;
         if ($rowCount > 0) {
             $result = true;
             $query->closeCursor();
+            $conn = null;
+        }
+
+        return $result;
+    }
+
+    function editAsset($assetChange)
+    {
+        $currentDateTime = date('Y-m-d H:i:s');
+        $conn = $this->link->connect();
+        $stmt = $conn->prepare("UPDATE asset SET location_id=? , status_id=? , update_date=? WHERE id=?");
+        $values = array(
+            $assetChange->location,
+            $assetChange->status,
+            $currentDateTime,
+            $assetChange->id);
+
+        $stmt->execute($values);
+        $rowCount = $stmt->rowCount();
+        //echo "count row update =" . $rowCount;
+        $result = false;
+        if ($rowCount > 0) {
+            $result = $this->getAssetDetailById($assetChange->id);
+            $stmt->closeCursor();
             $conn = null;
         }
 
