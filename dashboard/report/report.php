@@ -10,6 +10,7 @@
 
 <?php
 $assetTypeId = 1;
+$assetTypeName= "";
 if (isset($_POST['change_asset_type'])) {
     if ((addslashes($_POST['asset_type']) != NULL)) {
         $assetTypeId = $_POST['asset_type'];
@@ -33,6 +34,7 @@ if (isset($_POST['change_asset_type'])) {
                     $get_asset_type = $getDB->my_sql_select(NULL, "asset_type", NULL);
                     while ($show_asset_type = mysql_fetch_object($get_asset_type)) {
                         if ($assetTypeId == $show_asset_type->id) {
+                            $assetTypeName = $show_asset_type->name;
                             ?>
                             <option value="<?php echo @$show_asset_type->id; ?>"
                                     selected="selected"><?php echo @$show_asset_type->name; ?></option>
@@ -43,11 +45,13 @@ if (isset($_POST['change_asset_type'])) {
                             <?php
                         }
                     }
+                    $exportFileName = "รายงานครุภัณฑ์_".$assetTypeName."_".date("d-m-Y");
                     ?>
                 </select>
                 <button type="submit" name="change_asset_type" class="btn btn-primary btn-sm"><i
                             class="fa fa-refresh fa-fw"></i><?php echo "สร้างรายงาน"; ?></button>
-                <button type="submit" name="export_excel" class="btn btn-success btn-sm"><i
+                <button id="export-buttons-table" name="export-buttons-table" onclick="javascript:exportData('<?php echo $exportFileName; ?>');"
+                        class="btn btn-success btn-sm"><i
                             class="fa fa-cloud-download fa-fw"></i><?php echo "ดาวน์โหลด excel"; ?></button>
 
 
@@ -71,7 +75,7 @@ if (isset($_POST['change_asset_type'])) {
 </nav>
 
 <div class="table-responsive">
-    <table width="100%" border="0" class="table table-bordered">
+    <table width="100%" border="0" class="table table-bordered" id="table_export">
         <thead>
         <tr style="font-weight:bold; color:#FFF; text-align:center; background:#ff7709;">
             <td width="1%">ลำดับที่</td>
@@ -121,3 +125,32 @@ if (isset($_POST['change_asset_type'])) {
     </table>
 
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    function exportData(filename) {
+        // var blob = $("#table_export").tableExport({type:'xlsx',escape:'true',formats:['xlsx'],exportButtons: false});
+        // blob.getExportData();
+        var ExportButtons = document.getElementById('table_export');
+
+        var instance = new TableExport(ExportButtons, {
+            formats: ['xlsx'],
+            exportButtons: false
+        });
+
+        //                                        // "id" of selector    // format
+        var exportData = instance.getExportData()['table_export']['xlsx'];
+
+        // var XLSbutton = document.getElementById('export-buttons-table');
+
+        // XLSbutton.addEventListener('click', function (e) {
+        //     //                   // data          // mime              // name              // extension
+        instance.export2file(exportData.data, exportData.mimeType, filename, exportData.fileExtension);
+        // });
+
+    }
+
+    $(document).ready(function () {
+        $('#export-buttons-table').css("display", "unset");
+    });
+
+</script>

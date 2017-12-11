@@ -100,6 +100,13 @@ if (@$_SESSION['lang'] != NULL) {
 <script src="../js/bootstrap-dialog.min.js"></script>
 <script src="../js/latest/typeahead.bundle.js"></script>
 <script src="../js/standalone/selectize.js"></script>
+<!--for export table to excel-->
+<script type="text/javascript" src="../js/xls.core.js"></script>
+<script type="text/javascript" src="../js/xlsx.core.js"></script>
+<script type="text/javascript" src="../js/Blob.js"></script>
+<script type="text/javascript" src="../js/file-saver.js"></script>
+<script type="text/javascript" src="../js/table-export.js"></script>
+<script type="text/javascript" src="../js/jquery.base64.js"></script>
 <?php
 if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "import" || addslashes($_GET['p']) == "cashier_member") {
     $stime = 'onLoad="startDateTime();"';
