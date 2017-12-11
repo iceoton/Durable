@@ -10,7 +10,7 @@
 
 <?php
 $assetTypeId = 1;
-$assetTypeName= "";
+$assetTypeName = "";
 if (isset($_POST['change_asset_type'])) {
     if ((addslashes($_POST['asset_type']) != NULL)) {
         $assetTypeId = $_POST['asset_type'];
@@ -45,12 +45,13 @@ if (isset($_POST['change_asset_type'])) {
                             <?php
                         }
                     }
-                    $exportFileName = "รายงานครุภัณฑ์_".$assetTypeName."_".date("d-m-Y");
+                    $exportFileName = "รายงานครุภัณฑ์_" . $assetTypeName . "_" . date("d-m-Y");
                     ?>
                 </select>
                 <button type="submit" name="change_asset_type" class="btn btn-primary btn-sm"><i
                             class="fa fa-refresh fa-fw"></i><?php echo "สร้างรายงาน"; ?></button>
-                <button id="export-buttons-table" name="export-buttons-table" onclick="javascript:exportData('<?php echo $exportFileName; ?>');"
+                <button id="export-buttons-table" name="export-buttons-table"
+                        onclick="javascript:exportData('<?php echo $exportFileName; ?>');"
                         class="btn btn-success btn-sm"><i
                             class="fa fa-cloud-download fa-fw"></i><?php echo "ดาวน์โหลด excel"; ?></button>
 
@@ -94,7 +95,8 @@ if (isset($_POST['change_asset_type'])) {
         <tbody>
         <?php
         $index = 0;
-        $getcard = $getDB->my_sql_select(NULL, "asset", "type_id = '" . $assetTypeId . "'  ORDER BY code");
+        //SELECT * FROM asset LEFT JOIN asset_management ON asset.id = asset_management.asset_id
+        $getcard = $getDB->my_sql_select("*, asset.quantity, asset_management.quantity as q", "asset LEFT JOIN asset_management ON asset.id = asset_management.asset_id", "type_id = '" . $assetTypeId . "'  ORDER BY code");
         while ($showcard = mysql_fetch_object($getcard)) {
             ?>
             <tr style="font-weight:bold;" id="<?php echo @$showcard->id; ?>">
@@ -114,7 +116,15 @@ if (isset($_POST['change_asset_type'])) {
                 <td align="center"><?php echo @getAssetStatusCode($showcard->status_id); ?></td>
                 <td align="center"><?php echo @$showcard->quantity; ?></td>
                 <td align="center"><?php echo @unitIdToString($showcard->unit_id); ?></td>
-                <td align="center"><?php echo ""; ?></td>
+                <td align="center">
+                    <?php
+                    if($showcard->q != null) {
+                        echo @($showcard->quantity - $showcard->q);
+                    } else {
+                        echo @$showcard->quantity;
+                    }
+
+                    ?></td>
                 <td align="center"><?php echo ""; ?></td>
             </tr>
             <?php
