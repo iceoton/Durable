@@ -51,11 +51,11 @@ if (isset($_POST['change_asset_type'])) {
                 <button type="submit" name="change_asset_type" class="btn btn-primary btn-sm"><i
                             class="fa fa-refresh fa-fw"></i><?php echo "สร้างรายงาน"; ?></button>
                 <button id="export-buttons-table" name="export-buttons-table"
-                        onclick="javascript:exportData('<?php echo $exportFileName; ?>');"
+                        onclick="javascript:exportExcel(<?php echo "'$assetTypeId'".",'$exportFileName'"; ?> )"
                         class="btn btn-success btn-sm"><i
                             class="fa fa-cloud-download fa-fw"></i><?php echo "ดาวน์โหลด excel"; ?></button>
 
-
+                <!--onclick="javascript:exportData('<?php /*echo $exportFileName; */ ?>');"-->
             </form>
 
             <!--<ul class="nav navbar-nav">
@@ -104,12 +104,12 @@ if (isset($_POST['change_asset_type'])) {
                             href="?p=asset_detail&id=<?php /*echo @$showcard->id; */ ?>"><?php /*echo @$showcard->code; */ ?></a>
                     </td>-->
                 <td align="center"><?php echo $index += 1 ?></td>
-                <td align="center"><?php echo @$showcard->code; ?></td>
+                <td align="left"><?php echo @$showcard->code; ?></td>
                 <td align="left"><?php echo @$showcard->name; ?></td>
                 <td align="left"><?php echo @$showcard->detail; ?></td>
                 <!--<td align="center"><?php /*echo @getAssetCategoryById($showcard->category_id)->code; */ ?></td>
                 <td align="center"><?php /*echo @getAssetTypeById($showcard->type_id)->name; */ ?></td>-->
-                <td align="center"><?php echo @$showcard->come_date; ?></td>
+                <td align="left"><?php echo @$showcard->come_date; ?></td>
                 <td align="center"><?php echo @locationIdToString($showcard->location_id); ?></td>
                 <!--<td align="center"><?php /*echo @sourceIdToString($showcard->source_id); */ ?></td>-->
                 <!--<td align="center"><?php /*echo @statusIdToString($showcard->status_id); */ ?></td>-->
@@ -118,8 +118,9 @@ if (isset($_POST['change_asset_type'])) {
                 <td align="center"><?php echo @unitIdToString($showcard->unit_id); ?></td>
                 <td align="center">
                     <?php
-                    if($showcard->q != null) {
-                        echo @($showcard->quantity - $showcard->q);
+                    if ($showcard->q != null) {
+                        //echo @($showcard->quantity - $showcard->q);
+                        echo @$showcard->quantity;
                     } else {
                         echo @$showcard->quantity;
                     }
@@ -162,5 +163,11 @@ if (isset($_POST['change_asset_type'])) {
     $(document).ready(function () {
         $('#export-buttons-table').css("display", "unset");
     });
+
+    function exportExcel(assetType,filename) {
+        var url = "report/export_excel.php?type=" + assetType + "&filename=" + filename;
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
 
 </script>
