@@ -660,4 +660,20 @@ function getAssetByCode($asset_code){
     $row = mysql_fetch_object($getdata);
     return $row;
 }
+function getAssetById($asset_id){
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "asset", "id='$asset_id'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
+function getUserByKey($user_key){
+    $getDB = new clear_db();
+    $getDB->my_sql_connect(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+    $getDB->my_sql_set_utf8();
+    $getdata = $getDB->my_sql_select(NULL, "user", "user_key='$user_key'");
+    $row = mysql_fetch_object($getdata);
+    return $row;
+}
 ?>
