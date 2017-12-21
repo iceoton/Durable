@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa fa-share-alt fa-fw"></i> <?php echo "รายงานครุภัณฑ์"; ?></h1>
+        <h1 class="page-header"><i class="fa fa-minus-circle fa-fw"></i> <?php echo "รายงานการเบิกครุภัณฑ์"; ?></h1>
     </div>
 </div>
 <ol class="breadcrumb">
