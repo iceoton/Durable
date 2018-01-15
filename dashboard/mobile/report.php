@@ -114,13 +114,13 @@ if (@$_GET['lang'] != NULL) {
     <div class="panel panel-primary">
         <div class="panel-heading">รายงานการ เบิก/ยืม/คืน/ส่งซ่อม ครุภัณฑ์</div>
         <div class="panel-body">
-            <a href="?p=report_pickup" class="btn btn-primary btn_main_wd"><i
+            <a href="./report_pickup.php" class="btn btn-primary btn_main_wd"><i
                         class="fa fa-minus-circle fa-fw fa-6x"></i><br/><br/>การเบิกครุภัณฑ์</a>
-            <a href="?p=report_borrow" class="btn btn-primary btn_main_wd"><i
+            <a href="./report_borrow.php" class="btn btn-primary btn_main_wd"><i
                         class="fa fa-retweet fa-fw fa-6x"></i><br/><br/>การยืมครุภัณฑ์</a>
-            <a href="?p=report_return" class="btn btn-primary btn_main_wd"><i
+            <a href="./report_return.php" class="btn btn-primary btn_main_wd"><i
                         class="fa fa-plus-circle fa-fw fa-6x"></i><br/><br/>การคืนครุภัณฑ์</a>
-            <a href="?p=report_repair" class="btn btn-primary btn_main_wd"><i
+            <a href="./report_repair.php" class="btn btn-primary btn_main_wd"><i
                         class="fa fa-wrench fa-fw fa-6x"></i><br/><br/>การส่งซ่อมครุภัณฑ์</a>
 
         </div>

@@ -173,7 +173,7 @@ if (isset($_POST['change_asset_type'])) {
 <div class="table-responsive">
     <table width="100%" border="0" class="table table-bordered" id="table_export">
         <thead>
-        <tr style="font-weight:bold; color:#FFF; text-align:center; background:#ff7709;">
+        <tr style="font-weight:bold; color:#FFF; text-align:left; background:#ff7709;">
             <td width="1%">ลำดับที่</td>
             <td width="6%">รหัสครุภัณฑ์</td>
             <td width="14%">ชื่อครุภัณฑ์</td>
