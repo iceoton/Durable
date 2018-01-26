@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header"><i class="fa fa-edit fa-fw"></i> เบิก/ยืม/คืน/ส่งซ่อม ครุภัณฑ์</h1>
+        <h1 class="page-header"><i class="fa fa-edit fa-fw"></i> คืนครุภัณฑ์/ส่งซ่อมครุภัณฑ์</h1>
     </div>
 </div>
 <?php
@@ -84,7 +84,7 @@ if ('POST' === $_SERVER['REQUEST_METHOD']) {
 <ol class="breadcrumb">
     <li><a href="index.php"><?php echo @LA_MN_HOME; ?></a></li>
     <li><a href="?p=asset"><?php echo "รายการครุภัณฑ์"; ?></a></li>
-    <li class="active">เบิก-ยืม-คืน-ส่งซ่อม</li>
+    <li class="active">คืน-ส่งซ่อม</li>
 </ol>
 <?php
 if (isset($_POST['save_asset'])) {
@@ -172,9 +172,9 @@ echo @$alert;
             <div class="collapse navbar-collapse">
                 <div class="form-group">
                     <select name="manage_type" id="manage_type" class="form-control">
-                        <option value="0" selected="selected">เบิกครุภัณฑ์</option>
-                        <option value="1">ยืมครุภัณฑ์</option>
-                        <option value="2">คืนครุภัณฑ์</option>
+                        <!--<option value="0" selected="selected">เบิกครุภัณฑ์</option>
+                        <option value="1">ยืมครุภัณฑ์</option>-->
+                        <option value="2" selected="selected">คืนครุภัณฑ์</option>
                         <option value="3">ส่งซ่อมครุภัณฑ์</option>
                     </select>
                 </div>

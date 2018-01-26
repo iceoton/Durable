@@ -244,9 +244,15 @@ echo @$alert;
             </ul>
 
             <ul class="nav navbar-nav">
+                <li><a class="navbar-brand" href="?p=asset_management_add" style="cursor:pointer;">
+                        <i class="fa fa-pencil-square"></i>
+                        เบิกครุภัณฑ์/ยืมครุภัณฑ์</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav">
                 <li><a class="navbar-brand" href="?p=asset_management" style="cursor:pointer;">
-                        <i class="fa fa-edit"></i>
-                        เบิก/ยืม/คืน/ส่งซ่อม</a></li>
+                        <i class="fa fa-pencil-square-o"></i>
+                        คืนครุภัณฑ์/ส่งซ่อมครุภัณฑ์</a></li>
             </ul>
 
             <form class="navbar-form from-group navbar-right" role="search" method="get" action="?p=search">
