@@ -27,6 +27,10 @@ if (isset($_POST['save_user'])) {
         $alert = ' <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }
 }
+if(isset($_GET['edit_success'])) {
+    $alert2 = '  <div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . 'แก้ไขข้อมูลสำเร็จ' . '</div>';
+    echo @$alert2;
+}
 
 echo @$alert;
 ?>
@@ -198,7 +202,7 @@ echo @$alert;
     }
 
     function deleteUser(userkey) {
-        if (confirm('คุณต้องการลบสมาชิกนี้ใช่หรือไม่? ,เมื่อทำการลบคุณจะไม่สามารถคกู้คืนข้อมูลสมาชิกรายนี้ได้')) {
+        if (confirm('การลบข้อมูลจะไม่สามารถกู้คืนได้, คุณแน่ใจที่จะทำการลบหรือไม่?')) {
             if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
             } else {// code for IE6, IE5

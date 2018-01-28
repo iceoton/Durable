@@ -72,9 +72,9 @@ if (isset($_POST['save_user'])) {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i
-                            class="fa fa-times fa-fw"></i><?php echo @LA_BTN_CLOSE; ?></button>
+                                class="fa fa-times fa-fw"></i><?php echo @LA_BTN_CLOSE; ?></button>
                     <button type="submit" name="save_user" class="btn btn-primary btn-sm"><i
-                            class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
+                                class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -95,15 +95,15 @@ if (@addslashes($_GET['e']) == 'y') {
     if (isset($_POST['edit_user_info'])) {
         if (addslashes($_POST['edit_password']) != NULL && addslashes($_POST['edit_repassword']) != NULL) {
             if (addslashes($_POST['edit_password']) == addslashes($_POST['edit_repassword'])) {
-                $getDB->my_sql_update("user", "name='" . addslashes($_POST['edit_name']) . "',lastname='" . addslashes($_POST['edit_lastname']) . "',password='" . md5(addslashes($_POST['edit_password'])) . "',email='" . addslashes($_POST['edit_email']) ."',user_class='" . addslashes($_POST['user_class']) ."'", "user_key='" . addslashes($_GET['key']) . "'");
-                echo '<script>window.location="?p=member"</script>';
+                $getDB->my_sql_update("user", "name='" . addslashes($_POST['edit_name']) . "',lastname='" . addslashes($_POST['edit_lastname']) . "',password='" . md5(addslashes($_POST['edit_password'])) . "',email='" . addslashes($_POST['edit_email']) . "',user_class='" . addslashes($_POST['user_class']) . "'", "user_key='" . addslashes($_GET['key']) . "'");
+                echo '<script>window.location="?p=member&edit_success=y"</script>';
             } else {
                 $alert2 = '  <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_PASSWORD_MISMATCH . '</div>';
             }
 
         } else {
-            $getDB->my_sql_update("user", "name='" . addslashes($_POST['edit_name']) . "',lastname='" . addslashes($_POST['edit_lastname']) . "',email='" . addslashes($_POST['edit_email']) ."',user_class='" . addslashes($_POST['user_class']) ."'", "user_key='" . addslashes($_GET['key']) . "'");
-            echo '<script>window.location="?p=member"</script>';
+            $getDB->my_sql_update("user", "name='" . addslashes($_POST['edit_name']) . "',lastname='" . addslashes($_POST['edit_lastname']) . "',email='" . addslashes($_POST['edit_email']) . "',user_class='" . addslashes($_POST['user_class']) . "'", "user_key='" . addslashes($_GET['key']) . "'");
+            echo '<script>window.location="?p=member&edit_success=y"</script>';
         }
     }
     ?>
@@ -152,8 +152,12 @@ if (@addslashes($_GET['e']) == 'y') {
                         <td>
                             <div class="form-group">
                                 <select name="user_class" id="user_class" class="form-control">
-                                    <option value="1" <?php if(@$getuser_detail->user_class == 1) echo "selected=\"selected\"";?>>เจ้าหน้าที่</option>
-                                    <option value="0" <?php if(@$getuser_detail->user_class == 0) echo "selected=\"selected\"";?>>ผู้บริหาร</option>
+                                    <option value="1" <?php if (@$getuser_detail->user_class == 1) echo "selected=\"selected\""; ?>>
+                                        เจ้าหน้าที่
+                                    </option>
+                                    <option value="0" <?php if (@$getuser_detail->user_class == 0) echo "selected=\"selected\""; ?>>
+                                        ผู้บริหาร
+                                    </option>
                                 </select>
                             </div>
                         </td>
@@ -188,12 +192,21 @@ if (@addslashes($_GET['e']) == 'y') {
 
             </div>
             <div class="panel-footer">
-                <button type="submit" name="edit_user_info" class="btn btn-info btn-sm"><i
-                        class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
+                <!--<button type="submit" name="edit_user_info" class="btn btn-info btn-sm"><i
+                        class="fa fa-save fa-fw"></i><?php /*echo @LA_BTN_SAVE; */ ?></button>-->
+                <button type="submit" name="edit_user_info" class="btn btn-info btn-sm"
+                        onClick="return editConfirm();">
+                    <i class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
             </div>
         </div>
     </form>
     <?php
 }
 ?>
+
+<script language="javascript">
+    function editConfirm() {
+        return confirm('การแก้ไขข้อมูลจะไม่สามารถกู้คืนได้, คุณแน่ใจที่จะทำการแก้ไขข้อมูลหรือไม่?');
+    }
+</script>
 
