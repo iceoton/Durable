@@ -74,9 +74,9 @@ echo @$alert;
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i
-                            class="fa fa-times fa-fw"></i><?php echo @LA_BTN_CLOSE; ?></button>
+                                class="fa fa-times fa-fw"></i><?php echo @LA_BTN_CLOSE; ?></button>
                     <button type="submit" name="save_user" class="btn btn-primary btn-sm"><i
-                            class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
+                                class="fa fa-save fa-fw"></i><?php echo @LA_BTN_SAVE; ?></button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -87,7 +87,8 @@ echo @$alert;
 <!-- /.modal -->
 
 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i
-        class="fa fa-plus fa-fw"></i>เพิ่มผู้ใช้งาน</button><br/><br/>
+            class="fa fa-plus fa-fw"></i>เพิ่มผู้ใช้งาน
+</button><br/><br/>
 
 
 <div class="table-responsive tooltipx">
@@ -128,8 +129,8 @@ echo @$alert;
                 <td align="center"><?php echo @$l; ?></td>
                 <td align="center">
                     <div class="box_img_cycle3"><img
-                            src="../resource/users/thumbs/<?php echo @$showalluser->user_photo; ?>" <?php echo getPhotoSize('../resource/users/thumbs/' . @$showalluser->user_photo . ''); ?>
-                            id="img_cycle3" alt=""/></div>
+                                src="../resource/users/thumbs/<?php echo @$showalluser->user_photo; ?>" <?php echo getPhotoSize('../resource/users/thumbs/' . @$showalluser->user_photo . ''); ?>
+                                id="img_cycle3" alt=""/></div>
                 </td>
                 <td>&nbsp;<span style="font-size:12px; <?php echo $color; ?>"><i class="fa fa-circle fa-fw"></i></span>&nbsp;<?php echo @$showalluser->name . "&nbsp;&nbsp;&nbsp;" . $showalluser->lastname; ?>
                 </td>
@@ -146,11 +147,11 @@ echo @$alert;
                         }
                         ?><a href="?p=edit_member&e=y&key=<?php echo @$showalluser->user_key; ?>"
                              class="btn btn-info btn-xs "><i
-                                class="fa fa-edit fa-fw"></i><?php echo @LA_BTN_EDIT; ?></a>
+                                    class="fa fa-edit fa-fw"></i><?php echo @LA_BTN_EDIT; ?></a>
                         <!--<a href="?p=setting_user_access&key=<?php echo @$showalluser->user_key; ?>" class="btn btn-primary btn-xs " ><i class="fa fa-gear fa-fw"></i><?php echo @LA_BTN_ACCESS; ?></a>-->
                         <button type="button" class="btn btn-danger btn-xs "
                                 onClick="javascript:deleteUser('<?php echo @$showalluser->user_key; ?>');"><i
-                                class="fa fa-times fa-fw"></i><?php echo @LA_BTN_DELETE; ?></button>
+                                    class="fa fa-times fa-fw"></i><?php echo @LA_BTN_DELETE; ?></button>
                     </td>
                     <?php
                 }
@@ -195,19 +196,22 @@ echo @$alert;
         xmlhttp.open("GET", "function.php?type=change_user_status&key=" + userkey + "&sts=" + sts, true);
         xmlhttp.send();
     }
+
     function deleteUser(userkey) {
-        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {// code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function () {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                document.getElementById(userkey).innerHTML = '';
+        if (confirm('คุณต้องการลบสมาชิกนี้ใช่หรือไม่? ,เมื่อทำการลบคุณจะไม่สามารถคกู้คืนข้อมูลสมาชิกรายนี้ได้')) {
+            if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {// code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
             }
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById(userkey).innerHTML = '';
+                }
+            }
+            xmlhttp.open("GET", "function.php?type=delete_user&key=" + userkey, true);
+            xmlhttp.send();
         }
-        xmlhttp.open("GET", "function.php?type=delete_user&key=" + userkey, true);
-        xmlhttp.send();
     }
 </script>
 <script>
@@ -231,10 +235,12 @@ echo @$alert;
             }
         });
     })
+
     function copyAddress() {
         var addr = document.getElementById('member_address').value;
         document.getElementById('member_address_now').value = addr;
     }
+
     function randomPassword(password_id, password_pattern, password_prefix, password_length) {
         var text = "";
         if (password_pattern == 1) {
