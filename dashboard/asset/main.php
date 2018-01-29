@@ -61,7 +61,7 @@ if (isset($_POST['save_manage_add_asset'])) {
             . ", update_date='" . date("Y-m-d H:i:s") . "'");
 
         $assetId = mysql_insert_id();
-        echo "last insert asset id = ".$assetId;
+        //echo "last insert asset id = ".$assetId;
 
         $manageType = $_POST['manage_type'];
         $userKey = $_SESSION['ukey'];
