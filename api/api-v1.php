@@ -11,6 +11,7 @@ require_once 'controller/AssetTypeController.php';
 require_once 'controller/AssetLocationController.php';
 require_once 'controller/AssetStatusController.php';
 require_once 'controller/CategoryController.php';
+require_once 'controller/ReportController.php';
 require_once 'model/ManageAssetRequest.php';
 require_once 'model/Asset.php';
 
@@ -20,6 +21,7 @@ $assetTypeController = new AssetTypeController();
 $assetLocationController = new AssetLocationController();
 $assetStatusController = new AssetStatusController();
 $categoryController = new CategoryController();
+$reportController = new ReportController();
 
 $response = array();
 $response['success'] = 0;
@@ -170,6 +172,18 @@ if (isset($_POST['tag'])) {
             $response['success'] = 1;
         }
 
+    } elseif ($tag == 'getReport') {
+        $data = json_decode($data_json);
+        $manageType = $data->manageType;
+        $queryAssetCode = $data->queryAssetCode;
+        $result = $reportController->getReportByManageType($manageType, $queryAssetCode);
+        if ($result == 0) {
+            $response['error'] = 1;
+            $response['error_msg'] = 'ไม่พบข้อมูล';
+        } else {
+            $response['result'] = $result;
+            $response['success'] = 1;
+        }
     } else {
         $response['error'] = 1;
         $response['error_msg'] = "ไม่พบ tag ที่คุณต้องการ";
