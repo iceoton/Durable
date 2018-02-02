@@ -461,13 +461,12 @@ echo @$alert;
             if ($_SESSION['uclass'] > 0) {
                 echo '
                 <ul class="nav navbar-nav" >
-                <li ><a data - toggle = "modal" data - target = "#myModal" style = "cursor:pointer;" >
+                <li ><a data-toggle = "modal" data-target = "#myModal" style = "cursor:pointer;" >
                         <i class="fa fa-plus" ></i >
                 เพิ่มครุภัณฑ์</a ></li >
             </ul >
-
             <ul class="nav navbar-nav" >
-                <li ><a data - toggle = "modal" data - target = "#management_add" style = "cursor:pointer;" >
+                <li ><a data-toggle = "modal" data-target = "#management_add" style = "cursor:pointer;" >
                         <i class="fa fa-pencil-square" ></i >
                 เบิกครุภัณฑ์ / ยืมครุภัณฑ์</a ></li >
             </ul >
