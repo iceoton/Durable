@@ -6,7 +6,7 @@
 <ol class="breadcrumb">
     <li><a href="index.php"><?php echo @LA_MN_HOME; ?></a></li>
     <li><a href="?p=report"><?php echo "รายงานครุภัณฑ์"; ?></a></li>
-    <li class="active"><?php echo "แยกตามชนิดครุภัณฑ์"; ?></li>
+    <li class="active" href="?p=report_counting"><?php echo "แยกตามชนิดครุภัณฑ์"; ?></li>
 </ol>
 
 <?php
@@ -15,10 +15,8 @@ $assetTypeName = "";
 if (isset($_POST['change_asset_type'])) {
     if ((addslashes($_POST['asset_type']) != NULL)) {
         $assetTypeId = $_POST['asset_type'];
-
-        $alert = '<div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . "เพิ่มครุภัณฑ์สำเร็จ" . '</div>';
     } else {
-        $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>ข้อมูลไม่ถูกต้อง กรุณาระบุอีกครั้ง !</div>';
+        $alert = '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>เกิดข้อผิดพลาด !</div>';
     }
 }
 ?>
@@ -27,7 +25,7 @@ if (isset($_POST['change_asset_type'])) {
     <div class="container-fluid">
         <div class="navbar-default" id="bs-example-navbar-collapse-1">
 
-            <form class="navbar-form from-group navbar-left" method="post" action="?p=report">
+            <form class="navbar-form from-group navbar-left" method="post" action="?p=report_counting">
 
                 <label for="asset_type">ชนิดครุภัณฑ์ :</label>
                 <select name="asset_type" id="asset_type" class="form-control">
