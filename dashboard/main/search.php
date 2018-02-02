@@ -46,7 +46,8 @@ if (isset($_POST['save_edit_asset'])) {
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span
-                            aria-hidden="true">&times;</span><span class="sr-only"><?php echo @LA_BTN_CLOSE; ?></span>
+                                aria-hidden="true">&times;</span><span
+                                class="sr-only"><?php echo @LA_BTN_CLOSE; ?></span>
                     </button>
                     <h4 class="modal-title" id="memberModalLabel">แก้ไขข้อมูลครุภัณฑ์</h4>
                 </div>
@@ -108,7 +109,11 @@ echo @$alert; ?>
             <td width="5%">สถานะ</td>
             <td width="5%">ปริมาณ</td>
             <td width="5%">หน่วยนับ</td>
-            <td width="10%">จัดการ</td>
+            <?php
+            if ($_SESSION['uclass'] > 0) {
+                echo '<td width="10%">จัดการ</td>';
+            }
+            ?>
         </tr>
         </thead>
         <tbody>
@@ -129,14 +134,18 @@ echo @$alert; ?>
                 <td align="center"><?php echo @statusIdToString($showAsset->status_id); ?></td>
                 <td align="center"><?php echo @$showAsset->quantity; ?></td>
                 <td align="center"><?php echo @unitIdToString($showAsset->unit_id); ?></td>
-                <td align="right">
-                    <a data-toggle="modal" data-target="#edit_asset" data-whatever="<?php echo @$showAsset->id; ?>"
+
+                <?php
+                if ($_SESSION['uclass'] > 0) {
+                    echo '<td align="right">
+                    <a data-toggle="modal" data-target="#edit_asset" data-whatever="' . @$showAsset->id . '"
                        title="แก้ไข" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>
                     </a>
-                    <a onClick="javascript:deleteAsset('<?php echo @$showAsset->id; ?>');"
+                    <a onClick="javascript:deleteAsset(' . @$showAsset->id . ');"
                        title="ลบข้อมูล" class="btn btn-xs btn-danger"><i class="fa fa-times"></i>
-                    </a>
-                </td>
+                    </a></td>';
+                }
+                ?>
             </tr>
             <?php
         }

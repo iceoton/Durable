@@ -27,7 +27,7 @@ if (isset($_POST['save_user'])) {
         $alert = ' <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . LA_ALERT_DATA_MISMATCH . '</div>';
     }
 }
-if(isset($_GET['edit_success'])) {
+if (isset($_GET['edit_success'])) {
     $alert2 = '  <div class="alert alert-success alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . 'แก้ไขข้อมูลสำเร็จ' . '</div>';
     echo @$alert2;
 }
@@ -89,11 +89,13 @@ echo @$alert;
     <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->
-
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i
+<?php
+if ($_SESSION['uclass'] > 1) {
+    echo '<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal"><i
             class="fa fa-plus fa-fw"></i>เพิ่มผู้ใช้งาน
-</button><br/><br/>
-
+</button><br/><br/>';
+}
+?>
 
 <div class="table-responsive tooltipx">
     <!-- Table -->

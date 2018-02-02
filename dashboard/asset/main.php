@@ -90,7 +90,7 @@ if (isset($_POST['save_manage_add_asset'])) {
 
         $getDB->my_sql_insert("asset_management", "user_key='" . $userKey . "', asset_id='" . $assetId
             . "', manage_type='" . $enumManageType
-            . "', quantity=" . "1" . ", create_date='" . date("Y-m-d H:i:s"). "'"
+            . "', quantity=" . "1" . ", create_date='" . date("Y-m-d H:i:s") . "'"
             . ", update_date='" . date("Y-m-d H:i:s") . "'");
 
 
@@ -457,24 +457,28 @@ echo @$alert;
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-default" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a data-toggle="modal" data-target="#myModal" style="cursor:pointer;">
-                        <i class="fa fa-plus"></i>
-                        เพิ่มครุภัณฑ์</a></li>
-            </ul>
+            <?php
+            if ($_SESSION['uclass'] > 0) {
+                echo '
+                <ul class="nav navbar-nav" >
+                <li ><a data - toggle = "modal" data - target = "#myModal" style = "cursor:pointer;" >
+                        <i class="fa fa-plus" ></i >
+                เพิ่มครุภัณฑ์</a ></li >
+            </ul >
 
-            <ul class="nav navbar-nav">
-                <li><a data-toggle="modal" data-target="#management_add" style="cursor:pointer;">
-                        <i class="fa fa-pencil-square"></i>
-                        เบิกครุภัณฑ์/ยืมครุภัณฑ์</a></li>
-            </ul>
+            <ul class="nav navbar-nav" >
+                <li ><a data - toggle = "modal" data - target = "#management_add" style = "cursor:pointer;" >
+                        <i class="fa fa-pencil-square" ></i >
+                เบิกครุภัณฑ์ / ยืมครุภัณฑ์</a ></li >
+            </ul >
 
-            <ul class="nav navbar-nav">
-                <li><a class="navbar-brand" href="?p=asset_management" style="cursor:pointer;">
-                        <i class="fa fa-pencil-square-o"></i>
-                        คืนครุภัณฑ์/ส่งซ่อมครุภัณฑ์</a></li>
-            </ul>
-
+            <ul class="nav navbar-nav" >
+                <li ><a class="navbar-brand" href = "?p=asset_management" style = "cursor:pointer;" >
+                        <i class="fa fa-pencil-square-o" ></i >
+                คืนครุภัณฑ์ / ส่งซ่อมครุภัณฑ์</a ></li >
+            </ul >';
+            }
+            ?>
             <form class="navbar-form from-group navbar-right" role="search" method="get" action="?p=search">
 
                 <input type="text" class="form-control" name="q" placeholder="ระบุชื่อครุภัณฑ์/รหัสครุภัณฑ์ เพื่อค้นหา"
@@ -505,7 +509,11 @@ if ($getcard_count != 0) {
                 <td width="5%">สถานะ</td>
                 <td width="5%">ปริมาณ</td>
                 <td width="5%">หน่วยนับ</td>
-                <td width="10%">จัดการ</td>
+                <?php
+                if ($_SESSION['uclass'] > 0) {
+                    echo '<td width="10%">จัดการ</td>';
+                }
+                ?>
             </tr>
             </thead>
             <tbody>
@@ -528,14 +536,17 @@ if ($getcard_count != 0) {
                     <td align="center"><?php echo @statusIdToString($showcard->status_id); ?></td>
                     <td align="center"><?php echo @$showcard->quantity; ?></td>
                     <td align="center"><?php echo @unitIdToString($showcard->unit_id); ?></td>
-                    <td align="right">
-                        <a data-toggle="modal" data-target="#edit_asset" data-whatever="<?php echo @$showcard->id; ?>"
-                           title="แก้ไข" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>
-                        </a>
-                        <a onClick="javascript:deleteAsset('<?php echo @$showcard->id; ?>');"
-                           title="ลบข้อมูล" class="btn btn-xs btn-danger"><i class="fa fa-times"></i>
-                        </a>
-                    </td>
+
+                    <?php
+                    if ($_SESSION['uclass'] > 0) {
+                        echo '<td align="right"><a data-toggle="modal" data-target="#edit_asset" data-whatever="' . @$showcard->id . '"
+                                title="แก้ไข" class="btn btn-xs btn-info"><i class="fa fa-edit"></i>
+                            </a>
+                            <a onClick="javascript:deleteAsset(' . @$showcard->id . ');"
+                                title="ลบข้อมูล" class="btn btn-xs btn-danger"><i class="fa fa-times"></i>
+                            </a></td>';
+                    }
+                    ?>
                 </tr>
                 <?php
             }

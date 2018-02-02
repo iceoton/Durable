@@ -6,7 +6,7 @@ date_default_timezone_set('Asia/Bangkok');
 <!DOCTYPE html>
 <html>
 <?php
-if ($_SESSION['uname'] == NULL || $_SESSION['uclass'] == 1) {
+if ($_SESSION['uname'] == NULL || $_SESSION['uclass'] < 0) {
     echo '<script>window.location="../"</script>';
 }
 require("../core/config.core.php");

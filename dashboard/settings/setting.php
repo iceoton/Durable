@@ -18,7 +18,9 @@
         $software_update_icon = '';
     }
     ?>
-    <div class="panel panel-primary">
+    <?php
+    if ($_SESSION['uclass'] > 0) {
+        echo '<div class="panel panel-primary">
         <div class="panel-heading">การตั้งค่าเกี่ยวกับครุภัณฑ์</div>
         <div class="panel-body">
             <a href="?p=setting_asset_status" class="btn btn-primary btn_main_wd"><i
@@ -34,26 +36,32 @@
 
         </div>
 
-    </div>
-    <div class="panel panel-primary">
-        <div class="panel-heading"><?php echo @LA_LB_ABOUT_SYSTEM; ?></div>
+    </div>';
+    }
+
+    if ($_SESSION['uclass'] > 1) {
+        echo '<div class="panel panel-primary">
+        <div class="panel-heading">' . @LA_LB_ABOUT_SYSTEM . '</div>
         <div class="panel-body">
             <a href="?p=setting_system" class="btn btn-primary btn_main_wd"><i
-                    class="fa fa-wrench fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_SYSTEM_SETTING; ?></a>
+                    class="fa fa-wrench fa-fw fa-6x"></i><br/><br/>' . @LA_LB_SYSTEM_SETTING . '</a>
 
             <a href="?p=setting_users_admin" class="btn btn-primary btn_main_wd"><i
-                    class="fa fa-user fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMINISTRATOR; ?></a>
+                    class="fa fa-user fa-fw fa-6x"></i><br/><br/>' . @LA_LB_ADMINISTRATOR . '</a>
             <a href="?p=setting_backup" class="btn btn-primary btn_main_wd"><i
-                    class="fa fa-database fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_BACKUP; ?></a>
+                    class="fa fa-database fa-fw fa-6x"></i><br/><br/>' . LA_LB_BACKUP . '</a>
 
         </div>
 
-    </div>
+    </div>';
+    }
+    ?>
+
     <div class="panel panel-primary">
         <div class="panel-heading"><?php echo @LA_LB_USER_DATA; ?></div>
         <div class="panel-body">
             <a href="?p=setting_info" class="btn btn-primary btn_main_wd"><i
-                    class="fa flaticon-id fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_USER_DATA; ?></a>
+                        class="fa flaticon-id fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_USER_DATA; ?></a>
 
         </div>
 
@@ -77,15 +85,15 @@
             <div class="panel-heading"><?php echo @LA_LB_ADMINISTRATOR; ?></div>
             <div class="panel-body">
                 <a href="?p=administrator_access_list" class="btn btn-danger btn_main_wd"><i
-                        class="fa fa-list fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_ACCESS_LIST; ?></a>
+                            class="fa fa-list fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_ACCESS_LIST; ?></a>
                 <a href="?p=administrator_cases" class="btn btn-danger btn_main_wd"><i
-                        class="fa fa-chain fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_PAGE_LINK; ?></a>
+                            class="fa fa-chain fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_PAGE_LINK; ?></a>
                 <a href="?p=administrator_menus" class="btn btn-danger btn_main_wd"><i
-                        class="fa fa-sitemap fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_MENU; ?></a>
+                            class="fa fa-sitemap fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_MENU; ?></a>
                 <a href="?p=administrator_modules" class="btn btn-danger btn_main_wd"><i
-                        class="fa fa-puzzle-piece fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_MODULE; ?></a>
+                            class="fa fa-puzzle-piece fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_ADMIN_MODULE; ?></a>
                 <a href="?p=administrator_helper" class="btn btn-danger btn_main_wd"><i
-                        class="fa flaticon-ring7 fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_HELP; ?></a>
+                            class="fa flaticon-ring7 fa-fw fa-6x"></i><br/><br/><?php echo @LA_LB_HELP; ?></a>
 
             </div>
 
