@@ -133,10 +133,12 @@ if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "
         <a href="?p=setting_info">
             <div class="box_user_right">
                 <div class="box_img_cycle2"><img
-                        src="../resource/users/thumbs/<?php echo @$userdata->user_photo; ?>" <?php echo getPhotoSize('../resource/users/thumbs/' . @$userdata->user_photo . ''); ?>
-                        id="img_cycle2" alt=""/>
+                            src="../resource/users/thumbs/<?php echo @$userdata->user_photo; ?>" <?php echo getPhotoSize('../resource/users/thumbs/' . @$userdata->user_photo . ''); ?>
+                            id="img_cycle2" alt=""/>
                 </div><?php echo @$userdata->name . "&nbsp;&nbsp;&nbsp;" . $userdata->lastname; ?></div>
         </a>
+
+
         <!-- /.navbar-top-links -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
@@ -184,6 +186,10 @@ if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->
+
+        <div class="center-block" style="font-size:24px; color:#000000; text-align:center; padding-top:10px;">
+            โปรแกรมครุภัณฑ์และตรวจครุภัณฑ์บนระบบปฏิบัติการแอนดรอยด์
+        </div>
     </nav>
 
     <!-- Page Content -->
@@ -244,6 +250,7 @@ if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "
             startTime()
         }, 500);
     }
+
     function startDateTime() {
         var today = new Date();
         var dd = today.getDate();
@@ -262,6 +269,7 @@ if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "
             startDateTime()
         }, 500);
     }
+
     function checkTime(i) {
         if (i < 10) {
             i = "0" + i;
@@ -309,6 +317,7 @@ if (@addslashes($_GET['p']) == "cashier_nomember" || addslashes($_GET['p']) == "
     $(function () {
         $('.cp1').colorpicker();
     });
+
     function checkCardCount() {
         $.ajax({
             async: false,
