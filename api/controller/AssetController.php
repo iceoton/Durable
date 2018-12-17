@@ -9,6 +9,10 @@ require_once __DIR__ . '/LocationController.php';
 require_once __DIR__ . '/SourceController.php';
 require_once __DIR__ . '/UnitController.php';
 
+/**
+ * Class AssetController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับครุภัณฑ์ เช่น ดึงรายการทครุภัณฑ์ทั้งหมด
+ */
 class AssetController
 {
     public $link;
@@ -22,6 +26,11 @@ class AssetController
         $this->statusController = new StatusController();
     }
 
+    /**
+     * ดึงรายการครุภัณฑ์ทั้งหมด
+     * @return array|int หากอ่านข้อมูลจาก Database สำเร็จจะส่งรายการครุภัณฑ์
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     function getAll()
     {
         $conn = $this->link->connect();
@@ -39,6 +48,13 @@ class AssetController
         return $result;
     }
 
+    /**
+     * ดึงรายการครุภัณฑ์โดยแยกตามชนิดของครุภัณฑ์
+     * @param $assetType ชนิดของครุภัณฑ์
+     * @param $queryAssetCode รหัสครุภัณฑ์ที่ต้องการทำการกรอง
+     * @return array|int หากอ่านข้อมูลจาก Database สำเร็จจะส่งรายการครุภัณฑ์
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     function getAssetListByType($assetType, $queryAssetCode)
     {
         $conn = $this->link->connect();
@@ -57,6 +73,12 @@ class AssetController
         return $result;
     }
 
+    /**
+     * ดึงรายการครุภัณฑ์โดยแยกตามหมวดหมู่ของครุภัณฑ์
+     * @param $categoryId ไอดีของหมวดหมู่ครุภัณฑ์
+     * @return array|int หากอ่านข้อมูลจาก Database สำเร็จจะส่งรายการครุภัณฑ์
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     function getAssetListByCategory($categoryId)
     {
         $conn = $this->link->connect();
@@ -75,6 +97,12 @@ class AssetController
         return $result;
     }
 
+    /**
+     * ดึงข้อมูลรายละเอียดของครุภัณฑ์ตามรหัสครุภัณฑ์ที่ส่งมา
+     * @param $assetCode รหัสครุภัณฑ์ที่ต้องการข้อมูล
+     * @return array|int หากพบข้อมูลจะส่ง array ของรายละเอียดครุภัณฑ์กลับไป
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     function getAssetDetail($assetCode)
     {
         $conn = $this->link->connect();
@@ -111,6 +139,12 @@ class AssetController
         return $result;
     }
 
+    /**
+     * ดึงข้อมูลรายละเอียดของครุภัณฑ์ตามไอดีครุภัณฑ์ที่ส่งมา
+     * @param $assetId ไอดีของครุภัณฑ์ที่ต้องการข้อมูล
+     * @return array|int หากพบข้อมูลจะส่ง array ของรายละเอียดครุภัณฑ์กลับไป
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     function getAssetDetailById($assetId)
     {
         $conn = $this->link->connect();
@@ -147,6 +181,11 @@ class AssetController
         return $result;
     }
 
+    /**
+     * จักการข้อมูลครุภัณฑ์ ตามชนิดการจัดการที่ส่งมา เช่น ยืม คืน ส่งซ่อม
+     * @param $manageAssetRequest คำร้องขอจัดการข้อมูลที่ประกอบไปด้วย ไอดีของครุภัณฑ์ ชนิดการจัดการ ปริมาณ และผู้ใช้งานที่จัดการครุภัณฑ์
+     * @return bool หากสำเร็จจะส่งค่า true หากไม่สำเร็จจะส่งค่า false กลับ
+     */
     function mangeAsset($manageAssetRequest)
     {
         $currentDateTime = date('Y-m-d H:i:s');
@@ -173,6 +212,12 @@ class AssetController
         return $result;
     }
 
+    /**
+     * แก้ไขข้อมูลครุภัณฑ์
+     * @param $assetChange ข้อมูลครุภัณฑ์ที่จะทำการแก้ไข
+     * @return array|bool หากสำเร็จจะส่งรายละเอียดครุภัณฑ์ที่แก้ไขสำเร็จกลับไป
+     * หากไม่สำเร็จจะส่งค่า false กลับไป
+     */
     function editAsset($assetChange)
     {
         $currentDateTime = date('Y-m-d H:i:s');

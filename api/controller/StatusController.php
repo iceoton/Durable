@@ -4,6 +4,10 @@ ini_set('display_errors', 'on');
 
 require_once __DIR__ . '/../database/db.php';
 
+/**
+ * Class StatusController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับสถานะครุภัณฑ์
+ */
 class StatusController
 {
     public $pdo;
@@ -13,6 +17,11 @@ class StatusController
         $this->pdo = new DBConnection();
     }
 
+    /**
+     * ดึงรายละเอียดของสถานะครุภัณฑ์นั้น ๆ
+     * @param $id ไอดีของสถานะครุภัณฑ์ที่ต้องการรายละเอียด
+     * @return array|int หากสำเร็จจะส่งรายละเอียดของสถานะครุภัณฑ์กลับ หากไม่สำเร็จจะส่งค่า 0 กลับ
+     */
     public function getDetail($id){
         $conn = $this->pdo->connect();
         $query = $conn->prepare("SELECT * FROM status WHERE id = ?");

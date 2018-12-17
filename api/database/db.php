@@ -5,15 +5,20 @@ ini_set('display_errors', 'on');
 require_once __DIR__.'/../../core/config.core.php';
 /*
  * Google API Key
+ * สำหรับใช้งานการส่ง notification
  */
 define("GOOGLE_API_KEY", ""); // Place your Google API Key
 
+/**
+ * Class DBConnection
+ * รวมฟังก์ชันสำหรับเชื่อมต่อฐานข้อมูล
+ */
 class DBConnection
 {
-    public $db_name = DB_NAME;
-    public $db_user = DB_USERNAME;
-    public $db_pass = DB_PASSWORD;
-    public $db_host = DB_HOST;
+    public $db_name = DB_NAME; //ชื่อฐานข้อมูล
+    public $db_user = DB_USERNAME; // ชื่อเข้าใช้งาน
+    public $db_pass = DB_PASSWORD; // รหัสผ่าน
+    public $db_host = DB_HOST; // Url ที่อยู่ของฐานข้อมูล
 
     function connect()
     {

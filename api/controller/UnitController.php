@@ -4,6 +4,10 @@ ini_set('display_errors', 'on');
 
 require_once __DIR__ . '/../database/db.php';
 
+/**
+ * Class UnitController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับหน่วยของครุภัณฑ์
+ */
 class UnitController
 {
     public $pdo;
@@ -13,6 +17,11 @@ class UnitController
         $this->pdo = new DBConnection();
     }
 
+    /**
+     * ดึงรายละเอียดของหน่วยของครุภัณฑ์นั้น ๆ
+     * @param $id ไอดีของหน่วยของครุภัณฑ์ที่ต้องการรายละเอียด
+     * @return array|int หากสำเร็จจะส่งรายละเอียดของหน่วยของครุภัณฑ์กลับ หากไม่สำเร็จจะส่งค่า 0 กลับ
+     */
     public static function getDetail($id){
         $pdo = new DBConnection();
         $conn = $pdo->connect();

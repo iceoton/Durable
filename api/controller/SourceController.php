@@ -4,6 +4,10 @@ ini_set('display_errors', 'on');
 
 require_once __DIR__ . '/../database/db.php';
 
+/**
+ * Class SourceController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับแหล่งที่มาครุภัณฑ์
+ */
 class SourceController
 {
     public $pdo;
@@ -13,6 +17,11 @@ class SourceController
         $this->pdo = new DBConnection();
     }
 
+    /**
+     * ดึงรายละเอียดของแหล่งที่มาของครุภัณฑ์นั้น ๆ
+     * @param $id ไอดีของแหล่งที่มาครุภัณฑ์ที่ต้องการรายละเอียด
+     * @return array|int หากสำเร็จจะส่งรายละเอียดของแหล่งที่มาครุภัณฑ์กลับ หากไม่สำเร็จจะส่งค่า 0 กลับ
+     */
     public static function getDetail($id){
         $pdo = new DBConnection();
         $conn = $pdo->connect();

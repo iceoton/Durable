@@ -4,6 +4,10 @@ ini_set('display_errors', 'on');
 
 require_once __DIR__ . '/../database/db.php';
 
+/**
+ * Class AssetStatusController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับสถานะครุภัณฑ์
+ */
 class AssetStatusController
 {
     public $pdo;
@@ -13,6 +17,11 @@ class AssetStatusController
         $this->pdo = new DBConnection();
     }
 
+    /**
+     * ดึงรายการสถานะครุภัณฑ์ทั้งหมด
+     * @return array|int หากอ่านข้อมูลจาก Database สำเร็จจะส่งรายการสถานะครุภัณฑ์กลับไป
+     * หากไม่สำเร็จจะส่งเลข 0 กลับไป
+     */
     public function getAll(){
         $conn = $this->pdo->connect();
         $query = $conn->prepare("SELECT * FROM status");
@@ -29,6 +38,11 @@ class AssetStatusController
         return $result;
     }
 
+    /**
+     * ดึงรายละเอียดของสถานะครุภัณฑ์นั้น ๆ
+     * @param $id ไอดีของสถานะครุภัณฑ์ที่ต้องการรายละเอียด
+     * @return array|int หากสำเร็จจะส่งรายละเอียดของสถานะครุภัณฑ์กลับ หากไม่สำเร็จจะส่งค่า 0 กลับ
+     */
     public static function getDetailById($id){
         $pdo = new DBConnection();
         $conn = $pdo->connect();

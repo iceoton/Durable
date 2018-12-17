@@ -4,6 +4,10 @@ ini_set('display_errors', 'on');
 
 require_once __DIR__ . '/../database/db.php';
 
+/**
+ * Class ReportController
+ * รวมฟังก์ชันสำหรับจัดการเรื่องที่เกี่ยวกับรายงานครุภัณฑ์
+ */
 class ReportController
 {
     public $pdo;
@@ -13,6 +17,13 @@ class ReportController
         $this->pdo = new DBConnection();
     }
 
+    /**
+     * ดึงรายงานครุภัณฑ์ตามชนิดการจัดการ และรหัสครุภัณฑ์นั้น ๆ
+     * @param $manageType ชนิดการจัดการครุภัณฑ์
+     * @param $queryAssetCode รหัสครุภัณฑ์สำหรับกรองเฉพาะครุภัณฑ์ที่ต้องการ
+     * @return array|int หากสำเร็จจะส่งรายการครุภัณฑ์ที่เกี่ยวข้องกับเงื่อนไขที่ส่งมากลับ
+     * หากไม่สำเร็จจะส่งค่า 0 กลับ
+     */
     function getReportByManageType($manageType, $queryAssetCode)
     {
         $conn = $this->pdo->connect();
